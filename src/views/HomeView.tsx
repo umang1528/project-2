@@ -23,7 +23,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
         >
           <div className="mb-12 inline-flex items-center gap-4 px-6 py-2 border border-studio-border bg-white/50 backdrop-blur-md">
             <div className="w-2 h-2 rounded-none bg-brand-accent animate-pulse" />
-            <span className="text-[10px] font-mono font-bold tracking-[0.4em] uppercase text-studio-text/60">Independent Studio — MMXVI</span>
+            <span className="text-[10px] font-mono font-bold tracking-[0.4em] uppercase text-studio-text/60">Independent GRAPHIC DESIGNER</span>
           </div>
           
           <h1 className="font-display text-[15vw] md:text-[14rem] font-bold leading-[0.75] tracking-tighter uppercase">
@@ -33,7 +33,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
           <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-12">
             <div className="flex flex-col gap-2 text-left">
               <span className="text-[10px] font-mono font-bold text-brand-accent uppercase tracking-widest">Specialization</span>
-              <p className="text-sm font-display font-medium text-studio-text uppercase tracking-tight">Identity • Motion • Systems</p>
+              <p className="text-sm font-display font-medium text-studio-text uppercase tracking-tight">GRAPHIC • PACKAGING • VISUALS</p>
             </div>
             <div className="h-[1px] w-12 bg-studio-border hidden md:block" />
             <div className="flex flex-col gap-2 text-left">

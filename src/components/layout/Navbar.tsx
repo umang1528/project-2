@@ -26,10 +26,10 @@ export function Navbar({ currentView, setCurrentView, isMenuOpen, setIsMenuOpen 
           onClick={() => navigate('home')}
         >
           <div className="w-10 h-10 bg-studio-text flex items-center justify-center transition-colors duration-500 group-hover:bg-brand-accent">
-            <span className="font-display font-bold text-white text-xl">V</span>
+            <span className="font-display font-bold text-white text-xl">U</span>
           </div>
           <div className="flex flex-col">
-            <span className="font-display text-2xl font-bold tracking-tighter leading-none">VISIONS</span>
+            <span className="font-display text-2xl font-bold tracking-tighter leading-none">UMANG</span>
             <span className="text-[8px] tracking-[0.5em] text-studio-text/40 font-bold uppercase">Creative Haus</span>
           </div>
         </motion.div>

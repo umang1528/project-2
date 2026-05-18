@@ -57,7 +57,7 @@ export function Footer() {
       <div className="mt-48 pt-12 border-t border-studio-border flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex items-center gap-4">
           <div className="w-8 h-8 bg-studio-text flex items-center justify-center">
-            <span className="font-display font-bold text-white text-xs">V</span>
+            <span className="font-display font-bold text-white text-xs">U</span>
           </div>
           <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-studio-text/40">© 2026 VISIONS — Creative Collective</span>
         </div>
