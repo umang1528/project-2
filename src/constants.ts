@@ -1,4 +1,6 @@
 import { Project, EducationItem } from './types';
+import Image from './assets/images/1img.jpg';
+
 
 export const HEADER_LINKS = [
   { name: 'Home', href: '#' },
@@ -103,7 +105,7 @@ export const EDUCATION_DATA: EducationItem[] = [
   }
 ];
 
-export const CATEGORIES = ['Branding', 'UI/UX Design', '3D Artistry', 'Typography', 'Motion Graphics', 'Packaging', 'Illustration', 'Art Direction'];
+export const CATEGORIES = ['Branding', 'SOCIAL CAMPAIGNS', 'PACKAGING', 'Typography', 'EDITORIAL DESIGN', 'VIDEO EDITING', 'Illustration', 'Art Direction'];
 export const YEARS = ['2026', '2025', '2024', '2023', '2022'];
 
 export const ARCHIVE_PROJECTS: Project[] = Array.from({ length: 50 }).map((_, i) => {

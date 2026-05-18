@@ -25,7 +25,7 @@ export function ArchiveView({ setSelectedProject, setCurrentView }: ArchiveViewP
           animate={{ opacity: 1, x: 0 }}
           className="lg:col-span-8"
         >
-          <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">Collection Retrospective</span>
+          <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">CREATIVE COLLECTION</span>
           <h1 className="font-display text-7xl md:text-9xl lg:text-[11rem] leading-[0.8] tracking-tighter font-bold uppercase">
             THE INDEX.
           </h1>
@@ -36,8 +36,9 @@ export function ArchiveView({ setSelectedProject, setCurrentView }: ArchiveViewP
           transition={{ delay: 0.3 }}
           className="lg:col-span-4 lg:mb-4"
         >
-          <p className="text-studio-text/60 text-xl font-medium leading-relaxed max-w-sm">
-            "Design is the silent ambassador of your brand. Exploring visual systems since MMXVI."
+          <p className="text-studio-text/60 text-sm font-medium leading-relaxed max-w-sm">
+            "Design is the silent ambassador of your brand.
+Through branding, motion graphics, packaging, and modern visual storytelling, I create structured digital experiences that balance bold aesthetics with purposeful communication."
           </p>
           <div className="mt-8 flex items-center gap-4">
             <div className="h-[1px] flex-1 bg-studio-border" />

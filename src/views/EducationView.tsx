@@ -1,6 +1,8 @@
 import { motion } from 'motion/react';
 import { EDUCATION_DATA } from '../constants';
 import { Download } from 'lucide-react';
+import ResumePDF from '../assets/CV pdf/Umang resume.pdf';
+
 
 export function EducationView() {
   return (
@@ -20,20 +22,32 @@ export function EducationView() {
               Rigorous exploration of design history, technical craft, and future-forward theory.
             </p>
           </div>
-          
-          <motion.button 
+
+          <motion.a
+            href={ResumePDF}
+            target="_blank"
+            download
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             className="flex flex-shrink-0 items-center gap-6 group"
           >
-             <div className="w-16 h-16 border border-studio-border flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent transition-all duration-500">
-                <Download size={24} className="group-hover:translate-y-1 transition-transform text-studio-text group-hover:text-white" />
-             </div>
-             <div className="text-left">
-               <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-studio-text/40 group-hover:text-studio-text transition-colors block">Curriculum Vitae</span>
-               <span className="text-xs font-mono font-bold uppercase text-studio-text">PDF Transcript [2.4MB]</span>
-             </div>
-          </motion.button>
+            <div className="w-16 h-16 border border-studio-border flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent transition-all duration-500">
+              <Download
+                size={24}
+                className="group-hover:translate-y-1 transition-transform text-studio-text group-hover:text-white"
+              />
+            </div>
+
+            <div className="text-left">
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-studio-text/40 group-hover:text-studio-text transition-colors block">
+                Curriculum Vitae
+              </span>
+
+              <span className="text-lg font-mono font-bold uppercase text-studio-text">
+                {/* PDF Transcript [2.4MB] */}
+              </span>
+            </div>
+          </motion.a>
         </div>
       </motion.div>
 

@@ -2,6 +2,7 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowRight, Zap, Monitor, Box, Activity, Type, Cpu, Shapes, Palette, Compass, PenTool } from 'lucide-react';
 import { Project, ViewType } from '../types';
 import { PORTFOLIO_ITEMS } from '../constants';
+// import Image from '../assets/images/1img.jpg';
 
 interface HomeViewProps {
   setSelectedProject: (project: Project) => void;
@@ -17,7 +18,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
     <>
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center pt-24 overflow-hidden">
-        <motion.div 
+        <motion.div
           style={{ opacity, scale }}
           className="relative z-10 text-center px-6"
         >
@@ -25,11 +26,11 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
             <div className="w-2 h-2 rounded-none bg-brand-accent animate-pulse" />
             <span className="text-[10px] font-mono font-bold tracking-[0.4em] uppercase text-studio-text/60">Independent GRAPHIC DESIGNER</span>
           </div>
-          
+
           <h1 className="font-display text-[15vw] md:text-[14rem] font-bold leading-[0.75] tracking-tighter uppercase">
             VISI<span className="text-brand-accent">O</span>NS
           </h1>
-          
+
           <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-12">
             <div className="flex flex-col gap-2 text-left">
               <span className="text-[10px] font-mono font-bold text-brand-accent uppercase tracking-widest">Specialization</span>
@@ -59,20 +60,20 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               SELECTED <br /> <span className="italic text-studio-text/20">WORKS.</span>
             </h2>
           </div>
-          <button 
-             onClick={() => setCurrentView('archives')}
-             className="group flex items-center gap-6"
+          <button
+            onClick={() => setCurrentView('archives')}
+            className="group flex items-center gap-6"
           >
-             <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-studio-text/40 group-hover:text-studio-text transition-colors">Survey the Archive</span>
-             <div className="w-16 h-16 border border-studio-border flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent transition-all duration-500">
-                <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
-             </div>
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-studio-text/40 group-hover:text-studio-text transition-colors">Survey the Archive</span>
+            <div className="w-16 h-16 border border-studio-border flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent transition-all duration-500">
+              <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+            </div>
           </button>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-studio-border border border-studio-border">
           {PORTFOLIO_ITEMS.map((item, index) => (
-            <motion.div 
+            <motion.div
               key={item.id}
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
@@ -90,7 +91,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
                     ))}
                   </div>
                 </div>
-                
+
                 <div className="transform translate-y-8 group-hover:translate-y-0 transition-transform duration-700">
                   <span className="text-white font-mono font-bold text-[10px] uppercase tracking-widest mb-4 block opacity-0 group-hover:opacity-100 transition-opacity delay-100">{item.category}</span>
                   <h3 className="text-white text-4xl md:text-6xl font-display font-bold leading-none tracking-tighter uppercase opacity-0 group-hover:opacity-100 transition-opacity delay-200">{item.title}</h3>
@@ -98,8 +99,8 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               </div>
 
               <div className="relative h-full overflow-hidden">
-                <img 
-                  src={item.image} 
+                <img
+                  src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out"
                   referrerPolicy="no-referrer"
@@ -112,16 +113,16 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
       </section>
 
       {/* Competencies / Skills Section */}
-      <section id="competencies" className="py-48 px-6 max-w-[1400px] mx-auto bg-studio-text text-white">
+      <section id="competencies" className="py-30 px-6 max-w-[1400px] mx-auto bg-studio-text text-white">
         <div className="grid lg:grid-cols-12 gap-24 items-start">
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             className="lg:col-span-5 space-y-12"
           >
             <div className="space-y-8">
-              <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block">— TECHNICAL ARSENAL</span>
+              <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block">— CREATIVE TOOLKIT</span>
               <h2 className="text-6xl md:text-[7rem] font-display font-bold leading-[0.8] tracking-tighter uppercase mb-8">
                 CORE <br /> <span className="italic text-white/20">LOGIC.</span>
               </h2>
@@ -131,10 +132,10 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
             </div>
 
             <div className="flex items-center gap-6 group cursor-pointer">
-               <div className="w-12 h-12 border border-white/20 flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent transition-all duration-500">
-                  <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-               </div>
-               <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 group-hover:text-white transition-colors">Download Technical Résumé</span>
+              <div className="w-12 h-12 border border-white/20 flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent transition-all duration-500">
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 group-hover:text-white transition-colors">Download Technical Résumé</span>
             </div>
           </motion.div>
 
@@ -177,15 +178,15 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
             viewport={{ once: true }}
             className="relative aspect-square bg-white border border-studio-border p-3"
           >
-             <img 
-               src="https://images.unsplash.com/photo-1554446422-d05db23719d2?auto=format&fit=crop&q=80&w=1000" 
-               alt="Philosophy"
-               className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-1000"
-               referrerPolicy="no-referrer"
-             />
-             <div className="absolute inset-0 border-[20px] border-white pointer-events-none" />
+            <img
+              src={Image}
+              alt="Philosophy"
+              className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-1000"
+              referrerPolicy="no-referrer"
+            />
+            <div className="absolute inset-0 border-[20px] border-white pointer-events-none" />
           </motion.div>
-          
+
           <div className="space-y-12">
             <div className="space-y-8">
               <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block">— THE PHILOSOPHY</span>
@@ -196,18 +197,18 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
                 We believe that every visual element must serve a structural purpose. Our practice is rooted in the intersection of digital fluidity and brutalist permanence.
               </p>
             </div>
-            
-            <button 
+
+            <button
               onClick={() => {
                 setCurrentView('about');
                 window.scrollTo({ top: 0, behavior: 'instant' });
               }}
               className="group flex items-center gap-6"
             >
-               <div className="w-16 h-16 border border-studio-border flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent transition-all duration-500">
-                  <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
-               </div>
-               <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-studio-text/40 group-hover:text-studio-text transition-colors">Read the Manifesto</span>
+              <div className="w-16 h-16 border border-studio-border flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent transition-all duration-500">
+                <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+              </div>
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-studio-text/40 group-hover:text-studio-text transition-colors">Read the Manifesto</span>
             </button>
           </div>
         </div>
