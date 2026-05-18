@@ -36,7 +36,7 @@ export function ArchiveView({ setSelectedProject, setCurrentView }: ArchiveViewP
           transition={{ delay: 0.3 }}
           className="lg:col-span-4 lg:mb-4"
         >
-          <p className="text-studio-text/60 text-sm font-medium leading-relaxed max-w-sm">
+          <p className="text-studio-text/60 text- font-medium leading-relaxed max-w-sm">
             "Design is the silent ambassador of your brand.
 Through branding, motion graphics, packaging, and modern visual storytelling, I create structured digital experiences that balance bold aesthetics with purposeful communication."
           </p>

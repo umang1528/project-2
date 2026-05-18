@@ -2,7 +2,12 @@ import { motion, useScroll, useTransform } from 'motion/react';
 import { ArrowRight, Zap, Monitor, Box, Activity, Type, Cpu, Shapes, Palette, Compass, PenTool } from 'lucide-react';
 import { Project, ViewType } from '../types';
 import { PORTFOLIO_ITEMS } from '../constants';
-// import Image from '../assets/images/1img.jpg';
+import Image from '../assets/images/1img.jpg';
+import ResumePDF from '../assets/CV pdf/Umang resume.pdf';
+
+
+
+
 
 interface HomeViewProps {
   setSelectedProject: (project: Project) => void;
@@ -124,33 +129,67 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
             <div className="space-y-8">
               <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block">— CREATIVE TOOLKIT</span>
               <h2 className="text-6xl md:text-[7rem] font-display font-bold leading-[0.8] tracking-tighter uppercase mb-8">
-                CORE <br /> <span className="italic text-white/20">LOGIC.</span>
+                DESIGN <br /> <span className="italic text-white/20">STACK.</span>
               </h2>
-              <p className="text-white/40 text-xl font-medium leading-relaxed max-w-sm">
-                A rigorous suite of technical capabilities deployed across digital and physical touchpoints.
-              </p>
+              <p className="text-white/40 text-xl font-medium leading-relaxed max-w-lg">
+                A modern collection of industry-standard creative tools used for branding, motion graphics, packaging design, video editing, and digital visual storytelling.              </p>
             </div>
 
-            <div className="flex items-center gap-6 group cursor-pointer">
+            <a
+              href={ResumePDF}
+              download="Umang-Resume.pdf"
+              className="flex items-center gap-6 group cursor-pointer"
+            >
               <div className="w-12 h-12 border border-white/20 flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent transition-all duration-500">
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight
+                  size={20}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
               </div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 group-hover:text-white transition-colors">Download Technical Résumé</span>
-            </div>
+
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-white/40 group-hover:text-white transition-colors">
+                DOWNLOAD RESUME
+              </span>
+            </a>
           </motion.div>
 
           <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/10 border border-white/10">
             {[
-              { name: 'Branding', icon: Zap },
-              { name: 'UI/UX', icon: Monitor },
-              { name: '3D Modeling', icon: Box },
-              { name: 'Typography', icon: Type },
-              { name: 'Motion Graphics', icon: Activity },
-              { name: 'Illustration', icon: PenTool },
-              { name: 'Brand Strategy', icon: Cpu },
-              { name: 'Iconography', icon: Shapes },
-              { name: 'Visual Design', icon: Palette },
-              { name: 'Art Direction', icon: Compass }
+              {
+                name: 'CORELDRAW',
+                description: 'Print layouts and production design.',
+                icon: Box,
+              },
+              {
+                name: 'PHOTOSHOP',
+                description: 'Advertising visuals and social media creatives.',
+                icon: Zap,
+              },
+              {
+                name: 'ILLUSTRATOR',
+                description: 'Brand identity and packaging systems.',
+                icon: PenTool,
+              },
+              {
+                name: 'CANVA',
+                description: 'Social media creatives and fast visual systems.',
+                icon: Zap,
+              },
+              {
+                name: 'DAVINCI RESOLVE',
+                description: 'Professional editing and color grading.',
+                icon: Palette,
+              },
+              {
+                name: 'PREMIERE PRO',
+                description: 'Reels, edits, and cinematic storytelling.',
+                icon: Monitor,
+              },
+              {
+                name: 'AFTER EFFECTS',
+                description: 'Motion graphics and visual animations.',
+                icon: Activity,
+              },
             ].map((skill, i) => (
               <motion.div
                 key={skill.name}
@@ -160,8 +199,19 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
                 viewport={{ once: true }}
                 className="bg-studio-text p-12 group hover:bg-brand-accent transition-colors duration-500"
               >
-                <skill.icon size={32} className="text-brand-accent group-hover:text-white transition-colors duration-500 mb-8" />
-                <h3 className="font-display text-2xl font-bold uppercase tracking-tight mb-2">{skill.name}</h3>
+                <skill.icon
+                  size={32}
+                  className="text-brand-accent group-hover:text-white transition-colors duration-500 mb-8"
+                />
+
+                <h3 className="font-display text-2xl font-bold uppercase tracking-tight mb-4">
+                  {skill.name}
+                </h3>
+
+                <p className="text-white/40 text-sm leading-relaxed mb-6 group-hover:text-white/80 transition-colors duration-500">
+                  {skill.description}
+                </p>
+
                 <div className="h-[1px] w-8 bg-white/20 group-hover:w-full transition-all duration-700" />
               </motion.div>
             ))}
@@ -191,10 +241,10 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
             <div className="space-y-8">
               <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block">— THE PHILOSOPHY</span>
               <h2 className="text-6xl md:text-8xl font-display font-bold leading-[0.9] tracking-tighter uppercase">
-                DESIGN AS <br /> <span className="italic text-studio-text/40">ARCHITECTURAL</span> <br /> TRUTH.
+                DESIGN AS <br /> <span className="italic text-studio-text/40">VISUAL</span> <br /> SYSTEM.
               </h2>
               <p className="text-studio-text/60 text-xl font-medium leading-relaxed max-w-xl">
-                We believe that every visual element must serve a structural purpose. Our practice is rooted in the intersection of digital fluidity and brutalist permanence.
+                Specialized in branding, motion graphics, packaging, and digital visual systems creating modern design experiences that combine clarity, structure, and impactful communication across digital and print mediums.
               </p>
             </div>
 
@@ -208,7 +258,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               <div className="w-16 h-16 border border-studio-border flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent transition-all duration-500">
                 <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
               </div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-studio-text/40 group-hover:text-studio-text transition-colors">Read the Manifesto</span>
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-studio-text/40 group-hover:text-studio-text transition-colors">EXPLORE APPROACH</span>
             </button>
           </div>
         </div>
