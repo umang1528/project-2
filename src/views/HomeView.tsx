@@ -10,8 +10,8 @@ import ResumePDF from '../assets/CV pdf/Umang resume.pdf';
 
 
 interface HomeViewProps {
-  setSelectedProject: (project: Project) => void;
-  setCurrentView: (view: ViewType) => void;
+  setSelectedProject?: (project: Project) => void;
+  setCurrentView?: (view: ViewType) => void;
 }
 
 export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) {
@@ -67,7 +67,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
             </h2>
           </div>
           <button
-            onClick={() => setCurrentView('archives')}
+            onClick={() => setCurrentView?.('archives')}
             className="group flex items-center gap-6"
           >
             <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-studio-text/40 group-hover:text-studio-text transition-colors">Survey the Archive</span>
@@ -86,7 +86,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 1, delay: index * 0.1 }}
               className={`bg-white group cursor-zoom-in overflow-hidden relative ${item.size}`}
-              onClick={() => setSelectedProject(item)}
+              onClick={() => setSelectedProject?.(item)}
             >
               <div className="absolute inset-0 z-10 p-12 flex flex-col justify-between pointer-events-none">
                 <div className="flex justify-between items-start opacity-0 group-hover:opacity-100 transition-opacity duration-700">
@@ -251,7 +251,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
 
             <button
               onClick={() => {
-                setCurrentView('about');
+                setCurrentView?.('about');
                 window.scrollTo({ top: 0, behavior: 'instant' });
               }}
               className="group flex items-center gap-6"

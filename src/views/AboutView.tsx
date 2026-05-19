@@ -1,6 +1,10 @@
 import { motion } from 'motion/react';
 
-export function AboutView({ setCurrentView }: { setCurrentView: (view: 'home') => void }) {
+interface AboutViewProps {
+  setCurrentView?: (view: 'home') => void;
+}
+
+export function AboutView({ setCurrentView }: AboutViewProps) {
   return (
     <section className="pt-48 pb-32 px-6 max-w-[1200px] mx-auto">
       <motion.div
@@ -62,7 +66,7 @@ export function AboutView({ setCurrentView }: { setCurrentView: (view: 'home') =
             </div>
             <button 
               onClick={() => {
-                setCurrentView('home');
+                setCurrentView?.('home');
                 setTimeout(() => {
                    const el = document.getElementById('contact');
                    el?.scrollIntoView({ behavior: 'smooth' });
