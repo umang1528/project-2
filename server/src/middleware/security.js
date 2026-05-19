@@ -8,13 +8,21 @@ import cookieParser from 'cookie-parser';
 import express from 'express';
 import { env } from '../config/env.js';
 
-const allowedOrigins = Array.from(
-  new Set(
-    [env.CLIENT_URL, ...(env.CLIENT_URLS ? env.CLIENT_URLS.split(',') : [])]
-      .filter(Boolean)
-      .map((origin) => origin.trim())
-  )
-);
+  const defaultOrigins = [
+    'http://localhost:3000',
+    'http://localhost:3001',
+    'https://pot-self.vercel.app',
+  ];
+
+  const envOrigins = Array.from(
+    new Set(
+      [env.CLIENT_URL, ...(env.CLIENT_URLS ? env.CLIENT_URLS.split(',') : [])]
+        .filter(Boolean)
+        .map((origin) => origin.trim())
+    )
+  );
+
+  const allowedOrigins = Array.from(new Set([...defaultOrigins, ...envOrigins]));
 
 export function setupSecurity(app) {
   app.use(helmet());
@@ -41,7 +49,8 @@ export function setupSecurity(app) {
       },
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-      allowedHeaders: ['Content-Type', 'Authorization'],
+      allowedHeaders: ['Content-Type', 'Authorization', 'Set-Cookie'],
+      exposedHeaders: ['Set-Cookie'],
       optionsSuccessStatus: 204,
     })
   );

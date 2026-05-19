@@ -12,8 +12,24 @@ import './config/env.js';
 
 const app = express();
 
+// trust proxy so secure cookies work behind proxies (Vercel, Render, etc.)
+app.set('trust proxy', 1);
+
 setupSecurity(app);
 app.use(apiRateLimiter);
+
+// Development-only request debug logging (origin, cookies, auth header)
+app.use((req, res, next) => {
+  if (process.env.NODE_ENV !== 'production') {
+    console.log('--- Incoming Request Debug ---');
+    console.log('NODE_ENV:', process.env.NODE_ENV);
+    console.log('Origin:', req.headers.origin);
+    console.log('Cookies header:', req.headers.cookie);
+    console.log('Authorization header:', req.headers.authorization);
+    console.log('Request URL:', req.method, req.originalUrl);
+  }
+  next();
+});
 
 if (process.env.NODE_ENV !== 'production') {
   app.use(morgan('dev'));

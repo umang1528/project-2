@@ -11,7 +11,8 @@ import { env } from '../config/env.js';
 const cookieOptions = {
   httpOnly: true,
   secure: env.NODE_ENV === 'production',
-  sameSite: 'lax',
+  // For cross-site cookies from a Vercel frontend, production must use 'none'
+  sameSite: env.NODE_ENV === 'production' ? 'none' : 'lax',
   path: '/',
   maxAge: 7 * 24 * 60 * 60 * 1000,
 };

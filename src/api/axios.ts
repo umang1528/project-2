@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:4000/api';
+const baseURL = import.meta.env.MODE === 'development'
+  ? 'http://localhost:4000/api'
+  : (import.meta.env.VITE_API_URL || 'https://pot-self.vercel.app/api');
 
 function getStoredToken() {
   return window.localStorage.getItem('accessToken');
@@ -17,9 +19,6 @@ function setStoredToken(token) {
 const api = axios.create({
   baseURL,
   withCredentials: true,
-  headers: {
-    'Content-Type': 'application/json',
-  },
 });
 
 api.interceptors.request.use((config) => {
