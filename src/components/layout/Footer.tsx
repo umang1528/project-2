@@ -16,7 +16,7 @@ export function Footer() {
           <div className="space-y-4">
              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-studio-text/40">Direct Communication</span>
              <a href="mailto:hello@visions.haus" className="block text-4xl md:text-5xl font-display font-bold hover:text-brand-accent transition-colors">
-               HELLO@VISIONS.HAUS
+               umangkumar622@gmail.com
              </a>
           </div>
         </div>

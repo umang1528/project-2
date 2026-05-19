@@ -22,7 +22,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center pt-24 overflow-hidden">
+      <section className="relative h-screen flex items-center justify-center pt-12 overflow-hidden">
         <motion.div
           style={{ opacity, scale }}
           className="relative z-10 text-center px-6"
@@ -57,7 +57,8 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
       </section>
 
       {/* Featured Projects Grid */}
-      <section id="projects" className="py-32 px-6 max-w-[1400px] mx-auto">
+      {/* <section id="projects" className="py-32 px-6 max-w-[1400px] mx-auto"> */}
+      <section id="projects" className="py-32 px-6 md:px-12 lg:px-15 max-w-[1400px] mx-auto">
         <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-12">
           <div className="space-y-6">
             <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block">— CASE STUDIES</span>
