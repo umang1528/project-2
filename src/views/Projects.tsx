@@ -192,24 +192,25 @@ export function Projects() {
                 className={`group relative flex flex-col text-left ${spanClass}`}
                 {...refProp}
               >
-                <div className="relative overflow-hidden mb-8 border border-white/10 p-2 bg-white/[0.03] cursor-pointer">
+                <div className="relative  overflow-visible mb-8  rounded-sm border border-black/5 bg-white p-3 shadow-[0px_20px_60px_rgba(0,0,0,0.18)] hover:shadow-[0px_35px_90px_rgba(0,0,0,0.28)] transition-all duration-700 cursor-pointer">
 
                   <img
                     src={thumbnail}
                     alt={project.title}
-                    className="w-full aspect-[4/5] object-cover grayscale-[60%] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700 group-hover:scale-[1.02]"
+                    className="w-full aspect-[4/5]  object-cover grayscale-[45%] brightness-[0.98] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700 group-hover:scale-[1.02]"
                     referrerPolicy="no-referrer"
                   />
 
-                  <div className="absolute top-4 left-4 flex flex-col gap-1">
+                  <div className="absolute top-6 left-6 flex flex-col gap-2">
 
-                    <div className="bg-black text-white font-mono text-[10px] px-3 py-1">
+                    <div className="bg-black/90 backdrop-blur-md text-white font-mono text-[10px] px-3 py-1 rounded-full shadow-lg">
                       № {String(index + 1).padStart(2, '0')}
                     </div>
 
-                    <div className="bg-brand-accent text-black font-mono text-[10px] px-3 py-1">
+                    <div className="bg-brand-accent text-black font-mono text-[10px] px-3 py-1 rounded-full shadow-lg">
                       {new Date(project.createdAt).getFullYear()}
                     </div>
+
                   </div>
                 </div>
 

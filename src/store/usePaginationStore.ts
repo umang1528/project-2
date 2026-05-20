@@ -10,7 +10,7 @@ interface PaginationStore {
 
 export const usePaginationStore = create<PaginationStore>((set) => ({
   page: 1,
-  limit: 6,
+  limit:6,
   setPage: (page) => set({ page }),
   setLimit: (limit) => set({ limit }),
   reset: () => set({ page: 1, limit: 6 }),

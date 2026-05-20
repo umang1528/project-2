@@ -264,6 +264,147 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
           </div>
         </div>
       </section>
+      
+      {/* CONTACT SECTION */}
+
+<section className="py-40 px-6 max-w-[1400px] mx-auto border-t border-studio-border">
+
+  <div className="grid lg:grid-cols-2 border border-studio-border bg-white">
+
+    {/* LEFT */}
+
+    <div className="p-10 md:p-20 border-b lg:border-b-0 lg:border-r border-studio-border flex flex-col justify-between">
+
+      <div>
+
+        <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block mb-8">
+          — CONTACT
+        </span>
+
+        <h2 className="text-[4rem] md:text-[7rem] font-display font-bold leading-[0.9] tracking-tighter uppercase text-black">
+
+          READY TO <br />
+
+          <span className="italic text-black/30">
+            MANIFEST
+          </span>
+
+          <br />
+
+          YOUR <br />
+
+          VISION.
+
+        </h2>
+
+      </div>
+
+      <div className="mt-16 border-t border-studio-border pt-10">
+
+        <p className="text-black/60 text-xl leading-relaxed max-w-md">
+
+          Currently accepting a limited number of
+          high-quality creative partnerships for Q3 2026.
+
+        </p>
+
+      </div>
+
+    </div>
+
+    {/* RIGHT */}
+
+    <div className="p-10 md:p-20">
+
+      <form className="space-y-16">
+
+        {/* ROW */}
+
+        <div className="grid md:grid-cols-2 gap-10">
+
+          {/* NAME */}
+
+          <div className="space-y-4">
+
+            <span className="text-[10px] font-mono font-bold tracking-[0.3em] uppercase text-black/40">
+
+              Name
+
+            </span>
+
+            <input
+              type="text"
+              placeholder="ALEXANDER ROSS"
+              className="w-full border-b border-studio-border bg-transparent pb-5 text-3xl font-display font-bold uppercase tracking-tight text-black placeholder:text-black/20 outline-none"
+            />
+
+          </div>
+
+          {/* EMAIL */}
+
+          <div className="space-y-4">
+
+            <span className="text-[10px] font-mono font-bold tracking-[0.3em] uppercase text-black/40">
+
+              Email
+
+            </span>
+
+            <input
+              type="email"
+              placeholder="ALEX@STUDIO.COM"
+              className="w-full border-b border-studio-border bg-transparent pb-5 text-3xl font-display font-bold uppercase tracking-tight text-black placeholder:text-black/20 outline-none"
+            />
+
+          </div>
+
+        </div>
+
+        {/* BRIEFING */}
+
+        <div className="space-y-4">
+
+          <span className="text-[10px] font-mono font-bold tracking-[0.3em] uppercase text-black/40">
+
+            Briefing
+
+          </span>
+
+          <textarea
+            rows={5}
+            placeholder="TELL US ABOUT THE MISSION..."
+            className="w-full border-b border-studio-border bg-transparent pb-5 text-3xl font-display font-bold uppercase tracking-tight text-black placeholder:text-black/20 outline-none resize-none"
+          />
+
+        </div>
+
+        {/* BUTTON */}
+
+        <button
+          type="submit"
+          className="group w-full border border-black px-10 py-8 flex items-center justify-between hover:bg-black transition-colors duration-500"
+        >
+
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-black group-hover:text-white transition-colors">
+
+            SEND DISPATCH
+
+          </span>
+
+          <ArrowRight
+            size={28}
+            className="text-black group-hover:text-white group-hover:translate-x-2 transition-all duration-500"
+          />
+
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
     </>
   );
 }

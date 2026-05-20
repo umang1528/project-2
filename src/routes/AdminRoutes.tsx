@@ -20,7 +20,7 @@ export function AdminRoutes() {
         <Route path="dashboard" element={<Dashboard />} />
       <Route path="projects" element={<Projects />} />
       <Route path="projects/add" element={<AddProject />} />
-      <Route path="projects/edit/:slug" element={<EditProject />} />
+<Route path="projects/edit/:id" element={<EditProject />} />
       <Route path="media" element={<Media />} />
       <Route path="themes" element={<Themes />} />
       <Route path="analytics" element={<Analytics />} />
