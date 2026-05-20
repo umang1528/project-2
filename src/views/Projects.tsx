@@ -19,7 +19,6 @@ export function Projects() {
 
   const navigate = useNavigate();
   const observerRef = useRef<IntersectionObserver | null>(null);
-  const loadMoreRef = useRef<HTMLDivElement | null>(null);
 
   const categoryOptions = useMemo(() => {
     const categories = new Set<string>(['All']);
@@ -49,103 +48,195 @@ export function Projects() {
     (node: HTMLButtonElement | null) => {
       if (loading) return;
       if (observerRef.current) observerRef.current.disconnect();
+
       observerRef.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && pagination.currentPage < pagination.totalPages) {
           loadMoreProjects();
         }
       });
+
       if (node) observerRef.current.observe(node);
     },
     [loading, loadMoreProjects, pagination.currentPage, pagination.totalPages]
   );
 
   return (
-    <section className="px-6 pb-24 max-w-[1400px] mx-auto">
-      <div className="grid gap-10 lg:grid-cols-[1.4fr_0.6fr] items-center mb-16">
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
-          <span className="text-brand-accent font-mono uppercase tracking-[0.35em] text-[10px] mb-4 block">Portfolio Archive</span>
-          <h1 className="font-display text-6xl md:text-7xl font-bold tracking-tight uppercase">Project Grid</h1>
-          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-studio-text/70">
-            Explore live work, case study launches, featured builds and premium campaigns built for modern brands.
-          </p>
+    <section className="pt-48 pb-32 px-6 max-w-[1400px] mx-auto">
+
+      {/* HERO SECTION */}
+
+      <div className="grid lg:grid-cols-12 gap-12 items-end mb-32 border-b border-white/10 pb-16">
+
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="lg:col-span-8"
+        >
+          <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">
+            Collection Retrospective
+          </span>
+
+          <h1 className="font-display text-7xl md:text-9xl lg:text-[11rem] leading-[0.8] tracking-tighter font-bold uppercase text-black">
+            THE INDEX.
+          </h1>
         </motion.div>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.08 }}>
-          <div className="rounded-[28px] border border-white/10 bg-white/5 p-6 shadow-[0_0_40px_rgba(255,255,255,0.04)] backdrop-blur-xl">
-            <div className="flex items-center gap-3 border border-white/10 rounded-3xl bg-white/5 px-4 py-3">
-              <Search size={18} className="text-white/50" />
-              <input
-                type="search"
-                value={filters.search}
-                onChange={(event) => handleSearch(event.target.value)}
-                placeholder="Search projects, tags or categories"
-                className="w-full bg-transparent text-sm text-white placeholder:text-white/40 outline-none"
-              />
-            </div>
-            <div className="mt-6 grid gap-3">
-              {categoryOptions.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => handleCategory(category)}
-                  className={`rounded-3xl px-4 py-3 text-sm font-semibold uppercase tracking-[0.2em] transition-all ${filters.category === category || (category === 'All' && !filters.category)
-                    ? 'bg-brand-accent text-black'
-                    : 'bg-white/5 text-white/60 hover:bg-white/10'
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="lg:col-span-4 lg:mb-4"
+        >
+          <p className="text-black/60 text-xl font-medium leading-relaxed max-w-sm">
+            "Design is the silent ambassador of your brand.
+            Exploring visual systems since MMXVI."
+          </p>
+
+          <div className="mt-8 flex items-center gap-4">
+            <div className="h-[1px] flex-1 bg-white/10"></div>
+
+            <span className="text-[10px] font-mono font-bold tracking-widest text-brand-accent/40 uppercase">
+              SUMMER 2026 ISSUE
+            </span>
           </div>
         </motion.div>
       </div>
 
-      <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+      {/* FILTERS */}
+
+      <div className="flex flex-wrap justify-between items-end gap-x-12 gap-y-8 mb-24">
+
+        {/* CATEGORY */}
+
+        <div className="space-y-4">
+          <span className="text-[10px] font-mono font-bold text-orange-500 uppercase tracking-[0.2em]">
+            Filter by Category
+          </span>
+
+          <div className="flex flex-wrap gap-4">
+            {categoryOptions.map((category) => (
+              <button
+                key={category}
+                onClick={() => handleCategory(category)}
+                className={`text-xs font-bold uppercase tracking-widest transition-all duration-300 ${filters.category === category ||
+                  (category === 'All' && !filters.category)
+                  ? 'text-orange-500'
+                  : 'text-black/40 hover:text-orange-500'
+                  }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        {/* SEARCH */}
+
+        <div className="space-y-4 w-full max-w-md lg:ml-auto">
+          <span className="text-[10px] font-mono font-bold text-orange-500 uppercase tracking-[0.2em] block">
+            Search Archive
+          </span>
+
+          <div className="flex items-center gap-3 border-b border-orange-500/20 pb-3">
+            <Search size={16} className="text-orange-500/70" />
+
+            <input
+              type="search"
+              value={filters.search}
+              onChange={(e) => handleSearch(e.target.value)}
+              placeholder="Search projects..."
+              className="w-full bg-transparent outline-none text-sm text-black placeholder:text-black/30"
+            />
+          </div>
+        </div>
+
+      </div>
+
+      {/* PROJECT GRID */}
+
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-y-24 gap-x-12">
+
         {projects.length === 0 && !loading ? (
-          <div className="col-span-full rounded-[32px] border border-white/10 bg-white/5 p-16 text-center text-white/60">
-            No projects found. Try a different search or category.
+          <div className="col-span-full border border-white/10 p-20 text-center text-white/50">
+            No Projects Found.
           </div>
         ) : (
           projects.map((project, index) => {
-            const thumbnail = typeof project.thumbnail === 'string' ? project.thumbnail : project.thumbnail?.url;
-            const refProp = index === projects.length - 1 ? { ref: lastCardRef } : {};
+
+            const thumbnail =
+              typeof project.thumbnail === 'string'
+                ? project.thumbnail
+                : project.thumbnail?.url;
+
+            const refProp =
+              index === projects.length - 1 ? { ref: lastCardRef } : {};
+
+            const spans = [
+              'md:col-span-8',
+              'md:col-span-4',
+              'md:col-span-7',
+              'md:col-span-4',
+              'md:col-span-4',
+            ];
+
+            const spanClass = spans[index % spans.length];
 
             return (
               <motion.button
                 key={project.slug || project._id || index}
                 type="button"
                 onClick={() => navigate(`/projects/${project.slug}`)}
-                whileHover={{ y: -4 }}
-                className="group relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 shadow-[0_0_40px_rgba(255,255,255,0.04)] transition-all"
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.03 }}
+                className={`group relative flex flex-col text-left ${spanClass}`}
                 {...refProp}
               >
-                <div className="relative h-72 overflow-hidden">
+                <div className="relative overflow-hidden mb-8 border border-white/10 p-2 bg-white/[0.03] cursor-pointer">
+
                   <img
                     src={thumbnail}
                     alt={project.title}
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                    className="w-full aspect-[4/5] object-cover grayscale-[60%] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700 group-hover:scale-[1.02]"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-                  <span className="absolute left-4 top-4 rounded-full bg-black/50 px-3 py-2 text-[10px] uppercase tracking-[0.35em] text-white/80">
-                    {project.category}
-                  </span>
+
+                  <div className="absolute top-4 left-4 flex flex-col gap-1">
+
+                    <div className="bg-black text-white font-mono text-[10px] px-3 py-1">
+                      № {String(index + 1).padStart(2, '0')}
+                    </div>
+
+                    <div className="bg-brand-accent text-black font-mono text-[10px] px-3 py-1">
+                      {new Date(project.createdAt).getFullYear()}
+                    </div>
+                  </div>
                 </div>
 
-                <div className="p-6">
-                  <div className="flex items-center justify-between gap-3 mb-4 text-xs uppercase tracking-[0.35em] text-studio-text/50">
-                    <span>{new Date(project.createdAt).toLocaleDateString()}</span>
-                    <span>{project.views ?? 0} views</span>
+                <div className="space-y-4">
+
+                  <div className="flex items-center gap-4">
+                    <span className="text-[10px] font-mono font-bold text-brand-accent uppercase tracking-[0.2em]">
+                      {project.category}
+                    </span>
+
+                    <div className="h-[1px] flex-1 bg-white/10"></div>
                   </div>
-                  <h2 className="text-2xl font-display font-bold tracking-tight text-white transition-colors group-hover:text-brand-accent">
+
+                  <h3 className="text-3xl font-display font-bold tracking-tight uppercase text-black group-hover:text-brand-accent transition-colors duration-300">
                     {project.title}
-                  </h2>
-                  <p className="mt-4 text-sm leading-relaxed text-studio-text/70 line-clamp-3">
+                  </h3>
+
+                  <p className="text-black/60 text-sm leading-relaxed font-medium max-w-md line-clamp-2">
                     {project.shortDescription}
                   </p>
-                  <div className="mt-6 flex items-center justify-between gap-4">
-                    <span className="text-xs uppercase tracking-[0.35em] text-white/50">View details</span>
-                    <ArrowRight size={18} className="text-brand-accent" />
+
+                  <div className="pt-2 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-white/40">
+                    <span>View Project</span>
+                    <ArrowRight
+                      size={14}
+                      className="group-hover:translate-x-1 transition-transform"
+                    />
                   </div>
                 </div>
               </motion.button>
@@ -154,21 +245,31 @@ export function Projects() {
         )}
       </div>
 
-      <div className="mt-12 flex items-center justify-center">
+      {/* LOAD MORE */}
+
+      <div className="mt-24 flex items-center justify-center">
+
         {loading ? (
-          <div className="inline-flex items-center gap-3 rounded-3xl border border-white/10 bg-white/5 px-6 py-4 text-sm text-white/70">
-            <Sparkles size={18} className="animate-pulse text-brand-accent" />
-            Loading more projects…
+          <div className="inline-flex items-center gap-3 border border-white/10 bg-white/[0.03] px-6 py-4 text-sm text-white/70">
+
+            <Sparkles
+              size={18}
+              className="animate-pulse text-brand-accent"
+            />
+
+            Loading More Projects...
           </div>
         ) : pagination.currentPage >= pagination.totalPages ? (
-          <div className="text-sm text-studio-text/60">You're all caught up — no more projects to load.</div>
+          <div className="text-sm text-white/40">
+            You're all caught up — no more projects.
+          </div>
         ) : (
           <button
             type="button"
             onClick={loadMoreProjects}
-            className="rounded-full border border-white/10 bg-white/5 px-8 py-3 text-sm uppercase tracking-[0.35em] text-white transition hover:bg-white/10"
+            className="border border-white/10 bg-white/[0.03] px-10 py-4 text-xs uppercase tracking-[0.4em] text-white transition-all hover:bg-white/10"
           >
-            Load more
+            Load More
           </button>
         )}
       </div>
