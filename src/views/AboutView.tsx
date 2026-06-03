@@ -21,7 +21,7 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
       >
 
         <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block">
-          — About The Studio
+          — About Me
         </span>
 
         <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-16 items-end">
@@ -40,7 +40,7 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
         font-bold
         "
             >
-              VISIONS
+              UMANG
             </h1>
 
             <h1
@@ -54,7 +54,7 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
         text-studio-text/20
         "
             >
-              STUDIO
+              VISUALS
             </h1>
 
           </div>
@@ -64,7 +64,7 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
           <div className="pb-8">
 
             <span className="text-brand-accent uppercase tracking-[0.3em] text-xs">
-              Creative Collective
+              Graphic Designer & Visual Creator
             </span>
 
             <p
@@ -75,9 +75,8 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
         text-studio-text/60
         "
             >
-              We create visual identities, digital experiences
-              and design systems that balance precision,
-              storytelling and timeless aesthetics.
+              I am a Graphic Designer and Fine Artist passionate about visual storytelling, branding and creative expression. My work combines artistic thinking with strategic design, allowing me to create experiences that are both visually engaging and purpose-driven. From traditional sketching and fine arts to digital branding and content creation, I enjoy exploring creativity across multiple mediums.
+
             </p>
 
           </div>
@@ -119,9 +118,9 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
         mt-4
       "
             >
-              Design
+              Create
               <br />
-              With Intent.
+              With Purpose.
             </h2>
           </div>
         </div>
@@ -130,10 +129,8 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
         <div className="mt-12 px-4 md:px-12">
           <div className="max-w-4xl">
             <p className="text-studio-text/70 text-lg md:text-xl font-light leading-relaxed tracking-wide">
-              We believe in the power of thoughtful design—a philosophy that merges aesthetics with functionality,
-              creating experiences that resonate. Our approach combines strategic thinking with creative execution,
-              transforming ideas into impactful visual narratives that leave lasting impressions. Every project is
-              an opportunity to push boundaries and redefine what's possible.
+              My creative approach is rooted in curiosity, observation and storytelling. Whether I am designing a brand identity, creating digital content or working on traditional artwork, I focus on building visuals that communicate clearly and leave a lasting impression. Every project is an opportunity to combine artistic expression with thoughtful design solutions.
+
             </p>
           </div>
 
@@ -141,7 +138,7 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
           <div className="mt-8 flex items-center gap-4">
             <div className="w-16 h-[1px] bg-brand-accent" />
             <span className="text-brand-accent font-mono text-xs tracking-widest uppercase">
-              Our Approach
+            Our Approach
             </span>
           </div>
 
@@ -172,7 +169,7 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
           </div>
 
           {/* RIGHT */}
-          <div className="pt-0">
+          <div className="pt-0 mb-20">
             <span className="text-studio-text/40 uppercase tracking-[0.3em] text-xs">
               About Me
             </span>
@@ -180,35 +177,35 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
             <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.9] mt-4 mb-10">
               I'm A Graphic
               <br />
-              Designer &
+              Designer,
               <br />
-              Visual Storyteller.
+              Fine Artist &
+              <br />
+              Visual Creator
             </h2>
 
             <p className="text-studio-text/60 text-lg leading-relaxed max-w-3xl">
-              For the past several years, I have been creating visual identities,
-              digital experiences and brand systems that combine creativity,
-              strategy and timeless aesthetics. My work focuses on transforming
-              complex ideas into simple, memorable and impactful visual solutions.
+              Currently working as a Graphic Designer at MYITRONLINE Global Services while pursuing higher education and advanced artistic training. My journey combines Fine Arts, Interior Design and Graphic Design, giving me a multidisciplinary perspective on creativity. I enjoy transforming ideas into meaningful visual experiences through branding, social media design, promotional campaigns, illustration and digital content creation.
+
             </p>
 
             <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
               <div>
-                <h3 className="font-display text-5xl">50+</h3>
+                <h3 className="font-display text-5xl">25+</h3>
                 <p className="text-xs uppercase tracking-[0.2em] text-studio-text/50">
                   Projects
                 </p>
               </div>
 
               <div>
-                <h3 className="font-display text-5xl">4+</h3>
+                <h3 className="font-display text-5xl">2+</h3>
                 <p className="text-xs uppercase tracking-[0.2em] text-studio-text/50">
                   Years
                 </p>
               </div>
 
               <div>
-                <h3 className="font-display text-5xl">20+</h3>
+                <h3 className="font-display text-5xl">10+</h3>
                 <p className="text-xs uppercase tracking-[0.2em] text-studio-text/50">
                   Brands
                 </p>
@@ -478,9 +475,9 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
           >
             I DON'T
             <br />
-            DESIGN TO
+            CREATE TO
             <br />
-            IMPRESS.
+            FOLLOW TRENDS.
           </h2>
 
           <div className="my-12 flex justify-center">
@@ -519,15 +516,16 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
         leading-relaxed
         "
             >
-              Every project begins with purpose, structure and intention.
-              Great design is not about decoration—it is about creating
-              experiences people remember long after they leave.
+              Great design is not just about aesthetics. it is about communication, emotion and impact. My goal is to create work that connects with people, strengthens brands and tells meaningful stories. Whether through design or art, I believe every visual should have a purpose and every project should leave a lasting impression.
+
             </p>
           </div>
 
         </div>
 
       </section>
+
+
 
       {/* MANIFESTO BOTTOM IMAGES */}
       <section className="py-10 mb-5 bg-studio-text overflow-hidden">
@@ -562,7 +560,7 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
             Explore the visual journey, layouts, concepts and design decisions behind the project.
           </motion.p>
 
-          {/* Images - Stacked Effect */}
+          {/* Images */}
           <div className="relative mt-16 h-[500px] md:h-[700px]">
 
             {/* Image 1 */}
@@ -573,12 +571,20 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
               viewport={{ once: true }}
               className="absolute left-[2%] md:left-[5%] top-[30%] md:top-[35%] w-[180px] md:w-[260px] rotate-[-3deg] z-10"
             >
-              <div className="rounded-lg overflow-hidden shadow-2xl border border-white/10">
+              <div className="group bg-[#161616] p-3 border border-white/10 shadow-[0px_25px_80px_rgba(0,0,0,0.45)] transition-all duration-700 hover:-translate-y-2">
                 <img
                   src="https://picsum.photos/seed/pbreak1/400/550"
                   alt="Project page 1"
-                  className="w-full h-[200px] md:h-[320px] object-cover"
+                  className="w-full h-[200px] md:h-[320px] object-cover transition-all duration-700 group-hover:scale-[1.05]"
                 />
+                <div className="mt-3 flex justify-between items-center">
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
+                    Process
+                  </span>
+                  <span className="text-[10px] text-brand-accent">
+                    01
+                  </span>
+                </div>
               </div>
             </motion.div>
 
@@ -590,12 +596,20 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
               viewport={{ once: true }}
               className="absolute left-[18%] md:left-[18%] top-[20%] md:top-[22%] w-[200px] md:w-[300px] rotate-[-1deg] z-20"
             >
-              <div className="rounded-lg overflow-hidden shadow-2xl border border-white/10">
+              <div className="group bg-[#161616] p-3 border border-white/10 shadow-[0px_25px_80px_rgba(0,0,0,0.45)] transition-all duration-700 hover:-translate-y-2">
                 <img
                   src="https://picsum.photos/seed/pbreak2/400/550"
                   alt="Project page 2"
-                  className="w-full h-[220px] md:h-[350px] object-cover"
+                  className="w-full h-[220px] md:h-[350px] object-cover transition-all duration-700 group-hover:scale-[1.05]"
                 />
+                <div className="mt-3 flex justify-between items-center">
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
+                    Process
+                  </span>
+                  <span className="text-[10px] text-brand-accent">
+                    02
+                  </span>
+                </div>
               </div>
             </motion.div>
 
@@ -607,12 +621,20 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
               viewport={{ once: true }}
               className="absolute left-[38%] md:left-[36%] top-[28%] md:top-[30%] w-[180px] md:w-[260px] rotate-[1deg] z-30"
             >
-              <div className="rounded-lg overflow-hidden shadow-2xl border border-white/10">
+              <div className="group bg-[#161616] p-3 border border-white/10 shadow-[0px_25px_80px_rgba(0,0,0,0.45)] transition-all duration-700 hover:-translate-y-2">
                 <img
                   src="https://picsum.photos/seed/pbreak3/400/550"
                   alt="Project page 3"
-                  className="w-full h-[200px] md:h-[320px] object-cover"
+                  className="w-full h-[200px] md:h-[320px] object-cover transition-all duration-700 group-hover:scale-[1.05]"
                 />
+                <div className="mt-3 flex justify-between items-center">
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
+                    Process
+                  </span>
+                  <span className="text-[10px] text-brand-accent">
+                    03
+                  </span>
+                </div>
               </div>
             </motion.div>
 
@@ -624,12 +646,20 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
               viewport={{ once: true }}
               className="absolute left-[55%] md:left-[52%] top-[12%] md:top-[15%] w-[200px] md:w-[300px] rotate-[2deg] z-40"
             >
-              <div className="rounded-lg overflow-hidden shadow-2xl border border-white/10">
+              <div className="group bg-[#161616] p-3 border border-white/10 shadow-[0px_25px_80px_rgba(0,0,0,0.45)] transition-all duration-700 hover:-translate-y-2">
                 <img
                   src="https://picsum.photos/seed/pbreak4/400/550"
                   alt="Project page 4"
-                  className="w-full h-[220px] md:h-[350px] object-cover"
+                  className="w-full h-[220px] md:h-[350px] object-cover transition-all duration-700 group-hover:scale-[1.05]"
                 />
+                <div className="mt-3 flex justify-between items-center">
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
+                    Process
+                  </span>
+                  <span className="text-[10px] text-brand-accent">
+                    04
+                  </span>
+                </div>
               </div>
             </motion.div>
 
@@ -641,12 +671,20 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
               viewport={{ once: true }}
               className="absolute right-[2%] md:right-[5%] top-[0%] md:top-[5%] w-[160px] md:w-[240px] rotate-[4deg] z-50"
             >
-              <div className="rounded-lg overflow-hidden shadow-2xl border border-white/10">
+              <div className="group bg-[#161616] p-3 border border-white/10 shadow-[0px_25px_80px_rgba(0,0,0,0.45)] transition-all duration-700 hover:-translate-y-2">
                 <img
                   src="https://picsum.photos/seed/pbreak5/400/550"
                   alt="Project page 5"
-                  className="w-full h-[180px] md:h-[300px] object-cover"
+                  className="w-full h-[180px] md:h-[300px] object-cover transition-all duration-700 group-hover:scale-[1.05]"
                 />
+                <div className="mt-3 flex justify-between items-center">
+                  <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
+                    Process
+                  </span>
+                  <span className="text-[10px] text-brand-accent">
+                    05
+                  </span>
+                </div>
               </div>
             </motion.div>
 
@@ -655,20 +693,24 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
       </section>
 
 
+
+
       {/* CORE VALUES */}
 
-      <div className="mb-48">
+      <div className="mb-20">
 
         <div className="mb-20">
 
           <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block mb-4">
-            — Studio Principles
+            — Creative Philosophy
           </span>
 
           <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.9]">
-            What Drives
+            Principles
             <br />
-            Every Project
+            Behind My
+            <br />
+            Creative Work
           </h2>
 
         </div>
@@ -677,20 +719,23 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
 
           {[
             {
-              title: 'STRUCTURAL TRUTH',
-              desc: 'Design should reveal the underlying logic of a brand rather than obscuring it with unnecessary ornamentation.',
+              title: 'ART WITH PURPOSE',
+              desc: 'Every design and artwork should communicate something meaningful. I believe creativity is most powerful when it serves a clear purpose and connects with people on a deeper level.',
             },
+
             {
-              title: 'DIGITAL PERMANENCE',
-              desc: 'Building experiences that feel as solid and considered as physical architecture.',
+              title: 'STORY BEFORE STYLE',
+              desc: 'Strong visuals begin with a strong idea. Whether designing a brand identity or creating artwork, I focus on telling stories that people can understand, remember and connect with.',
             },
+
             {
-              title: 'RHYTHMIC SYSTEMS',
-              desc: 'Leveraging typography and grids to create a visual pulse that guides the user.',
+              title: 'BALANCE OF ART & DESIGN',
+              desc: 'My background in fine arts and graphic design allows me to combine artistic expression with strategic thinking, creating work that is both visually compelling and highly functional.',
             },
+
             {
-              title: 'FUTURE ARTIFACTS',
-              desc: 'Creating work today that will hold its integrity long into the next decade.',
+              title: 'CONTINUOUS EVOLUTION',
+              desc: 'Creativity never stands still. I constantly explore new techniques, tools and perspectives to improve my craft and deliver better visual experiences with every project.',
             },
           ].map((item, i) => (
 
@@ -807,7 +852,7 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
 
             <span className="text-2xl font-display font-bold uppercase text-studio-text">
 
-              Lisbon, Portugal — Timezone UTC+1
+              Delhi, India
 
             </span>
 
@@ -825,7 +870,7 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
 
             <span className="text-2xl font-display font-bold uppercase text-studio-text">
 
-              MMXVI — Tenured Practice
+              2024 — Present
 
             </span>
 

@@ -28,7 +28,7 @@ export function EducationView() {
           opacity: 1,
           y: 0,
         }}
-        className="mb-40"
+        className="mb-10"
       >
 
         <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">
@@ -51,10 +51,11 @@ export function EducationView() {
 
             <p className="mt-10 text-studio-text/60 text-xl leading-relaxed max-w-2xl">
 
-              Rigorous exploration of design systems,
-              visual storytelling, typography,
-              branding strategy, and future-focused
-              digital experiences.
+              A journey shaped through academic learning, technical education and
+              hands-on creative experience. From fine arts and interior design to
+              graphic design, branding and digital content creation, each stage has
+              contributed to building a multidisciplinary approach focused on visual
+              communication, problem-solving and impactful design experiences.
 
             </p>
 
@@ -228,7 +229,7 @@ export function EducationView() {
         <div className="mb-24">
 
           <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-[10px] block mb-4">
-            — Creative Journey
+            — — EDUCATION & EXPERIENCE
           </span>
 
           <h2
@@ -273,53 +274,63 @@ export function EducationView() {
 
           {[
             {
-              year: "2021",
-              category: "Learning Phase",
-              title: "Started Graphic Design Journey",
-              institution: "Design Fundamentals",
+              year: "2023",
+              category: "Education",
+              title: "High School & Senior Secondary (CBSE)",
+              institution: "Govt. Sarvodaya Vidyalaya, Shalimar Bagh, Delhi",
               description:
-                "Discovered graphic design and began learning branding, typography and visual storytelling.",
-              tags: ["Typography", "Photoshop", "Branding"],
-            },
-
-            {
-              year: "2022",
-              category: "Freelancing",
-              title: "Worked With Local Brands",
-              institution: "Client Projects",
-              description:
-                "Created social media creatives, advertisements and marketing materials for startups and local businesses.",
-              tags: ["Social Media", "Marketing", "Identity"],
+                "Completed secondary and senior secondary education under the CBSE curriculum while developing a strong interest in creativity, visual communication and digital media. This phase laid the foundation for analytical thinking, discipline and problem-solving skills that later supported my design journey.",
+              tags: ["CBSE", "Schooling", "Academic Foundation"],
             },
 
             {
               year: "2023",
-              category: "Brand Identity",
-              title: "Focused On Branding Systems",
-              institution: "Visual Identity Foundation",
+              category: "Technical Education",
+              title: "Interior Design & Decoration",
+              institution: "ITI PUSA, Delhi",
               description:
-                "Built logos, visual systems and complete brand identity solutions for clients.",
-              tags: ["Branding", "Logos", "Strategy"],
+                "Received formal training in interior design, space planning, decoration principles and visual aesthetics. The program strengthened my understanding of composition, balance, color theory and design fundamentals, which continue to influence my creative work today.",
+              tags: ["Interior Design", "Decoration", "Space Planning"],
+            },
+
+            {
+              year: "2023",
+              category: "Higher Education",
+              title: "Bachelor of Arts (B.A)",
+              institution: "Delhi University 'SOL'(Present)",
+              description:
+                "Currently pursuing a Bachelor of Arts degree while simultaneously building a professional career in graphic design. This academic journey has enhanced my communication skills, critical thinking and ability to approach creative challenges from multiple perspectives.",
+              tags: ["Delhi University", "B.A", "SOL"],
+            },
+
+            {
+              year: "2023",
+              category: "Fine Arts",
+              title: "Art Diploma",
+              institution: "Pankaj Fine Art Academy (Present)",
+              description:
+                "Actively developing artistic skills through intensive training in portrait sketching, drawing techniques, composition and fine arts. This education has strengthened my observation skills and helped me create more expressive and visually compelling design work.",
+              tags: ["Fine Arts", "Portrait Art", "Sketching"],
             },
 
             {
               year: "2024",
-              category: "Agency Experience",
-              title: "Professional Creative Work",
-              institution: "Creative Collaboration",
+              category: "Professional Experience",
+              title: "Graphic Designer",
+              institution: "MYITRONLINE Global Services (Present)",
               description:
-                "Collaborated with teams and handled large-scale creative projects across multiple industries.",
-              tags: ["Agency", "Creative", "Systems"],
+                "Working as a Graphic Designer, creating branding assets, social media campaigns, promotional creatives, motion graphics and marketing materials. Collaborating with teams to develop visual strategies that improve engagement, strengthen brand identity and support business growth.",
+              tags: ["Branding", "Social Media", "Marketing"],
             },
 
             {
               year: "2025",
-              category: "Creative Direction",
-              title: "Leading Premium Design Projects",
-              institution: "Creative Leadership",
+              category: "Freelancing",
+              title: "Independent Graphic Designer",
+              institution: "Freelance Projects",
               description:
-                "Managing projects, creating design systems and delivering premium visual experiences.",
-              tags: ["Direction", "Branding", "Leadership"],
+                "Delivered creative solutions for clients across branding, social media design, promotional materials and custom sticker artwork. Managing projects independently has improved client communication, creative problem-solving and end-to-end design execution skills.",
+              tags: ["Freelance", "Client Work", "Creative Design"],
             },
 
           ].map((item, i) => (
@@ -507,8 +518,26 @@ export function EducationView() {
         </div>
 
       </section>
-
-
+        
+        {/* footer */}
+      <div className="mt-12 pt-12 border-t border-studio-border flex flex-col md:flex-row justify-between items-center gap-8">
+        <div className="flex items-center gap-4">
+          <div className="w-8 h-8 bg-studio-text flex items-center justify-center">
+            <span className="font-display font-bold text-white text-xs">U</span>
+          </div>
+          <span className="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-studio-text/40">© 2026 VISIONS — Creative Collective</span>
+        </div>
+        <div className="flex gap-12 italic text-[10px] font-mono font-bold text-studio-text/20 uppercase tracking-widest">
+          <span>Architecting Perception</span>
+          <span>Digital Permanence</span>
+        </div>
+        <button
+          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          className="group flex items-center gap-4 text-[10px] font-bold uppercase tracking-widest text-studio-text/40 hover:text-brand-accent transition-colors"
+        >
+          Back to Top <ArrowUpRight className="-rotate-90 transition-transform group-hover:-translate-y-1" size={14} />
+        </button>
+      </div>
 
     </section>
   );

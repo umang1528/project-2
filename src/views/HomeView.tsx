@@ -15,7 +15,8 @@ import Image from '../assets/images/1img.jpg';
 import ResumePDF from '../assets/CV pdf/Umang resume.pdf';
 
 import { useProjectStore } from '../store/useProjectStore';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -31,10 +32,12 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
   const scale = useTransform(scrollYProgress, [0, 0.2], [1, 0.95]);
 
   const { projects, fetchProjects, loading } = useProjectStore();
+
+  const [visibleProjects, setVisibleProjects] = useState(8);
   useEffect(() => {
     fetchProjects(1, true);
   }, [fetchProjects]);
-  
+
 
   const cardSizes = [
     'md:col-span-2 md:row-span-2',
@@ -106,13 +109,31 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               SELECTED <br /> <span className="italic text-studio-text/20">WORKS.</span>
             </h2>
           </div>
-          <button
+
+          {/* <button
             onClick={() => setCurrentView?.('archives')}
             className="group flex items-center gap-6"
           >
             <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-studio-text/40 group-hover:text-studio-text transition-colors">Survey the Archive</span>
             <div className="w-16 h-16 border border-studio-border flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent transition-all duration-500">
               <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+            </div>
+          </button> */}
+
+          {/* Survey the Archive button */}
+          <button
+            onClick={() => navigate('/projects')}
+            className="group flex items-center gap-6"
+          >
+            <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-studio-text/40 group-hover:text-studio-text transition-colors">
+              Survey the Archive
+            </span>
+
+            <div className="w-16 h-16 border border-studio-border flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent transition-all duration-500">
+              <ArrowRight
+                size={24}
+                className="group-hover:translate-x-1 transition-transform"
+              />
             </div>
           </button>
         </div>
@@ -124,7 +145,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               Loading Featured Projects...
             </div>
           ) : (
-            featuredProjects.slice(0, 8).map((project: any, index: number) => {
+            featuredProjects.slice(0, visibleProjects).map((project: any, index: number) => {
               const thumbnail =
                 typeof project.thumbnail === 'string'
                   ? project.thumbnail
@@ -133,17 +154,18 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               // Carousel pattern: Large, Small, Small, Large - repeat
               // Pattern for 8 projects: L, S, S, L, S, S, L, S
               const getLayoutClass = () => {
-                const positions = [
-                  'md:col-span-2 md:row-span-2',  // 1: Large (big feature)
-                  'md:col-span-1',               // 2: Small
-                  'md:col-span-1',               // 3: Small
-                  'md:col-span-2 md:row-span-2',  // 4: Large
-                  'md:col-span-1',               // 5: Small
-                  'md:col-span-1',               // 6: Small
-                  'md:col-span-2 md:row-span-2', // 7: Large
-                  'md:col-span-2',               // 8: Medium
+                const pattern = [
+                  'md:col-span-2 md:row-span-2',
+                  'md:col-span-1',
+                  'md:col-span-1',
+                  'md:col-span-2 md:row-span-2',
+                  'md:col-span-1',
+                  'md:col-span-1',
+                  'md:col-span-2 md:row-span-2',
+                  'md:col-span-2',
                 ];
-                return positions[index] || '';
+
+                return pattern[index % pattern.length];
               };
 
               const sizeClass = getLayoutClass();
@@ -215,7 +237,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
         </div>
 
         {/* View All Button */}
-        {featuredProjects.length > 8 && (
+        {/* {featuredProjects.length > 8 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -230,6 +252,30 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               <span className="text-[12px] font-bold uppercase tracking-[0.3em] text-studio-text group-hover:text-white transition-colors">
                 View All {featuredProjects.length} Projects
               </span>
+              <ArrowRight
+                size={20}
+                className="text-studio-text group-hover:text-white group-hover:translate-x-1 transition-all duration-500"
+              />
+            </button>
+          </motion.div>
+        )} */}
+        {/* View More Button */}
+        {visibleProjects < featuredProjects.length && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="mt-12 flex justify-center"
+          >
+            <button
+              onClick={() => setVisibleProjects(prev => prev + 4)}
+              className="group flex items-center gap-6 bg-transparent border border-studio-border px-10 py-6 hover:bg-brand-accent hover:border-brand-accent transition-all duration-500"
+            >
+              <span className="text-[12px] font-bold uppercase tracking-[0.3em] text-studio-text group-hover:text-white transition-colors">
+                View More Projects
+              </span>
+
               <ArrowRight
                 size={20}
                 className="text-studio-text group-hover:text-white group-hover:translate-x-1 transition-all duration-500"
@@ -411,15 +457,27 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
 
             <button
               onClick={() => {
-                setCurrentView?.('about');
-                window.scrollTo({ top: 0, behavior: 'instant' });
+                navigate('/about');
+                setTimeout(() => {
+                  window.scrollTo({
+                    top: 0,
+                    left: 0,
+                    behavior: 'smooth'
+                  });
+                }, 100);
               }}
               className="group flex items-center gap-6"
             >
               <div className="w-16 h-16 border border-studio-border flex items-center justify-center group-hover:bg-brand-accent group-hover:border-brand-accent transition-all duration-500">
-                <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                <ArrowRight
+                  size={24}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
               </div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-studio-text/40 group-hover:text-studio-text transition-colors">EXPLORE APPROACH</span>
+
+              <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-studio-text/40 group-hover:text-studio-text transition-colors">
+                EXPLORE APPROACH
+              </span>
             </button>
           </div>
         </div>
