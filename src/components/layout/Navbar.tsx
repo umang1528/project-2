@@ -30,7 +30,7 @@ export function Navbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
 
 
   return (
-<nav className="fixed top-0 left-0 right-0 z-50 px-6 py-3 bg-white/20 backdrop-blur-xl shadow-lg border-b border-white/10">
+<nav className="fixed top-0 left-0 right-0 z-200 px-6 py-3 bg-white/20 backdrop-blur-xl shadow-lg border-b border-white/10">
   <div className="max-w-[1400px] mx-auto flex items-center justify-between">
         <motion.div 
           initial={{ opacity: 0, x: -20 }}

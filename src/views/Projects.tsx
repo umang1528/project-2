@@ -17,6 +17,8 @@ export function Projects() {
     setFilters,
   } = useProjectStore();
 
+  console.log('Projects:', projects);
+
   const navigate = useNavigate();
   const observerRef = useRef<IntersectionObserver | null>(null);
 
@@ -60,11 +62,18 @@ export function Projects() {
     [loading, loadMoreProjects, pagination.currentPage, pagination.totalPages]
   );
 
+
+  const featuredProjects = useMemo(
+    () => projects.filter((project) => project.featured),
+    [projects]
+  );
+
+  console.log('Featured Projects:', featuredProjects);
+
   return (
     <section className="pt-48 pb-32 px-6 max-w-[1400px] mx-auto">
 
       {/* HERO SECTION */}
-
       <div className="grid lg:grid-cols-12 gap-12 items-end mb-32 border-b border-white/10 pb-16">
 
         <motion.div
@@ -103,7 +112,6 @@ export function Projects() {
       </div>
 
       {/* FILTERS */}
-
       <div className="flex flex-wrap justify-between items-end gap-x-12 gap-y-8 mb-24">
 
         {/* CATEGORY */}
@@ -153,15 +161,14 @@ export function Projects() {
       </div>
 
       {/* PROJECT GRID */}
-
       <div className="grid grid-cols-1 md:grid-cols-12 gap-y-24 gap-x-12">
 
-        {projects.length === 0 && !loading ? (
+        {featuredProjects.length === 0 && !loading ? (
           <div className="col-span-full border border-white/10 p-20 text-center text-white/50">
             No Projects Found.
           </div>
         ) : (
-          projects.map((project, index) => {
+          featuredProjects.map((project, index) => {
 
             const thumbnail =
               typeof project.thumbnail === 'string'
@@ -169,7 +176,7 @@ export function Projects() {
                 : project.thumbnail?.url;
 
             const refProp =
-              index === projects.length - 1 ? { ref: lastCardRef } : {};
+              index === featuredProjects.length - 1 ? { ref: lastCardRef } : {};
 
             const spans = [
               'md:col-span-8',
@@ -246,8 +253,12 @@ export function Projects() {
         )}
       </div>
 
-      {/* LOAD MORE */}
 
+
+
+
+
+      {/* LOAD MORE */}
       <div className="mt-24 flex items-center justify-center">
 
         {loading ? (

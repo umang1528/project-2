@@ -39,7 +39,7 @@ export const useProjectStore = create<ProjectState>((set, get) => ({
     currentPage: 1,
     totalPages: 1,
     totalCount: 0,
-    limit: 6,
+    limit: 100,
   },
   filters: {
     category: '',

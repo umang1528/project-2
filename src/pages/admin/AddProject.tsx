@@ -139,7 +139,7 @@ export function AddProject() {
               ))}
             </select>
           </label>
-          <label className="flex items-center gap-3 text-sm text-white/80">
+          {/* <label className="flex items-center gap-3 text-sm text-white/80">
             <input
               type="checkbox"
               checked={featured}
@@ -147,7 +147,30 @@ export function AddProject() {
               className="h-4 w-4 rounded border-white/20 bg-black/20 text-brand-accent outline-none"
             />
             Feature project
-          </label>
+          </label> */}
+
+
+          <div className="space-y-2">
+            <label className="block text-sm text-white/80">
+              Display Location
+            </label>
+
+            <select
+              value={featured ? 'projects' : 'homepage'}
+              onChange={(event) =>
+                setFeatured(event.target.value === 'projects')
+              }
+              className="w-full rounded-lg border border-white/20 bg-black/20 px-4 py-3 text-white outline-none focus:border-brand-accent"
+            >
+              <option value="homepage">
+                Homepage
+              </option>
+
+              <option value="projects">
+                Projects Page
+              </option>
+            </select>
+          </div>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-2">

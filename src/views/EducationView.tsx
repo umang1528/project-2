@@ -111,8 +111,7 @@ export function EducationView() {
       </motion.div>
 
       {/* EDUCATION TIMELINE */}
-
-      <div className="space-y-12">
+      {/* <div className="space-y-12">
 
         {EDUCATION_DATA.map(
           (item, i) => (
@@ -136,7 +135,7 @@ export function EducationView() {
               className="group grid lg:grid-cols-[220px_1fr] gap-10 border-t border-studio-border pt-12"
             >
 
-              {/* YEAR */}
+              YEAR
 
               <div>
 
@@ -148,11 +147,11 @@ export function EducationView() {
 
               </div>
 
-              {/* CONTENT */}
+              CONTENT
 
               <div className="max-w-4xl">
 
-                {/* TEXT */}
+                TEXT
 
                 <div className="space-y-8">
 
@@ -186,7 +185,7 @@ export function EducationView() {
 
                   </p>
 
-                  {/* TAGS */}
+                  TAGS
 
                   <div className="flex flex-wrap gap-3">
 
@@ -216,7 +215,300 @@ export function EducationView() {
           )
         )}
 
-      </div>
+      </div> */}
+
+
+
+      {/* CREATIVE JOURNEY */}
+
+      <section className="py-40">
+
+        {/* HEADER */}
+
+        <div className="mb-24">
+
+          <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-[10px] block mb-4">
+            — Creative Journey
+          </span>
+
+          <h2
+            className="
+      font-display
+      text-5xl
+      md:text-7xl
+      uppercase
+      leading-[0.85]
+      "
+          >
+            Building
+            <br />
+            Experience
+            <br />
+            Through Design.
+          </h2>
+
+        </div>
+
+        {/* LABELS */}
+
+        <div className="grid lg:grid-cols-[220px_1fr] gap-10 border-t border-studio-border pt-12 mb-12">
+
+          <div>
+            <span className="text-2xl uppercase font-medium">
+              YEAR
+            </span>
+          </div>
+
+          <div>
+            <span className="text-2xl uppercase font-medium">
+              CONTENT
+            </span>
+          </div>
+
+        </div>
+
+        {/* ITEMS */}
+
+        <div className="space-y-16">
+
+          {[
+            {
+              year: "2021",
+              category: "Learning Phase",
+              title: "Started Graphic Design Journey",
+              institution: "Design Fundamentals",
+              description:
+                "Discovered graphic design and began learning branding, typography and visual storytelling.",
+              tags: ["Typography", "Photoshop", "Branding"],
+            },
+
+            {
+              year: "2022",
+              category: "Freelancing",
+              title: "Worked With Local Brands",
+              institution: "Client Projects",
+              description:
+                "Created social media creatives, advertisements and marketing materials for startups and local businesses.",
+              tags: ["Social Media", "Marketing", "Identity"],
+            },
+
+            {
+              year: "2023",
+              category: "Brand Identity",
+              title: "Focused On Branding Systems",
+              institution: "Visual Identity Foundation",
+              description:
+                "Built logos, visual systems and complete brand identity solutions for clients.",
+              tags: ["Branding", "Logos", "Strategy"],
+            },
+
+            {
+              year: "2024",
+              category: "Agency Experience",
+              title: "Professional Creative Work",
+              institution: "Creative Collaboration",
+              description:
+                "Collaborated with teams and handled large-scale creative projects across multiple industries.",
+              tags: ["Agency", "Creative", "Systems"],
+            },
+
+            {
+              year: "2025",
+              category: "Creative Direction",
+              title: "Leading Premium Design Projects",
+              institution: "Creative Leadership",
+              description:
+                "Managing projects, creating design systems and delivering premium visual experiences.",
+              tags: ["Direction", "Branding", "Leadership"],
+            },
+
+          ].map((item, i) => (
+
+            <motion.div
+              key={i}
+              initial={{
+                opacity: 0,
+                y: 40,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              whileHover={{
+                x: 10,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.7,
+              }}
+              className="
+        group
+        grid
+        lg:grid-cols-[220px_1fr]
+        gap-10
+        border-t
+        border-studio-border
+        pt-12
+        "
+            >
+
+              {/* YEAR */}
+
+              <div>
+
+                <span
+                  className="
+            sticky
+            top-32
+            inline-block
+            text-sm
+            font-mono
+            font-bold
+            uppercase
+            tracking-[0.3em]
+            text-brand-accent
+            "
+                >
+                  {item.year}
+                </span>
+
+              </div>
+
+              {/* CONTENT */}
+
+              <div className="relative max-w-5xl">
+
+                {/* HUGE BG YEAR */}
+
+                <span
+                  className="
+            absolute
+            right-0
+            top-0
+            font-display
+            text-[8rem]
+            md:text-[12rem]
+            leading-none
+            text-studio-text/[0.03]
+            select-none
+            pointer-events-none
+            "
+                >
+                  {item.year}
+                </span>
+
+                {/* PILL */}
+
+                <span
+                  className="
+            inline-flex
+            items-center
+            gap-2
+            rounded-full
+            border
+            border-studio-border
+            px-4
+            py-2
+            text-[10px]
+            uppercase
+            tracking-[0.35em]
+            text-studio-text/60
+            "
+                >
+                  ↗ {item.category}
+                </span>
+
+                {/* TITLE */}
+
+                <h2
+                  className="
+            mt-8
+            font-display
+            text-4xl
+            md:text-7xl
+            font-bold
+            tracking-tight
+            leading-[0.9]
+            "
+                >
+                  {item.title}
+                </h2>
+
+                {/* INSTITUTION */}
+
+                <p
+                  className="
+            mt-5
+            font-mono
+            uppercase
+            tracking-[0.35em]
+            text-[10px]
+            text-studio-text/40
+            "
+                >
+                  {item.institution}
+                </p>
+
+                {/* DESCRIPTION */}
+
+                <p
+                  className="
+            mt-12
+            text-xl
+            leading-relaxed
+            text-studio-text/60
+            max-w-3xl
+            "
+                >
+                  {item.description}
+                </p>
+
+                {/* TAGS */}
+
+                <div className="flex flex-wrap gap-4 mt-12">
+
+                  {item.tags.map((tag) => (
+
+                    <span
+                      key={tag}
+                      className="
+                rounded-full
+                border
+                border-studio-border
+                px-5
+                py-2
+                text-[10px]
+                font-bold
+                uppercase
+                tracking-[0.3em]
+                text-studio-text/60
+                transition-all
+                duration-500
+                hover:bg-black
+                hover:text-white
+                hover:border-black
+                "
+                    >
+                      {tag}
+                    </span>
+
+                  ))}
+
+                </div>
+
+              </div>
+
+            </motion.div>
+
+          ))}
+
+        </div>
+
+      </section>
+
+
 
     </section>
   );
