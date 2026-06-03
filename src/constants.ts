@@ -2,6 +2,7 @@ import { Project, EducationItem } from './types';
 import Image from './assets/images/1img.jpg';
 
 
+
 export const HEADER_LINKS = [
   { name: 'Home', href: '#' },
   { name: 'Projects', href: '#projects' },

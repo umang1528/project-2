@@ -1,13 +1,32 @@
+export interface AssetItem {
+  url: string;
+  publicId?: string;
+}
+
 export interface Project {
   id: string | number;
+  _id?: string;
   title: string;
+  slug?: string;
+  shortDescription?: string;
+  fullDescription?: string;
+  description?: string;
   category: string;
-  description: string;
-  image: string;
+  thumbnail?: AssetItem | string;
+  image?: string;
+  images?: AssetItem[] | string[];
   gallery?: string[];
-  size?: string;
+  hashtags?: string[];
   tags: string[];
+  views?: number;
+  featured?: boolean;
+  status?: 'draft' | 'published' | 'archived';
+  caseStudy?: string;
+  createdBy?: string;
+  createdAt?: string;
+  updatedAt?: string;
   year?: string;
+  size?: string;
 }
 
 export interface EducationItem {
