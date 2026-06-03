@@ -31,6 +31,7 @@ export function Projects() {
     error,
     fetchProjects,
     deleteProject,
+    updateProject,
     pagination,
   } = useProjectStore();
 
@@ -45,6 +46,31 @@ export function Projects() {
 
   const [search, setSearch] =
     useState('');
+
+  // LOCATION FILTER TABS
+
+  const [activeTab, setActiveTab] =
+    useState<'all' | 'homepage' | 'projectsPage'>('all');
+
+  const [updatingIds, setUpdatingIds] =
+    useState<string[]>([]);
+
+  const handleLocationChange =
+    async (projectId: string, featured: boolean) => {
+      if (updatingIds.includes(projectId)) {
+        return;
+      }
+
+      setUpdatingIds((current) => [...current, projectId]);
+
+      try {
+        const payload = new FormData();
+        payload.append('featured', String(featured));
+        await updateProject(projectId, payload);
+      } finally {
+        setUpdatingIds((current) => current.filter((id) => id !== projectId));
+      }
+    };
 
   // FETCH PROJECTS
 
@@ -80,28 +106,43 @@ export function Projects() {
         status:
           project.status,
 
+        featured:
+          project.featured === true,
+
         slug:
           project.slug,
       })),
     [projects]
   );
 
+  const allCount = dataRows.length;
+  const homepageCount = dataRows.filter((row) => row.featured === false).length;
+  const projectsPageCount = dataRows.filter((row) => row.featured === true).length;
+
   // FILTERED DATA
 
   const filteredRows =
-    dataRows.filter(
-      (row) =>
+    dataRows.filter((row) => {
+      const searchMatch =
         row.title
           .toLowerCase()
-          .includes(
-            search.toLowerCase()
-          ) ||
+          .includes(search.toLowerCase()) ||
         row.category
           .toLowerCase()
-          .includes(
-            search.toLowerCase()
-          )
-    );
+          .includes(search.toLowerCase());
+
+      if (!searchMatch) return false;
+
+      if (activeTab === 'homepage') {
+        return row.featured === false;
+      }
+
+      if (activeTab === 'projectsPage') {
+        return row.featured === true;
+      }
+
+      return true;
+    });
 
   return (
     <PageContainer
@@ -125,6 +166,42 @@ export function Projects() {
         </button>
       }
     >
+
+      <div className="mb-6 flex flex-wrap items-center gap-3">
+        <button
+          type="button"
+          onClick={() => setActiveTab('all')}
+          className={`rounded-full px-4 py-2 text-sm uppercase tracking-[0.3em] transition ${
+            activeTab === 'all'
+              ? 'bg-brand-accent text-black'
+              : 'border border-white/10 bg-white/5 text-white/70 hover:border-brand-accent'
+          }`}
+        >
+          All Projects ({allCount})
+        </button>
+        <button
+          type="button"
+          onClick={() => setActiveTab('homepage')}
+          className={`rounded-full px-4 py-2 text-sm uppercase tracking-[0.3em] transition ${
+            activeTab === 'homepage'
+              ? 'bg-brand-accent text-black'
+              : 'border border-white/10 bg-white/5 text-white/70 hover:border-brand-accent'
+          }`}
+        >
+          Homepage Projects ({homepageCount})
+        </button>
+        <button
+          type="button"
+          onClick={() => setActiveTab('projectsPage')}
+          className={`rounded-full px-4 py-2 text-sm uppercase tracking-[0.3em] transition ${
+            activeTab === 'projectsPage'
+              ? 'bg-brand-accent text-black'
+              : 'border border-white/10 bg-white/5 text-white/70 hover:border-brand-accent'
+          }`}
+        >
+          Projects Page ({projectsPageCount})
+        </button>
+      </div>
 
       {/* TABLE */}
 
@@ -232,10 +309,15 @@ export function Projects() {
 
               {/* TITLE */}
 
-              <div className="col-span-3 font-semibold">
-
-                {row.title}
-
+              <div className="col-span-3 space-y-2">
+                <div className="font-semibold">{row.title}</div>
+                <span className={`inline-flex items-center rounded-full border px-2 py-1 text-[10px] uppercase tracking-[0.3em] ${
+                  row.featured
+                    ? 'border-emerald-500/30 bg-emerald-500/10 text-emerald-300'
+                    : 'border-sky-500/30 bg-sky-500/10 text-sky-300'
+                }`}>
+                  {row.featured ? 'Projects Page' : 'Homepage'}
+                </span>
               </div>
 
               {/* CATEGORY */}
@@ -256,10 +338,22 @@ export function Projects() {
 
               {/* STATUS */}
 
-              <div className="col-span-2 text-brand-accent uppercase">
-
-                {row.status}
-
+              <div className="col-span-2 text-brand-accent uppercase space-y-2">
+                <div>{row.status}</div>
+                <select
+                  value={row.featured ? 'projectsPage' : 'homepage'}
+                  onChange={(event) =>
+                    handleLocationChange(
+                      row.id,
+                      event.target.value === 'projectsPage'
+                    )
+                  }
+                  disabled={updatingIds.includes(row.id)}
+                  className="w-full rounded-full border border-white/10 bg-black/5 px-3 py-2 text-[11px] text-white outline-none transition focus:border-brand-accent"
+                >
+                  <option value="homepage">Homepage</option>
+                  <option value="projectsPage">Projects Page</option>
+                </select>
               </div>
 
               {/* CREATED */}
