@@ -8,6 +8,7 @@ import { SidebarItem } from './SidebarItem';
 const items: AdminSidebarItem[] = [
   { key: 'dashboard', label: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
   { key: 'projects', label: 'Projects', href: '/admin/projects', icon: FolderKanban },
+  { key: 'projectLocations', label: 'Project Locations', href: '/admin/project-locations', icon: Images },
   { key: 'media', label: 'Media', href: '/admin/media', icon: Images },
   { key: 'themes', label: 'Themes', href: '/admin/themes', icon: Palette },
   { key: 'analytics', label: 'Analytics', href: '/admin/analytics', icon: BarChart3 },

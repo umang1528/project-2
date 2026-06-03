@@ -1,6 +1,7 @@
 export type AdminRouteKey =
   | 'dashboard'
   | 'projects'
+  | 'projectLocations'
   | 'media'
   | 'themes'
   | 'analytics'
