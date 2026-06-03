@@ -16,6 +16,43 @@ function getProjectImage(project: Project) {
   return project.image || '';
 }
 
+function buildProjectPayload(project: Project, featured: boolean) {
+  const payload = new FormData();
+
+  payload.append('title', project.title || '');
+  payload.append('shortDescription', project.shortDescription || project.description || '');
+  payload.append('fullDescription', project.fullDescription || '');
+  payload.append('category', project.category || 'Portfolio');
+  payload.append('status', project.status || 'published');
+  payload.append('caseStudy', project.caseStudy || '');
+  payload.append('createdBy', project.createdBy || 'admin');
+  payload.append('order', String((project as any).order || 0));
+  payload.append('slug', project.slug || '');
+  payload.append('featured', String(featured));
+
+  if (project.tags) {
+    payload.append('tags', Array.isArray(project.tags) ? project.tags.join(',') : String(project.tags));
+  }
+
+  if (project.hashtags) {
+    payload.append('hashtags', Array.isArray(project.hashtags) ? project.hashtags.join(',') : String(project.hashtags));
+  }
+
+  if (project.description) {
+    payload.append('description', project.description);
+  }
+
+  if (project.year) {
+    payload.append('year', String(project.year));
+  }
+
+  if (project.size) {
+    payload.append('size', String(project.size));
+  }
+
+  return payload;
+}
+
 export function ProjectLocations() {
   const { projects, loading, fetchProjects, updateProject } = useProjectStore();
   const [search, setSearch] = useState('');
@@ -50,8 +87,7 @@ export function ProjectLocations() {
     setUpdatingIds((current) => [...current, projectId]);
 
     try {
-      const payload = new FormData();
-      payload.append('featured', String(!project.featured));
+      const payload = buildProjectPayload(project, !project.featured);
       await updateProject(projectId, payload);
     } finally {
       setUpdatingIds((current) => current.filter((id) => id !== projectId));
