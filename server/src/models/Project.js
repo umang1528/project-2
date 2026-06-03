@@ -25,6 +25,7 @@ const projectSchema = new mongoose.Schema(
     caseStudy: { type: String, default: '' },
     createdBy: { type: String, trim: true, default: 'admin' },
     order: { type: Number, default: 0 },
+    // location: {type: String, trim: true, default: '' },
   },
   { timestamps: true }
 );
