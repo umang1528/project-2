@@ -139,7 +139,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
         </div>
 
         {/* Carousel Style Grid - Alternating Large/Small */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-[350px]">
+        <div className="grid grid-cols-1 md:grid-cols-4 bg-white p-2 gap-4 auto-rows-[350px]">
           {loading ? (
             <div className="col-span-full py-20 text-center text-black">
               Loading Featured Projects...

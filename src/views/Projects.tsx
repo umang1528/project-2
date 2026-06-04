@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { useCallback, useEffect, useMemo, useRef } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useProjectStore } from '../store/useProjectStore';
 import { ArrowRight, Search, Sparkles } from 'lucide-react';
@@ -21,6 +21,8 @@ export function Projects() {
 
   const navigate = useNavigate();
   const observerRef = useRef<IntersectionObserver | null>(null);
+
+
 
   const categoryOptions = useMemo(() => {
     const categories = new Set<string>(['All']);
@@ -67,6 +69,7 @@ export function Projects() {
     () => projects.filter((project) => project.featured),
     [projects]
   );
+  const [activeIndex, setActiveIndex] = useState(0);
 
   console.log('Featured Projects:', featuredProjects);
 
@@ -181,75 +184,191 @@ export function Projects() {
             const spans = [
               'md:col-span-8',
               'md:col-span-4',
-              'md:col-span-7',
               'md:col-span-4',
-              'md:col-span-4',
+              'md:col-span-8',
             ];
 
-            const spanClass = spans[index % spans.length];
+            const spanClass = spans[index % 4];
+
+            const isLarge =
+              spanClass === 'md:col-span-8';
 
             return (
-              <motion.button
-                key={project.slug || project._id || index}
-                type="button"
-                onClick={() => navigate(`/projects/${project.slug}`)}
-                initial={{ opacity: 0, y: 40 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.03 }}
-                className={`group relative flex flex-col text-left ${spanClass}`}
-                {...refProp}
-              >
-                <div className="relative  overflow-visible mb-8  rounded-sm border border-black/5 bg-white p-3 shadow-[0px_20px_60px_rgba(0,0,0,0.18)] hover:shadow-[0px_35px_90px_rgba(0,0,0,0.28)] transition-all duration-700 cursor-pointer">
+              <>
 
-                  <img
-                    src={thumbnail}
-                    alt={project.title}
-                    className="w-full aspect-[4/5]  object-cover grayscale-[45%] brightness-[0.98] group-hover:grayscale-0 group-hover:brightness-100 transition-all duration-700 group-hover:scale-[1.02]"
-                    referrerPolicy="no-referrer"
-                  />
+                <motion.button
+                  key={project.slug || project._id || index}
+                  type="button"
+                  onClick={() => navigate(`/projects/${project.slug}`)}
+                  initial={{ opacity: 0, y: 40 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.03 }}
+                  className={`group relative flex flex-col text-left ${spanClass}`}
+                  {...refProp}
+                >
 
-                  <div className="absolute top-6 left-6 flex flex-col gap-2">
 
-                    <div className="bg-black/90 backdrop-blur-md text-white font-mono text-[10px] px-3 py-1 rounded-full shadow-lg">
-                      № {String(index + 1).padStart(2, '0')}
-                    </div>
+                  <div className="relative overflow-hidden mb-8 border border-black/10 bg-white p-2 shadow-[0px_20px_60px_rgba(0,0,0,0.12)] hover:shadow-[0px_35px_90px_rgba(0,0,0,0.20)] transition-all duration-700 cursor-pointer">
 
-                    <div className="bg-brand-accent text-black font-mono text-[10px] px-3 py-1 rounded-full shadow-lg">
-                      {new Date(project.createdAt).getFullYear()}
-                    </div>
-
-                  </div>
-                </div>
-
-                <div className="space-y-4">
-
-                  <div className="flex items-center gap-4">
-                    <span className="text-[10px] font-mono font-bold text-brand-accent uppercase tracking-[0.2em]">
-                      {project.category}
-                    </span>
-
-                    <div className="h-[1px] flex-1 bg-white/10"></div>
-                  </div>
-
-                  <h3 className="text-3xl font-display font-bold tracking-tight uppercase text-black group-hover:text-brand-accent transition-colors duration-300">
-                    {project.title}
-                  </h3>
-
-                  <p className="text-black/60 text-sm leading-relaxed font-medium max-w-md line-clamp-2">
-                    {project.shortDescription}
-                  </p>
-
-                  <div className="pt-2 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-white/40">
-                    <span>View Project</span>
-                    <ArrowRight
-                      size={14}
-                      className="group-hover:translate-x-1 transition-transform"
+                    <img
+                      src={thumbnail}
+                      alt={project.title}
+                      className={`
+    w-full
+    object-cover
+    grayscale
+    group-hover:grayscale-0
+    transition-all
+    duration-700
+    group-hover:scale-[1.02]
+    ${isLarge ? 'h-[850px]' : 'h-[500px]'}
+  `}
                     />
+
+                    <div className="absolute top-6 left-6 flex flex-col gap-2">
+
+                      <div className="bg-black/90 backdrop-blur-md text-white font-mono text-[10px] px-3 py-1 rounded-full shadow-lg">
+                        № {String(index + 1).padStart(2, '0')}
+                      </div>
+
+                      <div className="bg-brand-accent text-black font-mono text-[10px] px-3 py-1 rounded-full shadow-lg">
+                        {new Date(project.createdAt).getFullYear()}
+                      </div>
+
+                    </div>
+
                   </div>
-                </div>
-              </motion.button>
+
+                  <div className="space-y-4">
+
+                    <div className="flex items-center gap-4">
+                      <span className="text-[10px] font-mono font-bold text-brand-accent uppercase tracking-[0.2em]">
+                        {project.category}
+                      </span>
+
+                      <div className="h-[1px] flex-1 bg-white/10"></div>
+                    </div>
+
+                    <h3 className="text-5xl font-display font-bold uppercase text-black leading-none group-hover:text-brand-accent transition-colors duration-300">
+                      {project.title}
+                    </h3>
+
+                    <p className="text-black/60 text-sm leading-relaxed font-medium max-w-md line-clamp-2">
+                      {project.shortDescription}
+                    </p>
+
+                    <div className="pt-2 flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-white/40">
+                      <span>View Project</span>
+                      <ArrowRight
+                        size={14}
+                        className="group-hover:translate-x-1 transition-transform"
+                      />
+                    </div>
+
+                  </div>
+
+                </motion.button>
+
+                {(index + 1) % 4 === 0 && (
+
+                  <div className="col-span-full my-24">
+
+                    <div className="mt-16 hidden md:flex h-[650px] gap-3">
+
+                      {[1, 2, 3, 4, 5].map((item, index) => {
+
+                        const isActive = activeIndex === index;
+
+                        return (
+
+                          <motion.div
+                            key={index}
+                            onMouseEnter={() => setActiveIndex(index)}
+                            animate={{
+                              flex: isActive ? 5 : 1,
+                            }}
+                            transition={{
+                              duration: 0.8,
+                              ease: "easeInOut",
+                            }}
+                            className="
+          relative
+          overflow-hidden
+          rounded-[28px]
+          border
+          border-white/10
+          cursor-pointer
+          min-w-0
+        "
+                          >
+
+                            <img
+                              src={`https://picsum.photos/seed/pbreak${item}/900/1400`}
+                              alt=""
+                              className="
+            absolute
+            inset-0
+            w-full
+            h-full
+            object-cover
+          "
+                            />
+
+                            <div className="absolute inset-0 bg-black/40" />
+
+                            {isActive && (
+
+                              <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                className="
+              absolute
+              inset-0
+              p-10
+              flex
+              flex-col
+              justify-between
+              z-10
+            "
+                              >
+
+                                <div>
+
+                                  <span className="text-brand-accent uppercase tracking-[0.4em] text-xs">
+                                    Project Breakdown
+                                  </span>
+
+                                  <h3 className="mt-4 text-white text-5xl lg:text-6xl font-display uppercase">
+                                    Project {item}
+                                  </h3>
+
+                                </div>
+
+                                <span className="text-white/20 text-8xl font-display">
+                                  0{item}
+                                </span>
+
+                              </motion.div>
+
+                            )}
+
+                          </motion.div>
+
+                        );
+
+                      })}
+
+                    </div>
+
+                  </div>
+
+                )}
+
+              </>
             );
           })
+
+
         )}
       </div>
 
