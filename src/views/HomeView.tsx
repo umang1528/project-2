@@ -100,7 +100,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
       </section>
 
       {/* Featured Projects Grid - Carousel Style */}
-      <section id="projects" className="py-32 px-6 md:px-12 lg:px-15 max-w-[1400px] mx-auto">
+      <section id="projects" className="py-32 px-6 md:px-12 lg:px-15 max-w-[1600px] mx-auto">
         {/* Header */}
         <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-12">
           <div className="space-y-6">

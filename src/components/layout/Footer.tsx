@@ -3,7 +3,7 @@ import { Github, Twitter, Instagram, Mail, ArrowRight } from 'lucide-react';
 
 export function Footer() {
   return (
-    <footer id="contact" className="py-48 px-6 max-w-[1400px] mx-auto">
+    <footer id="contact" className="py-5 px-6 max-w-[1400px] mx-auto">
       <div className="grid lg:grid-cols-2 gap-24 items-start">
         <div className="space-y-12">
           <div className="space-y-8">
@@ -54,7 +54,7 @@ export function Footer() {
         </div>
       </div>
 
-      <div className="mt-48 pt-12 border-t border-studio-border flex flex-col md:flex-row justify-between items-center gap-8">
+      <div className="mt-10 pt-12 border-t border-studio-border flex flex-col md:flex-row justify-between items-center gap-8">
         <div className="flex items-center gap-4">
           <div className="w-8 h-8 bg-studio-text flex items-center justify-center">
             <span className="font-display font-bold text-white text-xs">U</span>
