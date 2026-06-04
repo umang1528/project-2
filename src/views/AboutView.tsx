@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import { useState } from "react";
 
 import { TypeAnimation } from 'react-type-animation';
 
@@ -7,6 +8,7 @@ interface AboutViewProps {
 }
 
 export function AboutView({ setCurrentView }: AboutViewProps) {
+  const [activeIndex, setActiveIndex] = useState(1);
 
   return (
 
@@ -561,134 +563,92 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
           </motion.p>
 
           {/* Images */}
-          <div className="relative mt-16 h-[500px] md:h-[700px]">
+        <div className="mt-16 hidden md:flex h-[650px] gap-3">
 
-            {/* Image 1 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.1 }}
-              viewport={{ once: true }}
-              className="absolute left-[2%] md:left-[5%] top-[30%] md:top-[35%] w-[180px] md:w-[260px] rotate-[-3deg] z-10"
-            >
-              <div className="group bg-[#161616] p-3 border border-white/10 shadow-[0px_25px_80px_rgba(0,0,0,0.45)] transition-all duration-700 hover:-translate-y-2">
-                <img
-                  src="https://picsum.photos/seed/pbreak1/400/550"
-                  alt="Project page 1"
-                  className="w-full h-[200px] md:h-[320px] object-cover transition-all duration-700 group-hover:scale-[1.05]"
-                />
-                <div className="mt-3 flex justify-between items-center">
-                  <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
-                    Process
-                  </span>
-                  <span className="text-[10px] text-brand-accent">
-                    01
-                  </span>
-                </div>
-              </div>
-            </motion.div>
+  {[1, 2, 3, 4, 5].map((item, index) => {
 
-            {/* Image 2 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              viewport={{ once: true }}
-              className="absolute left-[18%] md:left-[18%] top-[20%] md:top-[22%] w-[200px] md:w-[300px] rotate-[-1deg] z-20"
-            >
-              <div className="group bg-[#161616] p-3 border border-white/10 shadow-[0px_25px_80px_rgba(0,0,0,0.45)] transition-all duration-700 hover:-translate-y-2">
-                <img
-                  src="https://picsum.photos/seed/pbreak2/400/550"
-                  alt="Project page 2"
-                  className="w-full h-[220px] md:h-[350px] object-cover transition-all duration-700 group-hover:scale-[1.05]"
-                />
-                <div className="mt-3 flex justify-between items-center">
-                  <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
-                    Process
-                  </span>
-                  <span className="text-[10px] text-brand-accent">
-                    02
-                  </span>
-                </div>
-              </div>
-            </motion.div>
+    const isActive = activeIndex === index;
 
-            {/* Image 3 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              viewport={{ once: true }}
-              className="absolute left-[38%] md:left-[36%] top-[28%] md:top-[30%] w-[180px] md:w-[260px] rotate-[1deg] z-30"
-            >
-              <div className="group bg-[#161616] p-3 border border-white/10 shadow-[0px_25px_80px_rgba(0,0,0,0.45)] transition-all duration-700 hover:-translate-y-2">
-                <img
-                  src="https://picsum.photos/seed/pbreak3/400/550"
-                  alt="Project page 3"
-                  className="w-full h-[200px] md:h-[320px] object-cover transition-all duration-700 group-hover:scale-[1.05]"
-                />
-                <div className="mt-3 flex justify-between items-center">
-                  <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
-                    Process
-                  </span>
-                  <span className="text-[10px] text-brand-accent">
-                    03
-                  </span>
-                </div>
-              </div>
-            </motion.div>
+    return (
 
-            {/* Image 4 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4 }}
-              viewport={{ once: true }}
-              className="absolute left-[55%] md:left-[52%] top-[12%] md:top-[15%] w-[200px] md:w-[300px] rotate-[2deg] z-40"
-            >
-              <div className="group bg-[#161616] p-3 border border-white/10 shadow-[0px_25px_80px_rgba(0,0,0,0.45)] transition-all duration-700 hover:-translate-y-2">
-                <img
-                  src="https://picsum.photos/seed/pbreak4/400/550"
-                  alt="Project page 4"
-                  className="w-full h-[220px] md:h-[350px] object-cover transition-all duration-700 group-hover:scale-[1.05]"
-                />
-                <div className="mt-3 flex justify-between items-center">
-                  <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
-                    Process
-                  </span>
-                  <span className="text-[10px] text-brand-accent">
-                    04
-                  </span>
-                </div>
-              </div>
-            </motion.div>
+      <motion.div
+        key={index}
+        onMouseEnter={() => setActiveIndex(index)}
+        animate={{
+          flex: isActive ? 5 : 1,
+        }}
+        transition={{
+          duration: 0.8,
+          ease: "easeInOut",
+        }}
+        className="
+          relative
+          overflow-hidden
+          rounded-[28px]
+          border
+          border-white/10
+          cursor-pointer
+          min-w-0
+        "
+      >
 
-            {/* Image 5 */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              viewport={{ once: true }}
-              className="absolute right-[2%] md:right-[5%] top-[0%] md:top-[5%] w-[160px] md:w-[240px] rotate-[4deg] z-50"
-            >
-              <div className="group bg-[#161616] p-3 border border-white/10 shadow-[0px_25px_80px_rgba(0,0,0,0.45)] transition-all duration-700 hover:-translate-y-2">
-                <img
-                  src="https://picsum.photos/seed/pbreak5/400/550"
-                  alt="Project page 5"
-                  className="w-full h-[180px] md:h-[300px] object-cover transition-all duration-700 group-hover:scale-[1.05]"
-                />
-                <div className="mt-3 flex justify-between items-center">
-                  <span className="text-[10px] uppercase tracking-[0.3em] text-white/40">
-                    Process
-                  </span>
-                  <span className="text-[10px] text-brand-accent">
-                    05
-                  </span>
-                </div>
-              </div>
-            </motion.div>
+        <img
+          src={`https://picsum.photos/seed/pbreak${item}/900/1400`}
+          alt=""
+          className="
+            absolute
+            inset-0
+            w-full
+            h-full
+            object-cover
+          "
+        />
 
-          </div>
+        <div className="absolute inset-0 bg-black/40" />
+
+        {isActive && (
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="
+              absolute
+              inset-0
+              p-10
+              flex
+              flex-col
+              justify-between
+              z-10
+            "
+          >
+
+            <div>
+
+              <span className="text-brand-accent uppercase tracking-[0.4em] text-xs">
+                Project Breakdown
+              </span>
+
+              <h3 className="mt-4 text-white text-5xl lg:text-6xl font-display uppercase">
+                Project {item}
+              </h3>
+
+            </div>
+
+            <span className="text-white/20 text-8xl font-display">
+              0{item}
+            </span>
+
+          </motion.div>
+
+        )}
+
+      </motion.div>
+
+    );
+
+  })}
+
+</div>
         </div>
       </section>
 

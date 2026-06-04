@@ -222,7 +222,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
                     <img
                       src={thumbnail}
                       alt={project.title}
-                      className="w-full h-full object-cover grayscale brightness-90 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out"
+                      className="w-full h-full object-cover grayscale-75 brightness-90 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out"
                       referrerPolicy="no-referrer"
                     />
                   </div>

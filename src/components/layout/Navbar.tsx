@@ -38,7 +38,7 @@ export function Navbar({ isMenuOpen, setIsMenuOpen }: NavbarProps) {
           className="flex items-center gap-3 cursor-pointer group"
           onClick={() => handleNavigate('/')}
         >
-          <div className="w-10 h-10 bg-studio-text flex items-center justify-center transition-colors duration-500 group-hover:bg-brand-accent">
+          <div className="w-10 h-10 rounded-lg bg-studio-text flex items-center justify-center transition-colors duration-500 group-hover:bg-brand-accent">
             <span className="font-display font-bold text-white text-xl">U</span>
           </div>
           <div className="flex flex-col">
