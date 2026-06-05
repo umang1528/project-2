@@ -72,22 +72,22 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
         >
           <div className="mb-12 inline-flex items-center gap-4 px-6 py-2 border border-studio-border bg-white/50 backdrop-blur-md">
             <div className="w-2 h-2 rounded-none bg-brand-accent animate-pulse" />
-            <span className="text-[10px] font-mono font-bold tracking-[0.4em] uppercase text-studio-text/60">Independent GRAPHIC DESIGNER</span>
+            <span className="text-sm md:text-base font-mono font-bold tracking-[0.4em] uppercase text-studio-text/60">Independent GRAPHIC DESIGNER</span>
           </div>
 
-          <h1 className="font-display text-[15vw] md:text-[14rem] font-bold leading-[0.75] tracking-tighter uppercase">
+          <h1 className="font-display text-[18vw] md:text-[20rem] font-bold leading-[0.75] tracking-tighter uppercase">
             VISI<span className="text-brand-accent">O</span>NS
           </h1>
 
           <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-12">
             <div className="flex flex-col gap-2 text-left">
-              <span className="text-[10px] font-mono font-bold text-brand-accent uppercase tracking-widest">Specialization</span>
-              <p className="text-sm font-display font-medium text-studio-text uppercase tracking-tight">GRAPHIC • PACKAGING • VISUALS</p>
+              <span className="text-sm font-mono font-bold text-brand-accent uppercase tracking-widest">Specialization</span>
+              <p className="text-lg md:text-xl font-display font-medium text-studio-text uppercase tracking-tight">GRAPHIC • PACKAGING • VISUALS</p>
             </div>
             <div className="h-[1px] w-12 bg-studio-border hidden md:block" />
             <div className="flex flex-col gap-2 text-left">
-              <span className="text-[10px] font-mono font-bold text-brand-accent uppercase tracking-widest">Aesthetic</span>
-              <p className="text-sm font-display font-medium text-studio-text uppercase tracking-tight">Brutalism • Swiss • Modern</p>
+              <span className="text-sm font-mono font-bold text-brand-accent uppercase tracking-widest">Aesthetic</span>
+              <p className="text-lg md:text-xl font-display font-medium text-studio-text uppercase tracking-tight">Brutalism • Swiss • Modern</p>
             </div>
           </div>
         </motion.div>
@@ -101,10 +101,10 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
 
       {/* insta Seamless  Carousel */}
       <section className="pt-8 pb-4 overflow-hidden bg-[#f5f3ef]">
-        
-          <span className="block text-center text-brand-accent uppercase tracking-[0.4em] text-xs">
-            Visual Storytelling
-          </span>
+
+        <span className="block text-center text-brand-accent uppercase tracking-[0.4em] text-xs">
+          Visual Storytelling
+        </span>
 
         <div className="text-center mb-20">
 
@@ -129,14 +129,14 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               duration: 30,
               ease: "linear",
             }}
-            className="absolute flex gap-6"
+            className="absolute flex "
           >
 
             {[...Array(12)].map((_, i) => (
 
               <div
                 key={i}
-                className="w-[280px] h-[360px] overflow-hidden border border-black/10 bg-white p-1"
+                className="w-[280px] h-[360px] overflow-hidden border border-black/10"
               >
 
                 <img
@@ -165,7 +165,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               <div className="absolute bottom-0 left-0 right-0 h-[110px] bg-white rounded-b-[43px] z-40" />
 
               {/* Dynamic Island */}
-              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[110px] h-[28px] bg-black rounded-full z-50" />
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[90px] h-[25px] bg-black rounded-full z-50" />
 
               {/* Instagram Header */}
               <div className="absolute top-16 left-0 right-0 px-5 z-50">
@@ -174,7 +174,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
 
                   <div className="flex items-center gap-3">
 
-                    <div className="w-8 h-8 rounded-full bg-black" />
+                    <div className="w-7 h-7 rounded-full bg-black" />
 
                     <span className="text-black text-sm font-semibold">
                       umang.design
@@ -216,20 +216,13 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
 
       </section >
 
-
-
-
-
-
-
-
       {/* Featured Projects Grid - Carousel Style */}
       < section id="projects" className="py-32 px-6 md:px-12 lg:px-15 max-w-[1600px] mx-auto" >
         {/* Header */}
         < div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-12" >
           <div className="space-y-6">
             <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block">— CASE STUDIES</span>
-            <h2 className="text-6xl md:text-8xl font-display font-bold leading-[0.9] tracking-tighter uppercase">
+            <h2 className="text-7xl md:text-9xl font-display font-bold leading-[0.9] tracking-tighter uppercase">
               SELECTED <br /> <span className="italic text-studio-text/20">WORKS.</span>
             </h2>
           </div>
@@ -427,7 +420,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block">
                 — CREATIVE TOOLKIT
               </span>
-              <h2 className="text-5xl md:text-[5rem] font-display font-bold leading-[0.85] tracking-tighter uppercase">
+              <h2 className="text-7xl md:text-[7rem] font-display font-bold leading-[0.85] tracking-tighter uppercase">
                 DESIGN <br />
                 <span className="text-white/20">STACK.</span>
               </h2>

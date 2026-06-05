@@ -57,6 +57,7 @@ export function ProjectDetails() {
 
   return (
     <section className="px-6 pb-24 max-w-[1400px] mx-auto">
+      
       {/* BACK BUTTON */}
       <motion.button
         type="button"
@@ -76,7 +77,7 @@ export function ProjectDetails() {
         {/* LEFT SIDE */}
         <div className="space-y-10">
           {/* HERO IMAGE */}
-          <div className="rounded-[32px] overflow-hidden border border-white/10 bg-white/5 shadow-[0_40px_90px_rgba(0,0,0,0.18)]">
+          <div className="rounded-[15px] overflow-hidden border border-white/10 bg-white/5 shadow-[0_40px_90px_rgba(0,0,0,0.18)]">
             <img
               src={heroImage}
               alt={currentProject.title}
@@ -91,7 +92,7 @@ export function ProjectDetails() {
               {mainImages.map((image, index) => (
                 <div
                   key={index}
-                  className="overflow-hidden rounded-[28px] border border-white/10 bg-white/5"
+                  className="overflow-hidden rounded-[10px] border border-white/10 bg-white/5"
                 >
                   <img
                     src={typeof image === 'string' ? image : image.url}

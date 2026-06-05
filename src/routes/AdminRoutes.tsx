@@ -3,6 +3,7 @@ import { AdminLayout } from '../layouts/AdminLayout';
 import { Dashboard } from '../pages/admin/Dashboard';
 import { Projects } from '../pages/admin/Projects';
 import { ProjectLocations } from '../pages/admin/ProjectLocations';
+import {HomeCarousel} from '../pages/HomeCarousel'
 import { AddProject } from '../pages/admin/AddProject';
 import { EditProject } from '../pages/admin/EditProject';
 import { Media } from '../pages/admin/Media';
@@ -19,14 +20,18 @@ export function AdminRoutes() {
       <Route path="/admin" element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}>
         <Route index element={<Navigate to="/admin/dashboard" replace />} />
         <Route path="dashboard" element={<Dashboard />} />
-      <Route path="projects" element={<Projects />} />
-      <Route path="project-locations" element={<ProjectLocations />} />
-      <Route path="projects/add" element={<AddProject />} />
-      <Route path="projects/edit/:id" element={<EditProject />} />
-      <Route path="media" element={<Media />} />
-      <Route path="themes" element={<Themes />} />
-      <Route path="analytics" element={<Analytics />} />
-      <Route path="settings" element={<Settings />} />
+        <Route path="projects" element={<Projects />} />
+        <Route path="project-locations" element={<ProjectLocations />} />
+ <Route
+  path="homepage-carousel"
+  element={<HomeCarousel />}
+/>
+        <Route path="projects/add" element={<AddProject />} />
+        <Route path="projects/edit/:id" element={<EditProject />} />
+        <Route path="media" element={<Media />} />
+        <Route path="themes" element={<Themes />} />
+        <Route path="analytics" element={<Analytics />} />
+        <Route path="settings" element={<Settings />} />
       </Route>
     </Routes>
   );

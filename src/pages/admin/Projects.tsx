@@ -197,9 +197,9 @@ export function Projects() {
           project.views || 0,
 
         createdAt:
-          new Date(
-            project.createdAt
-          ).toLocaleDateString(),
+          project.createdAt
+            ? new Date(project.createdAt).toLocaleDateString()
+            : '',
 
         status:
           project.status,

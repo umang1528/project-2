@@ -85,11 +85,11 @@ export function Projects() {
           className="lg:col-span-8"
         >
           <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] mb-6 block">
-            Collection Retrospective
+           Graphic Designer
           </span>
 
           <h1 className="font-display text-7xl md:text-9xl lg:text-[11rem] leading-[0.8] tracking-tighter font-bold uppercase text-black">
-            THE INDEX.
+            VISUAL STORIES.
           </h1>
         </motion.div>
 
@@ -99,9 +99,8 @@ export function Projects() {
           transition={{ delay: 0.1 }}
           className="lg:col-span-4 lg:mb-4"
         >
-          <p className="text-black/60 text-xl font-medium leading-relaxed max-w-sm">
-            "Design is the silent ambassador of your brand.
-            Exploring visual systems since MMXVI."
+          <p className="text-black/60 text-l font-medium leading-relaxed max-w-sm">
+            "More than a showcase of projects, this archive reflects a journey of ideas transformed into meaningful visual experiences. From branding and social media campaigns to creative design systems, every piece is crafted to communicate clearly, inspire engagement, and leave a lasting impression."
           </p>
 
           <div className="mt-8 flex items-center gap-4">
@@ -232,11 +231,11 @@ export function Projects() {
                       </div>
 
                       <div className="bg-brand-accent text-black font-mono text-[10px] px-3 py-1 rounded-full shadow-lg">
-                        {new Date(project.createdAt).getFullYear()}
+                        {project.createdAt ? new Date(project.createdAt).getFullYear() : 'N/A'}
                       </div>
 
                     </div>
-
+                        
                   </div>
 
                   <div className="space-y-4">
@@ -445,7 +444,6 @@ export function Projects() {
 
         )}
       </div>
-
 
 
 
