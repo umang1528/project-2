@@ -164,7 +164,7 @@ export function Projects() {
       </div>
 
       {/* PROJECT GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-y-24 gap-x-12">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-y-10 gap-x-12">
 
         {featuredProjects.length === 0 && !loading ? (
           <div className="col-span-full border border-white/10 p-20 text-center text-white/50">
@@ -214,15 +214,15 @@ export function Projects() {
                       src={thumbnail}
                       alt={project.title}
                       className={`
-    w-full
-    object-cover
-    grayscale
-    group-hover:grayscale-0
-    transition-all
-    duration-700
-    group-hover:scale-[1.02]
-    ${isLarge ? 'h-[850px]' : 'h-[500px]'}
-  `}
+                      w-full
+                      object-cover
+                      grayscale
+                      group-hover:grayscale-0
+                      transition-all
+                      duration-700
+                      group-hover:scale-[1.02]
+                      ${isLarge ? 'h-[850px]' : 'h-[500px]'}
+                    `}
                     />
 
                     <div className="absolute top-6 left-6 flex flex-col gap-2">
@@ -269,11 +269,56 @@ export function Projects() {
 
                 </motion.button>
 
+
+
+                {/* after 4 project image section */}
                 {(index + 1) % 4 === 0 && (
 
-                  <div className="col-span-full my-24">
+                  <div className="col-span-full my-20">
 
-                    <div className="mt-16 hidden md:flex h-[650px] gap-3">
+                    {/* HEADER */}
+
+                    <div className="mb-16 flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8">
+
+                      <div>
+
+                        <span className="text-brand-accent uppercase tracking-[0.4em] text-xs">
+                          — Process Showcase
+                        </span>
+
+                        <h2 className="
+          mt-4
+          font-display
+          text-5xl
+          md:text-7xl
+          lg:text-[8rem]
+          uppercase
+          leading-[0.85]
+          tracking-tight
+        ">
+                          Project
+                          <br />
+                          Breakdown
+                        </h2>
+
+                      </div>
+
+                      <p className="
+        max-w-md
+        text-studio-text/60
+        text-lg
+        leading-relaxed
+      ">
+                        Explore the visual journey, layouts,
+                        concepts and design decisions behind
+                        the project.
+                      </p>
+
+                    </div>
+
+                    {/* ACCORDION */}
+
+                    <div className="hidden md:flex h-[650px] gap-3">
 
                       {[1, 2, 3, 4, 5].map((item, index) => {
 
@@ -292,29 +337,29 @@ export function Projects() {
                               ease: "easeInOut",
                             }}
                             className="
-          relative
-          overflow-hidden
-          rounded-[28px]
-          border
-          border-white/10
-          cursor-pointer
-          min-w-0
-        "
+            relative
+            overflow-hidden
+            rounded-[32px]
+            border
+            border-white/10
+            cursor-pointer
+            min-w-0
+          "
                           >
 
                             <img
                               src={`https://picsum.photos/seed/pbreak${item}/900/1400`}
                               alt=""
                               className="
-            absolute
-            inset-0
-            w-full
-            h-full
-            object-cover
-          "
+              absolute
+              inset-0
+              w-full
+              h-full
+              object-cover
+            "
                             />
 
-                            <div className="absolute inset-0 bg-black/40" />
+                            <div className="absolute inset-0 bg-black/50" />
 
                             {isActive && (
 
@@ -322,29 +367,56 @@ export function Projects() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 className="
-              absolute
-              inset-0
-              p-10
-              flex
-              flex-col
-              justify-between
-              z-10
-            "
+                absolute
+                inset-0
+                p-10
+                flex
+                flex-col
+                justify-between
+                z-10
+              "
                               >
 
                                 <div>
 
-                                  <span className="text-brand-accent uppercase tracking-[0.4em] text-xs">
+                                  <span className="
+                    text-brand-accent
+                    uppercase
+                    tracking-[0.4em]
+                    text-xs
+                  ">
                                     Project Breakdown
                                   </span>
 
-                                  <h3 className="mt-4 text-white text-5xl lg:text-6xl font-display uppercase">
+                                  <h3 className="
+                    mt-4
+                    text-white
+                    text-5xl
+                    lg:text-6xl
+                    font-display
+                    uppercase
+                  ">
                                     Project {item}
                                   </h3>
 
+                                  <p className="
+                    mt-6
+                    max-w-md
+                    text-white/70
+                    leading-relaxed
+                  ">
+                                    Explore layouts, visual systems,
+                                    creative thinking and design
+                                    decisions behind this project.
+                                  </p>
+
                                 </div>
 
-                                <span className="text-white/20 text-8xl font-display">
+                                <span className="
+                  text-white/20
+                  text-8xl
+                  font-display
+                ">
                                   0{item}
                                 </span>
 
@@ -363,6 +435,8 @@ export function Projects() {
                   </div>
 
                 )}
+                
+
 
               </>
             );

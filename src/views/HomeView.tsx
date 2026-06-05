@@ -99,10 +99,134 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
         </div>
       </section>
 
+      {/* insta Seamless  Carousel */}
+      <section className="pt-8 pb-4 overflow-hidden bg-[#f5f3ef]">
+        
+          <span className="block text-center text-brand-accent uppercase tracking-[0.4em] text-xs">
+            Visual Storytelling
+          </span>
+
+        <div className="text-center mb-20">
+
+          <h2 className="mt-6 font-display text-6xl md:text-8xl uppercase leading-none">
+            Seamless
+            <br />
+            Carousel Experience
+          </h2>
+
+        </div>
+
+        <div className="relative h-[700px] flex items-center">
+
+          {/* Moving Images */}
+
+          <motion.div
+            animate={{
+              x: ["0%", "-50%"],
+            }}
+            transition={{
+              repeat: Infinity,
+              duration: 30,
+              ease: "linear",
+            }}
+            className="absolute flex gap-6"
+          >
+
+            {[...Array(12)].map((_, i) => (
+
+              <div
+                key={i}
+                className="w-[280px] h-[360px] overflow-hidden border border-black/10 bg-white p-1"
+              >
+
+                <img
+                  src={`https://picsum.photos/seed/${i}/900/1200`}
+                  alt=""
+                  className="w-full h-full object-cover"
+                />
+
+              </div>
+
+            ))}
+
+          </motion.div>
+
+          {/* PHONE */}
+
+          {/* Phone Frame */}
+          <div className="absolute inset-0 flex items-center justify-center">
+
+            <div className="relative w-[300px] h-[580px]">
+
+              {/* TOP WHITE PANEL */}
+              <div className="absolute top-0 left-0 right-0 h-[110px] bg-white rounded-t-[43px] z-40" />
+
+              {/* BOTTOM WHITE PANEL */}
+              <div className="absolute bottom-0 left-0 right-0 h-[110px] bg-white rounded-b-[43px] z-40" />
+
+              {/* Dynamic Island */}
+              <div className="absolute top-4 left-1/2 -translate-x-1/2 w-[110px] h-[28px] bg-black rounded-full z-50" />
+
+              {/* Instagram Header */}
+              <div className="absolute top-16 left-0 right-0 px-5 z-50">
+
+                <div className="flex items-center justify-between">
+
+                  <div className="flex items-center gap-3">
+
+                    <div className="w-8 h-8 rounded-full bg-black" />
+
+                    <span className="text-black text-sm font-semibold">
+                      umang.design
+                    </span>
+
+                  </div>
+
+                  <span className="text-black text-lg">•••</span>
+
+                </div>
+
+              </div>
+
+              {/* Bottom Instagram UI */}
+              <div className="absolute bottom-8 left-0 right-0 px-6 text-black z-50">
+
+                <div className="flex items-center gap-4 text-sm font-medium mb-3">
+
+                  <span>❤️ 2.4k</span>
+                  <span>💬 124</span>
+                  <span>↗ Share</span>
+
+                </div>
+
+                <p className="text-xs uppercase tracking-[0.3em] opacity-70 text-center">
+                  Carousel Preview
+                </p>
+
+              </div>
+
+              {/* PHONE BORDER - LAST */}
+              <div className="absolute inset-0 rounded-[55px] border-[12px] border-black pointer-events-none z-[60]" />
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </section >
+
+
+
+
+
+
+
+
       {/* Featured Projects Grid - Carousel Style */}
-      <section id="projects" className="py-32 px-6 md:px-12 lg:px-15 max-w-[1600px] mx-auto">
+      < section id="projects" className="py-32 px-6 md:px-12 lg:px-15 max-w-[1600px] mx-auto" >
         {/* Header */}
-        <div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-12">
+        < div className="mb-24 flex flex-col md:flex-row justify-between items-end gap-12" >
           <div className="space-y-6">
             <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block">— CASE STUDIES</span>
             <h2 className="text-6xl md:text-8xl font-display font-bold leading-[0.9] tracking-tighter uppercase">
@@ -136,105 +260,107 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               />
             </div>
           </button>
-        </div>
+        </div >
 
         {/* Carousel Style Grid - Alternating Large/Small */}
-        <div className="grid grid-cols-1 md:grid-cols-4 bg-white p-2 gap-4 auto-rows-[350px]">
-          {loading ? (
-            <div className="col-span-full py-20 text-center text-black">
-              Loading Featured Projects...
-            </div>
-          ) : (
-            featuredProjects.slice(0, visibleProjects).map((project: any, index: number) => {
-              const thumbnail =
-                typeof project.thumbnail === 'string'
-                  ? project.thumbnail
-                  : project.thumbnail?.url;
+        < div className="grid grid-cols-1 md:grid-cols-4 bg-white p-2 gap-4 auto-rows-[350px]" >
+          {
+            loading ? (
+              <div className="col-span-full py-20 text-center text-black" >
+                Loading Featured Projects...
+              </div>
+            ) : (
+              featuredProjects.slice(0, visibleProjects).map((project: any, index: number) => {
+                const thumbnail =
+                  typeof project.thumbnail === 'string'
+                    ? project.thumbnail
+                    : project.thumbnail?.url;
 
-              // Carousel pattern: Large, Small, Small, Large - repeat
-              // Pattern for 8 projects: L, S, S, L, S, S, L, S
-              const getLayoutClass = () => {
-                const pattern = [
-                  'md:col-span-2 md:row-span-2',
-                  'md:col-span-1',
-                  'md:col-span-1',
-                  'md:col-span-2 md:row-span-2',
-                  'md:col-span-1',
-                  'md:col-span-1',
-                  'md:col-span-2 md:row-span-2',
-                  'md:col-span-2',
-                ];
+                // Carousel pattern: Large, Small, Small, Large - repeat
+                // Pattern for 8 projects: L, S, S, L, S, S, L, S
+                const getLayoutClass = () => {
+                  const pattern = [
+                    'md:col-span-2 md:row-span-2',
+                    'md:col-span-1',
+                    'md:col-span-1',
+                    'md:col-span-2 md:row-span-2',
+                    'md:col-span-1',
+                    'md:col-span-1',
+                    'md:col-span-2 md:row-span-2',
+                    'md:col-span-2',
+                  ];
 
-                return pattern[index % pattern.length];
-              };
+                  return pattern[index % pattern.length];
+                };
 
-              const sizeClass = getLayoutClass();
-              const isLarge = sizeClass.includes('col-span-2');
+                const sizeClass = getLayoutClass();
+                const isLarge = sizeClass.includes('col-span-2');
 
-              return (
-                <motion.div
-                  key={project._id}
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-50px' }}
-                  transition={{ duration: 0.8, delay: index * 0.1 }}
-                  className={`bg-white group cursor-pointer overflow-hidden relative ${sizeClass}`}
-                  onClick={() => navigate(`/projects/${project.slug}`)}
-                >
-                  {/* Gradient Overlay */}
-                  <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-all duration-700" />
+                return (
+                  <motion.div
+                    key={project._id}
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '-50px' }}
+                    transition={{ duration: 0.8, delay: index * 0.1 }}
+                    className={`bg-white group cursor-pointer overflow-hidden relative ${sizeClass}`}
+                    onClick={() => navigate(`/projects/${project.slug}`)}
+                  >
+                    {/* Gradient Overlay */}
+                    <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-70 group-hover:opacity-90 transition-all duration-700" />
 
-                  {/* Content Overlay */}
-                  <div className="absolute inset-0 z-30 p-8 md:p-12 flex flex-col justify-between pointer-events-none">
-                    {/* Top Section */}
-                    <div className="flex justify-between items-start">
-                      <span className="text-[10px] font-mono font-bold text-white bg-brand-accent px-3 py-1 uppercase tracking-widest leading-none">
-                        № {String(index + 1).padStart(2, '0')}
-                      </span>
+                    {/* Content Overlay */}
+                    <div className="absolute inset-0 z-30 p-8 md:p-12 flex flex-col justify-between pointer-events-none">
+                      {/* Top Section */}
+                      <div className="flex justify-between items-start">
+                        <span className="text-[10px] font-mono font-bold text-white bg-brand-accent px-3 py-1 uppercase tracking-widest leading-none">
+                          № {String(index + 1).padStart(2, '0')}
+                        </span>
 
-                      <div className="flex gap-2 flex-wrap justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        {project.tags?.slice(0, 3).map((tag: string) => (
-                          <span
-                            key={tag}
-                            className="text-[8px] font-mono font-bold text-black bg-white px-2 py-1 uppercase tracking-widest"
-                          >
-                            {tag}
-                          </span>
-                        ))}
+                        <div className="flex gap-2 flex-wrap justify-end opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                          {project.tags?.slice(0, 3).map((tag: string) => (
+                            <span
+                              key={tag}
+                              className="text-[8px] font-mono font-bold text-black bg-white px-2 py-1 uppercase tracking-widest"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Bottom Section */}
+                      <div>
+                        <span className="text-white/70 text-[10px] font-mono uppercase tracking-[0.3em] block mb-3">
+                          {project.category}
+                        </span>
+
+                        <h3 className={`text-white font-display font-bold leading-none tracking-tighter uppercase ${isLarge ? 'text-4xl md:text-6xl' : 'text-2xl md:text-3xl'
+                          }`}>
+                          {project.title}
+                        </h3>
                       </div>
                     </div>
 
-                    {/* Bottom Section */}
-                    <div>
-                      <span className="text-white/70 text-[10px] font-mono uppercase tracking-[0.3em] block mb-3">
-                        {project.category}
-                      </span>
-
-                      <h3 className={`text-white font-display font-bold leading-none tracking-tighter uppercase ${isLarge ? 'text-4xl md:text-6xl' : 'text-2xl md:text-3xl'
-                        }`}>
-                        {project.title}
-                      </h3>
+                    {/* Image */}
+                    <div className="relative h-full overflow-hidden">
+                      <img
+                        src={thumbnail}
+                        alt={project.title}
+                        className="w-full h-full object-cover grayscale-75 brightness-90 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out"
+                        referrerPolicy="no-referrer"
+                      />
                     </div>
-                  </div>
 
-                  {/* Image */}
-                  <div className="relative h-full overflow-hidden">
-                    <img
-                      src={thumbnail}
-                      alt={project.title}
-                      className="w-full h-full object-cover grayscale-75 brightness-90 group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000 ease-out"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-
-                  {/* Corner Accent - Decorative */}
-                  <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-white/0 group-hover:border-white/60 transition-all duration-500" />
-                  <div className="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-white/0 group-hover:border-white/60 transition-all duration-500" />
-                </motion.div>
-              );
-            })
-          )}
-        </div>
+                    {/* Corner Accent - Decorative */}
+                    <div className="absolute top-4 right-4 w-12 h-12 border-t-2 border-r-2 border-white/0 group-hover:border-white/60 transition-all duration-500" />
+                    <div className="absolute bottom-4 left-4 w-12 h-12 border-b-2 border-l-2 border-white/0 group-hover:border-white/60 transition-all duration-500" />
+                  </motion.div>
+                );
+              })
+            )
+          }
+        </div >
 
         {/* View All Button */}
         {/* {featuredProjects.length > 8 && (
@@ -260,33 +386,35 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
           </motion.div>
         )} */}
         {/* View More Button */}
-        {visibleProjects < featuredProjects.length && (
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="mt-12 flex justify-center"
-          >
-            <button
-              onClick={() => setVisibleProjects(prev => prev + 4)}
-              className="group flex items-center gap-6 bg-transparent border border-studio-border px-10 py-6 hover:bg-brand-accent hover:border-brand-accent transition-all duration-500"
+        {
+          visibleProjects < featuredProjects.length && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="mt-12 flex justify-center"
             >
-              <span className="text-[12px] font-bold uppercase tracking-[0.3em] text-studio-text group-hover:text-white transition-colors">
-                View More Projects
-              </span>
+              <button
+                onClick={() => setVisibleProjects(prev => prev + 4)}
+                className="group flex items-center gap-6 bg-transparent border border-studio-border px-10 py-6 hover:bg-brand-accent hover:border-brand-accent transition-all duration-500"
+              >
+                <span className="text-[12px] font-bold uppercase tracking-[0.3em] text-studio-text group-hover:text-white transition-colors">
+                  View More Projects
+                </span>
 
-              <ArrowRight
-                size={20}
-                className="text-studio-text group-hover:text-white group-hover:translate-x-1 transition-all duration-500"
-              />
-            </button>
-          </motion.div>
-        )}
-      </section>
+                <ArrowRight
+                  size={20}
+                  className="text-studio-text group-hover:text-white group-hover:translate-x-1 transition-all duration-500"
+                />
+              </button>
+            </motion.div>
+          )
+        }
+      </section >
 
       {/* Competencies / Skills Section */}
-      <section id="competencies" className="py-30 px-6 max-w-[1400px] mx-auto bg-studio-text text-white">
+      < section id="competencies" className="py-30 px-6 max-w-[1400px] mx-auto bg-studio-text text-white" >
         <div className="grid lg:grid-cols-12 gap-16 items-start">
           {/* Left Side */}
           <motion.div
@@ -424,10 +552,10 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
             ))}
           </div>
         </div>
-      </section>
+      </section >
 
       {/* About Teaser */}
-      <section id="about" className="py-48 px-6 max-w-[1400px] mx-auto border-t border-studio-border">
+      < section id="about" className="py-48 px-6 max-w-[1400px] mx-auto border-t border-studio-border" >
         <div className="grid lg:grid-cols-2 gap-24 items-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
@@ -481,11 +609,11 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
             </button>
           </div>
         </div>
-      </section>
+      </section >
 
       {/* CONTACT SECTION */}
 
-      <section className="py-40 px-6 max-w-[1400px] mx-auto border-t border-studio-border">
+      < section className="py-40 px-6 max-w-[1400px] mx-auto border-t border-studio-border" >
 
         <div className="grid lg:grid-cols-2 border border-studio-border bg-white">
 
@@ -622,7 +750,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
 
         </div>
 
-      </section>
+      </section >
     </>
   );
 }
