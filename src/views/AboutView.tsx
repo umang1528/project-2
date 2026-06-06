@@ -1,6 +1,5 @@
 import { motion } from 'motion/react';
-import { useState } from "react";
-
+import { useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
 interface AboutViewProps {
@@ -11,114 +10,74 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
   const [activeIndex, setActiveIndex] = useState(1);
 
   return (
+    <section className="
+      pt-24 sm:pt-32 md:pt-40 lg:pt-48
+      pb-16 sm:pb-24 md:pb-32
+      px-4 sm:px-6 md:px-8
+      max-w-[1400px] mx-auto
+    ">
 
-    <section className="pt-48 pb-32 px-6 max-w-[1400px] mx-auto">
-
-      {/* HERO */}
-
+      {/* ── HERO ── */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
-        className="mb-20"
+        className="mb-12 sm:mb-16 md:mb-20"
       >
-
-        <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-8 block">
+        <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-[10px] mb-5 sm:mb-8 block">
           — About Me
         </span>
 
-        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-16 items-end">
+        <div className="grid lg:grid-cols-[1.2fr_0.8fr] gap-10 sm:gap-12 md:gap-16 items-end">
 
-          {/* LEFT SIDE */}
-
+          {/* LEFT */}
           <div>
-
-            <h1
-              className="
-        font-display
-        text-[16vw]
-        leading-[0.8]
-        tracking-[-0.08em]
-        uppercase
-        font-bold
-        "
-            >
+            <h1 className="
+              font-display font-bold leading-[0.8] tracking-[-0.08em] uppercase
+              text-[18vw] sm:text-[15vw] md:text-[13vw] lg:text-[11vw] xl:text-[10rem]
+            ">
               UMANG
             </h1>
-
-            <h1
-              className="
-        font-display
-        text-[16vw]
-        leading-[0.8]
-        tracking-[-0.08em]
-        uppercase
-        font-bold
-        text-studio-text/20
-        "
-            >
+            <h1 className="
+              font-display font-bold leading-[0.8] tracking-[-0.08em] uppercase
+              text-studio-text/20
+              text-[18vw] sm:text-[15vw] md:text-[13vw] lg:text-[11vw] xl:text-[10rem]
+            ">
               VISUALS
             </h1>
-
           </div>
 
-          {/* RIGHT SIDE */}
-
-          <div className="pb-8">
-
+          {/* RIGHT */}
+          <div className="pb-4 sm:pb-6 md:pb-8">
             <span className="text-brand-accent uppercase tracking-[0.3em] text-xs">
               Graphic Designer & Visual Creator
             </span>
-
-            <p
-              className="
-        mt-6
-        text-xl
-        leading-relaxed
-        text-studio-text/60
-        "
-            >
-              I am a Graphic Designer and Fine Artist passionate about visual storytelling, branding and creative expression. My work combines artistic thinking with strategic design, allowing me to create experiences that are both visually engaging and purpose-driven. From traditional sketching and fine arts to digital branding and content creation, I enjoy exploring creativity across multiple mediums.
-
+            <p className="mt-4 sm:mt-6 text-base sm:text-lg md:text-xl leading-relaxed text-studio-text/60">
+              I am a Graphic Designer and Fine Artist passionate about visual storytelling, branding
+              and creative expression. My work combines artistic thinking with strategic design,
+              allowing me to create experiences that are both visually engaging and purpose-driven.
+              From traditional sketching and fine arts to digital branding and content creation,
+              I enjoy exploring creativity across multiple mediums.
             </p>
-
           </div>
-
         </div>
 
-        {/* FEATURE IMAGE */}
-
-        <div className="mt-24 relative overflow-hidden rounded-[50px]">
-          {/* Main Image */}
+        {/* Feature Image */}
+        <div className="mt-12 sm:mt-16 md:mt-24 relative overflow-hidden rounded-2xl sm:rounded-3xl md:rounded-[50px]">
           <img
             src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400&auto=format&fit=crop"
             alt="Studio"
             className="
-      h-[850px]
-      w-full
-      object-cover
-      transition-all
-      duration-1000
-      hover:scale-105
-    "
+              w-full object-cover transition-all duration-1000 hover:scale-105
+              h-[280px] sm:h-[420px] md:h-[580px] lg:h-[700px] xl:h-[850px]
+            "
           />
-
-          {/* Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-
-          {/* Content Overlay */}
-          <div className="absolute bottom-12 left-12">
-            <span className="text-white/60 tracking-[0.4em] uppercase text-xs">
+          <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 md:bottom-12 md:left-12">
+            <span className="text-white/60 tracking-[0.4em] uppercase text-[10px] sm:text-xs">
               Design Philosophy
             </span>
-
-            <h2
-              className="
-        text-white
-        font-display
-        text-6xl
-        uppercase
-        mt-4
-      "
+            <h2 className="text-white font-display uppercase mt-3 sm:mt-4
+              text-3xl sm:text-4xl md:text-5xl lg:text-6xl"
             >
               Create
               <br />
@@ -127,56 +86,56 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
           </div>
         </div>
 
-        {/* Summary Paragraph Below Image */}
-        <div className="mt-12 px-4 md:px-12">
+        {/* Summary paragraph */}
+        <div className="mt-8 sm:mt-10 md:mt-12 px-0 sm:px-4 md:px-12">
           <div className="max-w-4xl">
-            <p className="text-studio-text/70 text-lg md:text-xl font-light leading-relaxed tracking-wide">
-              My creative approach is rooted in curiosity, observation and storytelling. Whether I am designing a brand identity, creating digital content or working on traditional artwork, I focus on building visuals that communicate clearly and leave a lasting impression. Every project is an opportunity to combine artistic expression with thoughtful design solutions.
-
+            <p className="text-studio-text/70 text-base sm:text-lg md:text-xl font-light leading-relaxed tracking-wide">
+              My creative approach is rooted in curiosity, observation and storytelling. Whether I am
+              designing a brand identity, creating digital content or working on traditional artwork,
+              I focus on building visuals that communicate clearly and leave a lasting impression.
+              Every project is an opportunity to combine artistic expression with thoughtful design solutions.
             </p>
           </div>
 
-          {/* Decorative Line with Our Approach */}
-          <div className="mt-8 flex items-center gap-4">
-            <div className="w-16 h-[1px] bg-brand-accent" />
+          <div className="mt-6 sm:mt-8 flex items-center gap-4">
+            <div className="w-12 sm:w-16 h-[1px] bg-brand-accent" />
             <span className="text-brand-accent font-mono text-xs tracking-widest uppercase">
-            Our Approach
+              Our Approach
             </span>
           </div>
 
-          {/* Bottom Decorative Line */}
-          <div className="mt-12 w-full h-[3px] bg-studio-border" />
+          <div className="mt-8 sm:mt-10 md:mt-12 w-full h-[3px] bg-studio-border" />
         </div>
-
       </motion.div>
 
-      {/* FOUNDER / CREATIVE DIRECTOR */}
-
+      {/* ── FOUNDER / CREATIVE DIRECTOR ── */}
       <section className="border-b border-studio-border">
+        <div className="grid lg:grid-cols-[300px_1fr] gap-10 sm:gap-14 md:gap-20">
 
-        <div className="grid lg:grid-cols-[300px_1fr] gap-20">
           {/* LEFT */}
           <div>
-            <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-[10px] block mb-6">
+            <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-[10px] block mb-4 sm:mb-6">
               — Creative Director
             </span>
-
-            <div className="overflow-hidden rounded-[30px]">
+            <div className="overflow-hidden rounded-2xl sm:rounded-3xl md:rounded-[30px]">
               <img
                 src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
                 alt="Founder"
-                className="w-full h-[420px] object-cover"
+                className="w-full object-cover
+                  h-[260px] sm:h-[340px] md:h-[400px] lg:h-[420px]"
               />
             </div>
           </div>
 
           {/* RIGHT */}
-          <div className="pt-0 mb-20">
+          <div className="pt-0 mb-12 sm:mb-16 md:mb-20">
             <span className="text-studio-text/40 uppercase tracking-[0.3em] text-xs">
               About Me
             </span>
 
-            <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.9] mt-4 mb-10">
+            <h2 className="font-display uppercase leading-[0.9] mt-3 sm:mt-4 mb-6 sm:mb-8 md:mb-10
+              text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
+            >
               I'm A Graphic
               <br />
               Designer,
@@ -186,295 +145,52 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
               Visual Creator
             </h2>
 
-            <p className="text-studio-text/60 text-lg leading-relaxed max-w-3xl">
-              Currently working as a Graphic Designer at MYITRONLINE Global Services while pursuing higher education and advanced artistic training. My journey combines Fine Arts, Interior Design and Graphic Design, giving me a multidisciplinary perspective on creativity. I enjoy transforming ideas into meaningful visual experiences through branding, social media design, promotional campaigns, illustration and digital content creation.
-
+            <p className="text-studio-text/60 text-base sm:text-lg leading-relaxed max-w-3xl">
+              Currently working as a Graphic Designer at MYITRONLINE Global Services while pursuing
+              higher education and advanced artistic training. My journey combines Fine Arts, Interior
+              Design and Graphic Design, giving me a multidisciplinary perspective on creativity.
+              I enjoy transforming ideas into meaningful visual experiences through branding, social
+              media design, promotional campaigns, illustration and digital content creation.
             </p>
 
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
-              <div>
-                <h3 className="font-display text-5xl">25+</h3>
-                <p className="text-xs uppercase tracking-[0.2em] text-studio-text/50">
-                  Projects
-                </p>
-              </div>
-
-              <div>
-                <h3 className="font-display text-5xl">2+</h3>
-                <p className="text-xs uppercase tracking-[0.2em] text-studio-text/50">
-                  Years
-                </p>
-              </div>
-
-              <div>
-                <h3 className="font-display text-5xl">10+</h3>
-                <p className="text-xs uppercase tracking-[0.2em] text-studio-text/50">
-                  Brands
-                </p>
-              </div>
-
-              <div>
-                <h3 className="font-display text-5xl">100%</h3>
-                <p className="text-xs uppercase tracking-[0.2em] text-studio-text/50">
-                  Custom
-                </p>
-              </div>
+            {/* Stats */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-5 sm:gap-6 md:gap-8 mt-10 sm:mt-12 md:mt-16">
+              {[
+                { stat: '25+', label: 'Projects' },
+                { stat: '2+', label: 'Years' },
+                { stat: '10+', label: 'Brands' },
+                { stat: '100%', label: 'Custom' },
+              ].map(({ stat, label }) => (
+                <div key={label}>
+                  <h3 className="font-display text-4xl sm:text-5xl">{stat}</h3>
+                  <p className="text-xs uppercase tracking-[0.2em] text-studio-text/50 mt-1">{label}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
+      {/* ── MANIFESTO ── */}
+      <section className="py-12 sm:py-16 md:py-20 text-center relative overflow-hidden">
 
-
-      {/* CREATIVE JOURNEY TIMELINE */}
-
-      {/* <section className="py-40"> */}
-
-      {/* SECTION HEADER */}
-
-      {/* <div className="mb-24">
-
-          <span className="text-brand-accent font-bold tracking-[0.4em] uppercase text-[10px] block mb-4">
-            — Creative Journey
-          </span>
-
-          <h2
-            className="
-            font-display
-            text-5xl
-            md:text-7xl
-            uppercase
-            leading-[0.85]
-            "
-          >
-            Building
-            <br />
-            Experience
-            <br />
-            Through Design.
-          </h2>
-
-        </div> */}
-
-      {/* TIMELINE */}
-
-      {/* <div className="relative">
-
-          MAIN LINE
-
-          <div
-            className="
-      absolute
-      left-[45px]
-      top-0
-      bottom-0
-      w-px
-      bg-studio-border
-      "
-          />
-
-          {[
-            {
-              year: "2021",
-              title: "Started Design Journey",
-              desc: "Discovered graphic design and started learning branding, typography and visual storytelling.",
-            },
-
-            {
-              year: "2022",
-              title: "Freelance Projects",
-              desc: "Worked with local businesses and startups creating social media creatives and marketing visuals.",
-            },
-
-            {
-              year: "2023",
-              title: "Brand Identity Design",
-              desc: "Focused on logo design, visual systems and complete brand identity development.",
-            },
-
-            {
-              year: "2024",
-              title: "Professional Growth",
-              desc: "Collaborated with agencies and handled larger creative projects across different industries.",
-            },
-
-            {
-              year: "2025",
-              title: "Creative Direction",
-              desc: "Leading design projects, creating systems and delivering premium visual experiences.",
-            },
-
-          ].map((item, index) => (
-
-            <motion.div
-              key={index}
-              initial={{
-                opacity: 0,
-                y: 40,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                delay: index * 0.1,
-              }}
-              className="
-        relative
-        pl-32
-        pb-24
-        group
-        "
-            >
-
-              YEAR BG
-
-              <span
-                className="
-          absolute
-          right-0
-          top-0
-          font-display
-          text-[7rem]
-          md:text-[10rem]
-          leading-none
-          text-studio-text/[0.04]
-          select-none
-          pointer-events-none
-          "
-              >
-                {item.year}
-              </span>
-
-              DOT
-
-              <div
-                className="
-          absolute
-          left-[33px]
-          top-4
-          w-6
-          h-6
-          rounded-full
-          border-2
-          border-brand-accent
-          bg-white
-          transition-all
-          duration-300
-          group-hover:scale-125
-          "
-              />
-
-              CONTENT
-
-              <span
-                className="
-          text-brand-accent
-          font-mono
-          tracking-[0.3em]
-          uppercase
-          text-xs
-          block
-          mb-4
-          "
-              >
-                {item.year}
-              </span>
-
-              <h3
-                className="
-          font-display
-          text-3xl
-          md:text-5xl
-          uppercase
-          mb-4
-          transition-all
-          duration-300
-          group-hover:translate-x-3
-          "
-              >
-                {item.title}
-              </h3>
-
-              <p
-                className="
-          text-studio-text/60
-          max-w-2xl
-          leading-relaxed
-          "
-              >
-                {item.desc}
-              </p>
-
-            </motion.div>
-
-          ))}
-
-        </div> */}
-
-      {/* </section> */}
-
-
-
-      {/* MANIFESTO */}
-
-      <section className="py-20 text-center relative overflow-hidden">
-
-        {/* BG WORD */}
-
-        <div
-          className="
-    absolute
-    inset-0
-    flex
-    items-center
-    justify-center
-    pointer-events-none
-    select-none
-    "
-        >
-          <span
-            className="
-      font-display
-      text-[25vw]
-      uppercase
-      leading-none
-      text-studio-text/[0.03]
-      "
-          >
+        {/* BG word */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none">
+          <span className="font-display uppercase leading-none text-studio-text/[0.03]
+            text-[25vw]">
             DESIGN
           </span>
         </div>
 
         <div className="relative z-10">
-
-          <span
-            className="
-      text-brand-accent
-      font-mono
-      tracking-[0.4em]
-      uppercase
-      text-[10px]
-      block
-      mb-10
-      "
-          >
+          <span className="text-brand-accent font-mono tracking-[0.4em] uppercase text-[10px] block mb-6 sm:mb-10">
             — Manifesto
           </span>
 
-          <h2
-            className="
-      font-display
-      text-[12vw]
-      md:text-[9rem]
-      uppercase
-      leading-[0.85]
-      tracking-[-0.08em]
-      "
-          >
+          <h2 className="
+            font-display uppercase leading-[0.85] tracking-[-0.08em]
+            text-[10vw] sm:text-[9vw] md:text-[8vw] lg:text-[7rem] xl:text-[9rem]
+          ">
             I DON'T
             <br />
             CREATE TO
@@ -482,21 +198,14 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
             FOLLOW TRENDS.
           </h2>
 
-          <div className="my-12 flex justify-center">
-            <div className="w-24 h-[2px] bg-brand-accent" />
+          <div className="my-8 sm:my-12 flex justify-center">
+            <div className="w-16 sm:w-24 h-[2px] bg-brand-accent" />
           </div>
 
-          <h2
-            className="
-      font-display
-      text-[12vw]
-      md:text-[9rem]
-      uppercase
-      leading-[0.85]
-      tracking-[-0.08em]
-      text-studio-text/20
-      "
-          >
+          <h2 className="
+            font-display uppercase leading-[0.85] tracking-[-0.08em] text-studio-text/20
+            text-[10vw] sm:text-[9vw] md:text-[8vw] lg:text-[7rem] xl:text-[9rem]
+          ">
             I DESIGN
             <br />
             TO CREATE
@@ -504,34 +213,20 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
             MEMORY.
           </h2>
 
-          <div
-            className="
-      mt-24
-      max-w-4xl
-      mx-auto
-      "
-          >
-            <p
-              className="
-        text-xl
-        text-studio-text/60
-        leading-relaxed
-        "
-            >
-              Great design is not just about aesthetics. it is about communication, emotion and impact. My goal is to create work that connects with people, strengthens brands and tells meaningful stories. Whether through design or art, I believe every visual should have a purpose and every project should leave a lasting impression.
-
+          <div className="mt-12 sm:mt-16 md:mt-24 max-w-4xl mx-auto px-2 sm:px-0">
+            <p className="text-base sm:text-lg md:text-xl text-studio-text/60 leading-relaxed">
+              Great design is not just about aesthetics. it is about communication, emotion and
+              impact. My goal is to create work that connects with people, strengthens brands and
+              tells meaningful stories. Whether through design or art, I believe every visual should
+              have a purpose and every project should leave a lasting impression.
             </p>
           </div>
-
         </div>
-
       </section>
 
-
-
-      {/* MANIFESTO BOTTOM IMAGES */}
-      <section className="py-10 mb-5 bg-studio-text overflow-hidden">
-        <div className="max-w-[1800px] max-h-[1000px] mx-auto px-6">
+      {/* ── PROCESS SHOWCASE (Accordion) ── */}
+      <section className="py-8 sm:py-10 mb-4 sm:mb-5 bg-studio-text overflow-hidden -mx-4 sm:-mx-6 md:-mx-8 px-4 sm:px-6 md:px-8">
+        <div className="max-w-[1800px] mx-auto">
 
           <motion.span
             initial={{ opacity: 0 }}
@@ -546,7 +241,8 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-4 text-white font-display uppercase leading-[0.85] tracking-tight text-5xl md:text-7xl lg:text-[9rem]"
+            className="mt-3 sm:mt-4 text-white font-display uppercase leading-[0.85] tracking-tight
+              text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-[9rem]"
           >
             Project
             <br />
@@ -557,148 +253,125 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className="mt-6 max-w-md text-white/50 text-base"
+            className="mt-4 sm:mt-6 max-w-md text-white/50 text-sm sm:text-base"
           >
             Explore the visual journey, layouts, concepts and design decisions behind the project.
           </motion.p>
 
-          {/* Images */}
-        <div className="mt-16 hidden md:flex h-[650px] gap-3">
-
-  {[1, 2, 3, 4, 5].map((item, index) => {
-
-    const isActive = activeIndex === index;
-
-    return (
-
-      <motion.div
-        key={index}
-        onMouseEnter={() => setActiveIndex(index)}
-        animate={{
-          flex: isActive ? 5 : 1,
-        }}
-        transition={{
-          duration: 0.8,
-          ease: "easeInOut",
-        }}
-        className="
-          relative
-          overflow-hidden
-          rounded-[28px]
-          border
-          border-white/10
-          cursor-pointer
-          min-w-0
-        "
-      >
-
-        <img
-          src={`https://picsum.photos/seed/pbreak${item}/900/1400`}
-          alt=""
-          className="
-            absolute
-            inset-0
-            w-full
-            h-full
-            object-cover
-          "
-        />
-
-        <div className="absolute inset-0 bg-black/40" />
-
-        {isActive && (
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="
-              absolute
-              inset-0
-              p-10
-              flex
-              flex-col
-              justify-between
-              z-10
-            "
+          {/* Desktop accordion */}
+          <div className="mt-10 sm:mt-14 md:mt-16 hidden md:flex
+            h-[460px] lg:h-[560px] xl:h-[650px] gap-2 lg:gap-3"
           >
+            {[1, 2, 3, 4, 5].map((item, index) => {
+              const isActive = activeIndex === index;
+              return (
+                <motion.div
+                  key={index}
+                  onMouseEnter={() => setActiveIndex(index)}
+                  animate={{ flex: isActive ? 5 : 1 }}
+                  transition={{ duration: 0.8, ease: 'easeInOut' }}
+                  className="relative overflow-hidden rounded-[20px] lg:rounded-[28px] border border-white/10 cursor-pointer min-w-0"
+                >
+                  <img
+                    src={`https://picsum.photos/seed/pbreak${item}/900/1400`}
+                    alt=""
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-black/40" />
 
-            <div>
+                  {isActive && (
+                    <motion.div
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      className="absolute inset-0 p-7 lg:p-10 flex flex-col justify-between z-10"
+                    >
+                      <div>
+                        <span className="text-brand-accent uppercase tracking-[0.4em] text-xs">
+                          Project Breakdown
+                        </span>
+                        <h3 className="mt-3 sm:mt-4 text-white font-display uppercase
+                          text-4xl lg:text-5xl xl:text-6xl">
+                          Project {item}
+                        </h3>
+                      </div>
+                      <span className="text-white/20 font-display text-7xl lg:text-8xl">
+                        0{item}
+                      </span>
+                    </motion.div>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
 
-              <span className="text-brand-accent uppercase tracking-[0.4em] text-xs">
-                Project Breakdown
-              </span>
+          {/* Mobile stacked cards */}
+          <div className="flex md:hidden flex-col gap-3 mt-8">
+            {[1, 2, 3, 4, 5].map((item) => (
+              <div
+                key={item}
+                className="relative overflow-hidden rounded-2xl border border-white/10 h-[180px] sm:h-[220px]"
+              >
+                <img
+                  src={`https://picsum.photos/seed/pbreak${item}/900/1400`}
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-black/50" />
+                <div className="absolute inset-0 p-5 flex flex-col justify-between z-10">
+                  <span className="text-brand-accent uppercase tracking-[0.4em] text-[10px]">
+                    Project Breakdown
+                  </span>
+                  <div className="flex items-end justify-between">
+                    <h3 className="text-white font-display uppercase text-2xl sm:text-3xl">
+                      Project {item}
+                    </h3>
+                    <span className="text-white/20 font-display text-5xl">0{item}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
 
-              <h3 className="mt-4 text-white text-5xl lg:text-6xl font-display uppercase">
-                Project {item}
-              </h3>
-
-            </div>
-
-            <span className="text-white/20 text-8xl font-display">
-              0{item}
-            </span>
-
-          </motion.div>
-
-        )}
-
-      </motion.div>
-
-    );
-
-  })}
-
-</div>
         </div>
       </section>
 
+      {/* ── CORE VALUES ── */}
+      <div className="mb-12 sm:mb-16 md:mb-20 mt-12 sm:mt-16 md:mt-20">
 
-
-
-      {/* CORE VALUES */}
-
-      <div className="mb-20">
-
-        <div className="mb-20">
-
-          <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block mb-4">
+        <div className="mb-10 sm:mb-14 md:mb-20">
+          <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block mb-3 sm:mb-4">
             — Creative Philosophy
           </span>
-
-          <h2 className="font-display text-5xl md:text-7xl uppercase leading-[0.9]">
+          <h2 className="font-display uppercase leading-[0.9]
+            text-4xl sm:text-5xl md:text-6xl lg:text-7xl"
+          >
             Principles
             <br />
             Behind My
             <br />
             Creative Work
           </h2>
-
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-
+        <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
           {[
             {
               title: 'ART WITH PURPOSE',
               desc: 'Every design and artwork should communicate something meaningful. I believe creativity is most powerful when it serves a clear purpose and connects with people on a deeper level.',
             },
-
             {
               title: 'STORY BEFORE STYLE',
               desc: 'Strong visuals begin with a strong idea. Whether designing a brand identity or creating artwork, I focus on telling stories that people can understand, remember and connect with.',
             },
-
             {
               title: 'BALANCE OF ART & DESIGN',
               desc: 'My background in fine arts and graphic design allows me to combine artistic expression with strategic thinking, creating work that is both visually compelling and highly functional.',
             },
-
             {
               title: 'CONTINUOUS EVOLUTION',
               desc: 'Creativity never stands still. I constantly explore new techniques, tools and perspectives to improve my craft and deliver better visual experiences with every project.',
             },
           ].map((item, i) => (
-
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 30 }}
@@ -706,166 +379,81 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               className="
-        group
-        relative
-        overflow-hidden
-        rounded-[32px]
-        border
-        border-studio-border
-        bg-white
-        p-10
-        min-h-[280px]
-        hover:-translate-y-2
-        transition-all
-        duration-500
-        "
+                group relative overflow-hidden
+                rounded-2xl sm:rounded-3xl md:rounded-[32px]
+                border border-studio-border bg-white
+                p-6 sm:p-8 md:p-10
+                min-h-[220px] sm:min-h-[260px] md:min-h-[280px]
+                hover:-translate-y-2 transition-all duration-500
+              "
             >
-
-              {/* NUMBER */}
-
-              <span className="
-          absolute
-          top-8
-          right-8
-          font-display
-          text-6xl
-          text-studio-text/5
-          leading-none
-        ">
+              {/* Number */}
+              <span className="absolute top-6 right-6 sm:top-8 sm:right-8 font-display text-5xl sm:text-6xl text-studio-text/5 leading-none">
                 0{i + 1}
               </span>
 
-              {/* SMALL LABEL */}
-
-              <span className="
-          text-brand-accent
-          font-mono
-          uppercase
-          tracking-[0.3em]
-          text-[10px]
-          block
-          mb-8
-        ">
+              <span className="text-brand-accent font-mono uppercase tracking-[0.3em] text-[10px] block mb-5 sm:mb-8">
                 Principle
               </span>
 
-              {/* TITLE */}
-
-              <h3 className="
-          font-display
-          text-3xl
-          md:text-4xl
-          uppercase
-          leading-[0.95]
-          mb-6
-        ">
+              <h3 className="font-display uppercase leading-[0.95] mb-4 sm:mb-6
+                text-2xl sm:text-3xl md:text-4xl"
+              >
                 {item.title}
               </h3>
 
-              {/* DESC */}
-
-              <p className="
-          text-studio-text/60
-          leading-relaxed
-          max-w-sm
-        ">
+              <p className="text-studio-text/60 leading-relaxed text-sm sm:text-base max-w-sm">
                 {item.desc}
               </p>
 
-              {/* HOVER BAR */}
-
-              <div className="
-          absolute
-          bottom-0
-          left-0
-          h-[4px]
-          w-0
-          bg-brand-accent
-          transition-all
-          duration-500
-          group-hover:w-full
-        " />
-
+              {/* Hover bottom bar */}
+              <div className="absolute bottom-0 left-0 h-[4px] w-0 bg-brand-accent transition-all duration-500 group-hover:w-full" />
             </motion.div>
-
           ))}
-
         </div>
-
       </div>
 
-      {/* FOOTER */}
+      {/* ── FOOTER ── */}
+      <div className="border-t border-studio-text pt-12 sm:pt-16 md:pt-24">
+        <div className="flex flex-col md:flex-row justify-between items-start gap-8 sm:gap-10 md:gap-12">
 
-      <div className="border-t border-studio-text pt-24">
-
-        <div className="flex flex-col md:flex-row justify-between items-start gap-12">
-
-          {/* LOCATION */}
-
-          <div className="space-y-4">
-
+          <div className="space-y-3 sm:space-y-4">
             <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block">
-
               Location
-
             </span>
-
-            <span className="text-2xl font-display font-bold uppercase text-studio-text">
-
+            <span className="text-xl sm:text-2xl font-display font-bold uppercase text-studio-text">
               Delhi, India
-
             </span>
-
           </div>
 
-          {/* ESTABLISHED */}
-
-          <div className="space-y-4">
-
+          <div className="space-y-3 sm:space-y-4">
             <span className="text-brand-accent font-mono font-bold tracking-[0.4em] uppercase text-[10px] block">
-
               Established
-
             </span>
-
-            <span className="text-2xl font-display font-bold uppercase text-studio-text">
-
+            <span className="text-xl sm:text-2xl font-display font-bold uppercase text-studio-text">
               2024 — Present
-
             </span>
-
           </div>
-
-          {/* BUTTON */}
 
           <button
             onClick={() => {
-
               setCurrentView?.('home');
-
               setTimeout(() => {
-
-                const el =
-                  document.getElementById(
-                    'contact'
-                  );
-
-                el?.scrollIntoView({
-                  behavior: 'smooth',
-                });
-
+                const el = document.getElementById('contact');
+                el?.scrollIntoView({ behavior: 'smooth' });
               }, 100);
-
             }}
-            className="px-10 py-5 bg-studio-text text-white font-bold uppercase tracking-widest text-[10px] hover:bg-brand-accent transition-colors"
+            className="
+              w-full md:w-auto
+              px-7 sm:px-10 py-4 sm:py-5
+              bg-studio-text text-white
+              font-bold uppercase tracking-widest text-[10px]
+              hover:bg-brand-accent transition-colors
+            "
           >
-
             Start a Collaboration
-
           </button>
-
         </div>
-
       </div>
 
     </section>
