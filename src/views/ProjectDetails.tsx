@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { useProjectStore } from '../store/useProjectStore';
 import { ArrowLeft, ArrowRight, Tag, Eye } from 'lucide-react';
+  import { ChevronLeft, ChevronRight } from "lucide-react";
 
 export function ProjectDetails() {
   const { slug } = useParams();
@@ -13,6 +14,21 @@ export function ProjectDetails() {
     loading,
     fetchProjectBySlug,
   } = useProjectStore();
+
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const nextProject = () => {
+    setCurrentIndex((prev) =>
+      prev === relatedProjects.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevProject = () => {
+    setCurrentIndex((prev) =>
+      prev === 0 ? relatedProjects.length - 1 : prev - 1
+    );
+  };
 
   const [galleryIndex, setGalleryIndex] = useState(0);
 
@@ -57,7 +73,7 @@ export function ProjectDetails() {
 
   return (
     <section className="px-6 pb-24 max-w-[1400px] mx-auto">
-      
+
       {/* BACK BUTTON */}
       <motion.button
         type="button"
@@ -282,7 +298,7 @@ export function ProjectDetails() {
 
 
       {/* RELATED PROJECTS */}
-      <div className="mt-32">
+      {/* <div className="mt-32">
         <div className="flex items-center justify-between mb-12">
           <h2 className="text-4xl md:text-6xl font-display uppercase tracking-tight">
             Related Work
@@ -375,6 +391,144 @@ export function ProjectDetails() {
               </motion.div>
             );
           })}
+        </div>
+      </div> */}
+
+      <div className="mt-40 overflow-hidden">
+
+        <div className="flex items-end justify-between mb-16">
+
+          <div>
+            <span className="text-xs uppercase tracking-[0.4em] text-orange-500">
+              More Projects
+            </span>
+
+            <h2 className="mt-4 text-5xl md:text-7xl font-display uppercase leading-none">
+              Related Work
+            </h2>
+          </div>
+
+          <span className="hidden md:block text-xs uppercase tracking-[0.35em] text-black/40">
+            Selected Case Studies
+          </span>
+
+        </div>
+
+        <div className="relative h-[650px] flex items-center justify-center">
+
+          {/* LEFT BUTTON */}
+
+          <button
+            onClick={prevProject}
+            className="absolute left-0 md:left-8 z-50 w-14 h-14 rounded-full bg-black text-white flex items-center justify-center hover:scale-110 transition"
+          >
+            <ChevronLeft size={24} />
+          </button>
+
+          {/* RIGHT BUTTON */}
+
+          <button
+            onClick={nextProject}
+            className="absolute right-0 md:right-8 z-50 w-14 h-14 rounded-full bg-black text-white flex items-center justify-center hover:scale-110 transition"
+          >
+            <ChevronRight size={24} />
+          </button>
+
+          <div className="relative w-full h-full flex items-center justify-center">
+
+            {relatedProjects.map((project, index) => {
+
+              const thumb =
+                typeof project.thumbnail === "string"
+                  ? project.thumbnail
+                  : project.thumbnail?.url;
+
+              let position = index - currentIndex;
+
+              if (position < -3)
+                position += relatedProjects.length;
+
+              if (position > 3)
+                position -= relatedProjects.length;
+
+              const isCenter = position === 0;
+
+              return (
+
+                <motion.div
+                  key={project.slug || project._id}
+                  animate={{
+                    x: position * 260,
+                    scale:
+                      position === 0
+                        ? 1
+                        : Math.abs(position) === 1
+                          ? 0.82
+                          : 0.65,
+                    opacity:
+                      Math.abs(position) > 2
+                        ? 0.2
+                        : position === 0
+                          ? 1
+                          : 0.7,
+                    zIndex:
+                      position === 0
+                        ? 50
+                        : 10 - Math.abs(position),
+                  }}
+                  transition={{
+                    duration: 0.5,
+                  }}
+                  onClick={() =>
+                    navigate(`/projects/${project.slug}`)
+                  }
+                  className="absolute cursor-pointer"
+                >
+
+                  <div
+                    className={`
+                overflow-hidden
+                bg-white
+                rounded-[32px]
+                shadow-[0_30px_80px_rgba(0,0,0,0.15)]
+                border border-black/10
+                ${isCenter
+                        ? "w-[380px] h-[520px]"
+                        : "w-[260px] h-[360px]"
+                      }
+              `}
+                  >
+
+                    <img
+                      src={thumb}
+                      alt={project.title}
+                      className="w-full h-[75%] object-cover"
+                    />
+
+                    <div className="p-5">
+
+                      <span className="text-[10px] uppercase tracking-[0.3em] text-orange-500">
+                        {project.category}
+                      </span>
+
+                      <h3 className="mt-3 font-bold uppercase line-clamp-2">
+                        {project.title}
+                      </h3>
+
+                      {isCenter && (
+                        <p className="mt-3 text-sm text-black/60 line-clamp-3">
+                          {project.shortDescription}
+                        </p>
+                      )}
+
+                    </div>
+
+                  </div>
+
+                </motion.div>
+              );
+            })}
+          </div>
         </div>
       </div>
 

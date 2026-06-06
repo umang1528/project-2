@@ -303,7 +303,7 @@ export const getProjectBySlug =
             featured: -1,
             createdAt: -1,
           })
-          .limit(4)
+          .limit(200)
           .lean();
 
       res.status(200).json({
