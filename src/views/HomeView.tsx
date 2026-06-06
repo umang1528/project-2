@@ -18,6 +18,7 @@ import { useProjectStore } from '../store/useProjectStore';
 // import { useEffect } from 'react';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { homeCarouselApi } from '../api/homeCarousel.api';
 
 
 interface HomeViewProps {
@@ -33,10 +34,25 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
 
   const { projects, fetchProjects, loading } = useProjectStore();
 
+  const [carouselItems, setCarouselItems] = useState<Array<{ _id: string; image: string; title?: string; order?: number }>>([]);
   const [visibleProjects, setVisibleProjects] = useState(8);
+
   useEffect(() => {
     fetchProjects(1, true);
   }, [fetchProjects]);
+
+  useEffect(() => {
+    const loadCarouselItems = async () => {
+      try {
+        const response = await homeCarouselApi.getHomeCarouselItems();
+        setCarouselItems(response.data?.data || []);
+      } catch (error) {
+        console.error('Failed to load carousel items', error);
+      }
+    };
+
+    loadCarouselItems();
+  }, []);
 
 
   const cardSizes = [
@@ -131,24 +147,24 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
             }}
             className="absolute flex "
           >
-
-            {[...Array(12)].map((_, i) => (
-
-              <div
-                key={i}
-                className="w-[280px] h-[360px] overflow-hidden border border-black/10"
-              >
-
-                <img
-                  src={`https://picsum.photos/seed/${i}/900/1200`}
-                  alt=""
-                  className="w-full h-full object-cover"
-                />
-
+            {carouselItems.length > 0 ? (
+              carouselItems.map((item) => (
+                <div
+                  key={item._id}
+                  className="w-[280px] h-[360px] overflow-hidden border border-black/10"
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title || 'Carousel image'}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="flex h-[360px] w-full items-center justify-center text-black/60">
+                No carousel items available.
               </div>
-
-            ))}
-
+            )}
           </motion.div>
 
           {/* PHONE */}

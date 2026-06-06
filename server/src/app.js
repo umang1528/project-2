@@ -9,6 +9,7 @@ import projectRoutes from './routes/project.routes.js';
 import mediaRoutes from './routes/media.routes.js';
 import analyticsRoutes from './routes/analytics.routes.js';
 import settingsRoutes from './routes/settings.routes.js';
+import homeCarouselRoutes from './routes/homeCarousel.routes.js';
 
 import { errorHandler } from './middleware/error.middleware.js';
 
@@ -44,6 +45,7 @@ app.use('/api/projects', projectRoutes);
 app.use('/api/media', mediaRoutes);
 app.use('/api/analytics', analyticsRoutes);
 app.use('/api/settings', settingsRoutes);
+app.use('/api/home-carousel', homeCarouselRoutes);
 
 // 404 Handler
 app.use((req, res) => {
