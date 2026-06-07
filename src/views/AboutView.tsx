@@ -2,6 +2,9 @@ import { motion } from 'motion/react';
 import { useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
+import Image from '../assets/images/3img.png';
+import Img4 from "../assets/images/4img.png";
+
 interface AboutViewProps {
   setCurrentView?: (view: 'home') => void;
 }
@@ -64,12 +67,12 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
         {/* Feature Image */}
         <div className="mt-12 sm:mt-16 md:mt-24 relative overflow-hidden rounded-2xl sm:rounded-3xl md:rounded-[50px]">
           <img
-            src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400&auto=format&fit=crop"
+            src={Image}
             alt="Studio"
             className="
-              w-full object-cover transition-all duration-1000 hover:scale-105
-              h-[280px] sm:h-[420px] md:h-[580px] lg:h-[700px] xl:h-[850px]
-            "
+    w-full  h-auto  object-center transition-all duration-1000 hover:scale-105
+    h-[280px] sm:h-[420px] md:h-[580px] lg:h-[700px] xl:h-[850px]
+  "
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
           <div className="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 md:bottom-12 md:left-12">
@@ -119,7 +122,7 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
             </span>
             <div className="overflow-hidden rounded-2xl sm:rounded-3xl md:rounded-[30px]">
               <img
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=800&auto=format&fit=crop"
+                src={Img4} 
                 alt="Founder"
                 className="w-full object-cover
                   h-[260px] sm:h-[340px] md:h-[400px] lg:h-[420px]"

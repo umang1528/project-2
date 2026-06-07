@@ -9,7 +9,7 @@ import {
   PenTool
 } from 'lucide-react';
 import { Project, ViewType } from '../types';
-import Image from '../assets/images/1img.jpg';
+import Image from '../assets/images/2img.png';
 import ResumePDF from '../assets/CV pdf/Umang resume.pdf';
 
 import { useProjectStore } from '../store/useProjectStore';
