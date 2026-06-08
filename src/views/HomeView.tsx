@@ -232,7 +232,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               </div>
 
               {/* Phone border */}
-              <div className="absolute inset-0 
+              <div className="absolute inset-0
                 rounded-[38px] sm:rounded-[45px] lg:rounded-[55px]
                 border-[8px] sm:border-[10px] lg:border-[12px]
                 border-black pointer-events-none z-[60]"

@@ -1,5 +1,6 @@
+import { AnimatePresence } from 'motion/react';
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { MainLayout } from './layouts/MainLayout';
 import { HomeView } from './views/HomeView';
 import { Projects } from './views/Projects';
@@ -7,14 +8,26 @@ import { ProjectDetails } from './views/ProjectDetails';
 import { EducationView } from './views/EducationView';
 import { AboutView } from './views/AboutView';
 import { Footer } from './components/layout/Footer';
+import { LoadingScreen } from './components/layout/LoadingScreen';
 import { AdminRoutes } from './routes/AdminRoutes';
 
 export default function App() {
   const location = useLocation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [showLoader, setShowLoader] = useState(location.pathname === '/');
+
+  useEffect(() => {
+    if (!showLoader) {
+      document.body.style.overflow = '';
+    }
+  }, [showLoader]);
 
   return (
     <div className="relative min-h-screen bg-studio-bg text-studio-text font-sans selection:bg-brand-accent/20 overflow-x-hidden">
+      <AnimatePresence>
+        {showLoader && <LoadingScreen onComplete={() => setShowLoader(false)} />}
+      </AnimatePresence>
+
       <Routes>
         <Route path="/" element={<MainLayout isMenuOpen={isMenuOpen} setIsMenuOpen={setIsMenuOpen} />}>
           <Route index element={<HomeView />} />
