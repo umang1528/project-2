@@ -224,7 +224,7 @@ export function Projects() {
                       src={thumbnail}
                       alt={project.title}
                       className={`
-                        w-full object-cover grayscale
+                        w-full object-cover grayscale-80
                         group-hover:grayscale-0
                         transition-all duration-700
                         group-hover:scale-[1.02]

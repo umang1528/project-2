@@ -73,14 +73,21 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
           </div>
 
           {/* Main Heading — scales smoothly across all screens */}
-          <h1 className="font-display font-bold leading-[0.75] tracking-tighter uppercase
-            text-[22vw]
-            xs:text-[20vw]
-            sm:text-[18vw]
-            md:text-[16vw]
-            lg:text-[14vw]
-            xl:text-[13vw]
-            2xl:text-[12rem]"
+          <h1
+            className="
+            font-display
+            font-bold
+            uppercase
+            leading-[0.8]
+            tracking-[-0.06em]
+
+            text-[20vw]
+            sm:text-[22vw]
+            md:text-[20vw]
+            lg:text-[18vw]
+            xl:text-[16vw]
+            2xl:text-[22rem]
+          "
           >
             VISI<span className="text-brand-accent">O</span>NS
           </h1>
@@ -117,7 +124,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
       {/* ─────────────────────────────────────────────
           INSTAGRAM SEAMLESS CAROUSEL
       ───────────────────────────────────────────── */}
-      <section className="pt-8 pb-4 overflow-hidden bg-[#f5f3ef]">
+      <section className="pt-4 pb-25 overflow-hidden bg-[#f5f3ef]">
         <span className="block text-center text-brand-accent uppercase tracking-[0.4em] text-xs">
           Visual Storytelling
         </span>
@@ -134,7 +141,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
 
         {/* Carousel + Phone wrapper — height shrinks on small screens */}
         <div className="relative flex items-center
-          h-[420px] sm:h-[520px] md:h-[620px] lg:h-[700px]"
+          h-[320px] sm:h-[420px] md:h-[520px] lg:h-[450px]"
         >
           {/* Moving images strip */}
           <motion.div
@@ -146,7 +153,19 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               carouselItems.map((item) => (
                 <div
                   key={item._id}
-                  className="w-[160px] h-[210px] sm:w-[220px] sm:h-[290px] md:w-[280px] md:h-[360px] overflow-hidden border border-black/10 flex-shrink-0"
+                  className="
+                 w-[190px] h-[190px]
+                  sm:w-[190px] sm:h-[190px]
+                  md:w-[240px] md:h-[240px]
+                  lg:w-[280px] lg:h-[280px]
+                  xl:w-[320px] xl:h-[320px]
+
+                  overflow-hidden
+                  border
+                  border-black/10
+                  flex-shrink-0
+                  bg-white
+                  "
                 >
                   <img
                     src={item.image}
@@ -165,10 +184,10 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
           {/* Phone Frame — scales with screen */}
           <div className="absolute inset-0 flex items-center justify-center">
             <div className="relative
-              w-[190px] h-[370px]
-              sm:w-[240px] sm:h-[460px]
-              md:w-[270px] md:h-[520px]
-              lg:w-[300px] lg:h-[580px]"
+           w-[190px] h-[370px]
+          sm:w-[240px] sm:h-[460px]
+          md:w-[270px] md:h-[520px]
+          lg:w-[300px] lg:h-[580px]"
             >
               {/* Top white mask */}
               <div className="absolute top-0 left-0 right-0
@@ -182,7 +201,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               />
 
               {/* Dynamic Island */}
-              <div className="absolute top-3 left-1/2 -translate-x-1/2
+              <div className="absolute top-5 left-1/2 -translate-x-1/2
                 w-[60px] h-[18px] sm:w-[75px] sm:h-[22px] lg:w-[90px] lg:h-[25px]
                 bg-black rounded-full z-50"
               />
@@ -213,7 +232,7 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
               </div>
 
               {/* Phone border */}
-              <div className="absolute inset-0
+              <div className="absolute inset-0 
                 rounded-[38px] sm:rounded-[45px] lg:rounded-[55px]
                 border-[8px] sm:border-[10px] lg:border-[12px]
                 border-black pointer-events-none z-[60]"
@@ -222,6 +241,275 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
           </div>
         </div>
       </section>
+
+
+
+      {/* (OPTIONALCAROSALSECTION)
+      <section
+            className="
+        h-screen
+        overflow-hidden
+        bg-[#f5f3ef]
+        flex
+        flex-col
+        justify-center
+      "
+          >
+            <span className="block text-center text-brand-accent uppercase tracking-[0.4em] text-xs">
+              Visual Storytelling
+            </span>
+
+            <div className="text-center mb-6 sm:mb-8 md:mb-10 px-4">
+              <h2
+                className="
+            mt-4
+            font-display
+            uppercase
+            leading-none
+
+            text-3xl
+            sm:text-4xl
+            md:text-5xl
+            lg:text-6xl
+            xl:text-7xl
+          "
+              >
+                Seamless
+                <br />
+                Carousel Experience
+              </h2>
+            </div>
+
+            <div
+              className="
+          relative
+          flex
+          items-center
+          justify-center
+
+          h-[280px]
+          sm:h-[350px]
+          md:h-[420px]
+          lg:h-[500px]
+        "
+            >
+              Moving Carousel
+              <motion.div
+                animate={{ x: ["0%", "-50%"] }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 30,
+                  ease: "linear",
+                }}
+                className="absolute flex"
+              >
+                {carouselItems.length > 0 ? (
+                  [...carouselItems, ...carouselItems].map((item, index) => (
+                    <div
+                      key={`${item._id}-${index}`}
+                      className="
+                  w-[150px]
+                  h-[150px]
+
+                  sm:w-[190px]
+                  sm:h-[190px]
+
+                  md:w-[240px]
+                  md:h-[240px]
+
+                  lg:w-[280px]
+                  lg:h-[280px]
+
+                  overflow-hidden
+                  border
+                  border-black/10
+                  flex-shrink-0
+                  bg-white
+                "
+                    >
+                      <img
+                        src={item.image}
+                        alt={item.title || "Carousel image"}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                  ))
+                ) : (
+                  <div className="flex h-[280px] w-screen items-center justify-center text-black/60">
+                    No carousel items available.
+                  </div>
+                )}
+              </motion.div>
+
+              PHONE
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div
+                  className="
+              relative
+
+              w-[190px]
+              h-[370px]
+
+              sm:w-[240px]
+              sm:h-[460px]
+
+              md:w-[270px]
+              md:h-[520px]
+
+              lg:w-[300px]
+              lg:h-[580px]
+            "
+                >
+                  Top Mask
+                  <div
+                    className="
+                absolute
+                top-0
+                left-0
+                right-0
+
+                h-[70px]
+                sm:h-[85px]
+                md:h-[100px]
+                lg:h-[110px]
+
+                bg-white
+                rounded-t-[30px]
+                sm:rounded-t-[38px]
+                lg:rounded-t-[43px]
+                z-40
+              "
+                  />
+
+                  Bottom Mask
+                  <div
+                    className="
+                absolute
+                bottom-0
+                left-0
+                right-0
+
+                h-[70px]
+                sm:h-[85px]
+                md:h-[100px]
+                lg:h-[110px]
+
+                bg-white
+                rounded-b-[30px]
+                sm:rounded-b-[38px]
+                lg:rounded-b-[43px]
+                z-40
+              "
+                  />
+
+                  Dynamic Island
+                  <div
+                    className="
+                absolute
+                top-5
+                left-1/2
+                -translate-x-1/2
+
+                w-[60px]
+                h-[18px]
+
+                sm:w-[75px]
+                sm:h-[22px]
+
+                lg:w-[90px]
+                lg:h-[25px]
+
+                bg-black
+                rounded-full
+                z-50
+              "
+                  />
+
+                  Instagram Header
+                  <div
+                    className="
+                absolute
+                top-10
+                sm:top-12
+                lg:top-16
+
+                left-0
+                right-0
+
+                px-4
+                sm:px-5
+
+                z-50
+              "
+                  >
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-2">
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 lg:w-7 lg:h-7 rounded-full bg-black" />
+
+                        <span className="text-black text-[11px] sm:text-sm font-semibold">
+                          umang.design
+                        </span>
+                      </div>
+
+                      <span className="text-black text-base sm:text-lg">
+                        •••
+                      </span>
+                    </div>
+                  </div>
+
+                  Bottom UI
+                  <div
+                    className="
+                absolute
+                bottom-6
+                sm:bottom-7
+                lg:bottom-8
+
+                left-0
+                right-0
+
+                px-4
+                sm:px-6
+
+                text-black
+                z-50
+              "
+                  >
+                    <div className="flex items-center gap-3 text-xs sm:text-sm font-medium mb-2">
+                      <span>❤️ 2.4k</span>
+                      <span>💬 124</span>
+                      <span>↗ Share</span>
+                    </div>
+
+                    <p className="text-[8px] sm:text-xs uppercase tracking-[0.3em] opacity-70 text-center">
+                      Carousel Preview
+                    </p>
+                  </div>
+
+                  Phone Border
+                  <div
+                    className="
+                absolute
+                inset-0
+
+                rounded-[38px]
+                sm:rounded-[45px]
+                lg:rounded-[55px]
+
+                border-[8px]
+                sm:border-[10px]
+                lg:border-[12px]
+
+                border-black
+                pointer-events-none
+                z-[60]
+              "
+                  />
+                </div>
+              </div>
+            </div>
+          </section> */}
+
 
       {/* ─────────────────────────────────────────────
           FEATURED PROJECTS GRID
@@ -319,11 +607,10 @@ export function HomeView({ setSelectedProject, setCurrentView }: HomeViewProps) 
                       <span className="text-white/70 text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.3em] block mb-2">
                         {project.category}
                       </span>
-                      <h3 className={`text-white font-display font-bold leading-none tracking-tighter uppercase ${
-                        isLarge
-                          ? 'text-2xl sm:text-3xl md:text-4xl lg:text-6xl'
-                          : 'text-xl sm:text-2xl md:text-3xl'
-                      }`}>
+                      <h3 className={`text-white font-display font-bold leading-none tracking-tighter uppercase ${isLarge
+                        ? 'text-2xl sm:text-3xl md:text-4xl lg:text-6xl'
+                        : 'text-xl sm:text-2xl md:text-3xl'
+                        }`}>
                         {project.title}
                       </h3>
                     </div>
