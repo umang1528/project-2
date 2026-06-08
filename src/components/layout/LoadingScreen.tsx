@@ -6,7 +6,7 @@ interface LoadingScreenProps {
   onComplete: () => void;
 }
 
-const brandStages = ['UMANG', 'VISUALS'];
+const brandStages = ['UMANG', 'PORTFOLIO'];
 const keywords = [
   'BRANDING',
   'UI/UX',
@@ -21,6 +21,7 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
   const [brandText, setBrandText] = useState(brandStages[0]);
   const [keywordIndex, setKeywordIndex] = useState(0);
   const [progress, setProgress] = useState(0);
+  const [isExiting, setIsExiting] = useState(false);
 
   useEffect(() => {
     const timers: number[] = [];
@@ -49,11 +50,15 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
       }, 7000)
     );
 
-    timers.push(
-      window.setTimeout(() => {
-        onComplete();
-      }, 10000)
-    );
+   timers.push(
+  window.setTimeout(() => {
+    setIsExiting(true);
+
+    window.setTimeout(() => {
+      onComplete();
+    }, 1800);
+  }, 10000)
+);
 
     return () => {
       timers.forEach((timer) => window.clearTimeout(timer));
@@ -109,23 +114,92 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
   return (
     <AnimatePresence>
       <motion.div
-        className="fixed inset-0 z-[1000] bg-[#F5F3EF] text-[#111111]"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0, transition: { duration: 0.9, ease: 'easeInOut' } }}
-      >
-        <div className="absolute inset-0 overflow-hidden">
-          <motion.span
-            className="pointer-events-none absolute inset-x-0 top-[20%] mx-auto w-[40%] text-center text-[8rem] sm:text-[10rem] md:text-[12rem] lg:text-[14rem] font-display font-bold uppercase tracking-[-0.1em] text-[#111111] opacity-5 select-none"
-            initial={{ y: 40, opacity: 0 }}
-            animate={{ y: 0, opacity: stage >= 2 ? 0.05 : 0 }}
-            transition={{ duration: 1.2, ease: 'easeOut' }}
-          >
-            CREATE
-          </motion.span>
-        </div>
+  className="fixed inset-0 z-[1000] bg-[#F5F3EF] text-[#111111]"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  exit={{
+    opacity: 0,
+    transition: {
+      duration: 0.9,
+      ease: 'easeInOut',
+    },
+  }}
+>
+         <div className="absolute inset-0 overflow-hidden">
+  <motion.span
+    className="
+      pointer-events-none
+      absolute
+      inset-x-0
+      top-[22%]
+      mx-auto
 
-        <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-10 text-center">
+      w-full
+
+      text-center
+
+      text-[28vw]
+      sm:text-[22vw]
+      md:text-[18vw]
+      lg:text-[14vw]
+      xl:text-[12vw]
+
+      font-display
+      font-bold
+      uppercase
+
+      tracking-[-0.08em]
+
+      text-[#111111]
+      opacity-5
+      select-none
+    "
+    initial={{
+      y: 40,
+      opacity: 0,
+    }}
+    animate={{
+      y: isExiting
+        ? -80
+        : stage >= 2
+        ? -20
+        : 0,
+
+      opacity: isExiting
+        ? 0
+        : stage >= 2
+        ? 0.05
+        : 0,
+    }}
+    transition={{
+      duration: isExiting ? 0.6 : 1.2,
+      ease: "easeOut",
+    }}
+  >
+    CREATE
+  </motion.span>
+</div>
+
+        <motion.div
+  className="relative z-10 flex min-h-screen flex-col items-center justify-center px-6 py-10 text-center"
+  animate={
+    isExiting
+      ? {
+          opacity: 0,
+          scale: 1.05,
+          filter: 'blur(10px)',
+        }
+      : {
+          opacity: 1,
+          scale: 1,
+          filter: 'blur(0px)',
+        }
+  }
+  transition={{
+    duration: 1.5,
+    ease: [0.76, 0, 0.24, 1],
+  }}
+>
           <div className="max-w-[1200px] w-full">
             {stage === 0 && (
               <motion.div
@@ -218,6 +292,20 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
                         </p>
                         <p className="text-[5rem] sm:text-[5.8rem] md:text-[6.8rem] font-black uppercase tracking-[-0.08em] text-[#111111]">
                           {progress}%
+                          {progress === 100 && (
+                        <motion.p
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            className="
+                            text-brand-accent
+                            uppercase
+                            tracking-[0.4em]
+                            text-xs
+                            "
+                        >
+                            ENTERING PORTFOLIO
+                        </motion.p>
+                        )}
                         </p>
                         <p className="text-base sm:text-lg text-[#777777] tracking-[0.12em] uppercase">
                           Portfolio assets are being energized for the first reveal.
@@ -226,23 +314,64 @@ export function LoadingScreen({ onComplete }: LoadingScreenProps) {
                     ) : (
                       <motion.div
                         key="stage-two-caption"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.7, ease: 'easeOut' }}
-                        className="text-[#777777]"
-                      >
-                        <p className="text-sm uppercase tracking-[0.35em]">
-                          Refined concepts loading
+                        initial={{
+                            opacity: 0,
+                            y: 30,
+                            filter: "blur(8px)",
+                        }}
+                        animate={{
+                            opacity: 1,
+                            y: 0,
+                            filter: "blur(0px)",
+                        }}
+                        exit={{
+                            opacity: 0,
+                            y: -30,
+                            filter: "blur(8px)",
+                        }}
+                        transition={{
+                            duration: 1,
+                            ease: [0.76, 0, 0.24, 1],
+                        }}
+                        className="space-y-3"
+                        >
+                        <p
+                            className="
+                            text-[10px]
+                            sm:text-xs
+                            uppercase
+                            tracking-[0.45em]
+                            text-[#777777]
+                            "
+                        >
+                            Refined Concepts Loading
                         </p>
-                      </motion.div>
+
+                        <motion.div
+                            animate={{
+                            opacity: [0.4, 1, 0.4],
+                            }}
+                            transition={{
+                            duration: 1.5,
+                            repeat: Infinity,
+                            }}
+                            className="
+                            w-24
+                            h-[2px]
+                            bg-brand-accent
+                            mx-auto
+                            "
+                        />
+                        </motion.div>
                     )}
                   </AnimatePresence>
                 </div>
               </motion.div>
             )}
           </div>
-        </div>
+          
+          </motion.div>
+        
       </motion.div>
     </AnimatePresence>
   );
