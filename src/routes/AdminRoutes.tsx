@@ -7,6 +7,7 @@ import {HomeCarousel} from '../pages/HomeCarousel'
 import { AddProject } from '../pages/admin/AddProject';
 import { EditProject } from '../pages/admin/EditProject';
 import { Media } from '../pages/admin/Media';
+import { ProjectBreakdown } from '../pages/admin/ProjectBreakdown';
 import { Themes } from '../pages/admin/Themes';
 import { Analytics } from '../pages/admin/Analytics';
 import { Settings } from '../pages/admin/Settings';
@@ -26,6 +27,7 @@ export function AdminRoutes() {
   path="homepage-carousel"
   element={<HomeCarousel />}
 />
+        <Route path="project-breakdown" element={<ProjectBreakdown />} />
         <Route path="projects/add" element={<AddProject />} />
         <Route path="projects/edit/:id" element={<EditProject />} />
         <Route path="media" element={<Media />} />

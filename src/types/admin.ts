@@ -2,6 +2,8 @@ export type AdminRouteKey =
   | 'dashboard'
   | 'projects'
   | 'projectLocations'
+  | 'homepage-carousel'
+  | 'projectBreakdown'
   | 'media'
   | 'themes'
   | 'analytics'

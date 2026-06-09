@@ -1,9 +1,56 @@
 import { motion } from 'motion/react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 
 import Image from '../assets/images/3img.png';
 import Img4 from "../assets/images/4img.png";
+import { projectBreakdownApi } from '../api/projectBreakdown.api';
+
+interface ProjectBreakdownItem {
+  _id: string;
+  title: string;
+  image: string;
+  order: number;
+  isActive: boolean;
+}
+
+const fallbackBreakdownItems: ProjectBreakdownItem[] = [
+  {
+    _id: 'fallback-1',
+    title: 'Project 1',
+    image: 'https://picsum.photos/seed/pbreak1/900/1400',
+    order: 0,
+    isActive: true,
+  },
+  {
+    _id: 'fallback-2',
+    title: 'Project 2',
+    image: 'https://picsum.photos/seed/pbreak2/900/1400',
+    order: 1,
+    isActive: true,
+  },
+  {
+    _id: 'fallback-3',
+    title: 'Project 3',
+    image: 'https://picsum.photos/seed/pbreak3/900/1400',
+    order: 2,
+    isActive: true,
+  },
+  {
+    _id: 'fallback-4',
+    title: 'Project 4',
+    image: 'https://picsum.photos/seed/pbreak4/900/1400',
+    order: 3,
+    isActive: true,
+  },
+  {
+    _id: 'fallback-5',
+    title: 'Project 5',
+    image: 'https://picsum.photos/seed/pbreak5/900/1400',
+    order: 4,
+    isActive: true,
+  },
+];
 
 interface AboutViewProps {
   setCurrentView?: (view: 'home') => void;
@@ -11,6 +58,33 @@ interface AboutViewProps {
 
 export function AboutView({ setCurrentView }: AboutViewProps) {
   const [activeIndex, setActiveIndex] = useState(1);
+  const [breakdownItems, setBreakdownItems] = useState<ProjectBreakdownItem[]>([]);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const loadBreakdownItems = async () => {
+      try {
+        const response = await projectBreakdownApi.getProjectBreakdownItems();
+        if (isMounted) {
+          setBreakdownItems(response.data?.data || []);
+        }
+      } catch (error) {
+        console.error('Failed to load project breakdown items', error);
+        if (isMounted) {
+          setBreakdownItems([]);
+        }
+      }
+    };
+
+    loadBreakdownItems();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
+
+  const displayBreakdownItems = breakdownItems.length > 0 ? breakdownItems : fallbackBreakdownItems;
 
   return (
     <section className="
@@ -265,7 +339,7 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
           <div className="mt-10 sm:mt-14 md:mt-16 hidden md:flex
             h-[460px] lg:h-[560px] xl:h-[650px] gap-2 lg:gap-3"
           >
-            {[1, 2, 3, 4, 5].map((item, index) => {
+            {displayBreakdownItems.map((item, index) => {
               const isActive = activeIndex === index;
               return (
                 <motion.div
@@ -276,8 +350,8 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
                   className="relative overflow-hidden rounded-[20px] lg:rounded-[28px] border border-white/10 cursor-pointer min-w-0"
                 >
                   <img
-                    src={`https://picsum.photos/seed/pbreak${item}/900/1400`}
-                    alt=""
+                    src={item.image}
+                    alt={item.title}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-black/40" />
@@ -294,11 +368,11 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
                         </span>
                         <h3 className="mt-3 sm:mt-4 text-white font-display uppercase
                           text-4xl lg:text-5xl xl:text-6xl">
-                          Project {item}
+                          Project {index + 1}
                         </h3>
                       </div>
                       <span className="text-white/20 font-display text-7xl lg:text-8xl">
-                        0{item}
+                        0{index + 1}
                       </span>
                     </motion.div>
                   )}
@@ -309,14 +383,14 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
 
           {/* Mobile stacked cards */}
           <div className="flex md:hidden flex-col gap-3 mt-8">
-            {[1, 2, 3, 4, 5].map((item) => (
+            {displayBreakdownItems.map((item, index) => (
               <div
-                key={item}
+                key={item._id || index}
                 className="relative overflow-hidden rounded-2xl border border-white/10 h-[180px] sm:h-[220px]"
               >
                 <img
-                  src={`https://picsum.photos/seed/pbreak${item}/900/1400`}
-                  alt=""
+                  src={item.image}
+                  alt={item.title}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-black/50" />
@@ -326,9 +400,9 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
                   </span>
                   <div className="flex items-end justify-between">
                     <h3 className="text-white font-display uppercase text-2xl sm:text-3xl">
-                      Project {item}
+                      Project {index + 1}
                     </h3>
-                    <span className="text-white/20 font-display text-5xl">0{item}</span>
+                    <span className="text-white/20 font-display text-5xl">0{index + 1}</span>
                   </div>
                 </div>
               </div>

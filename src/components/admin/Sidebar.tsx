@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import { LayoutDashboard, FolderKanban, Images, Palette, BarChart3, Settings } from 'lucide-react';
+import { LayoutDashboard, FolderKanban, Images, Palette, BarChart3, Settings, LayoutGrid } from 'lucide-react';
 import { AnimatePresence, motion } from 'motion/react';
 import { useSidebarStore } from '../../store/useSidebarStore';
 import type { AdminSidebarItem, AdminRouteKey } from '../../types/admin';
@@ -9,7 +9,8 @@ const items: AdminSidebarItem[] = [
   { key: 'dashboard', label: 'Dashboard', href: '/admin/dashboard', icon: LayoutDashboard },
   { key: 'projects', label: 'Projects', href: '/admin/projects', icon: FolderKanban },
   { key: 'projectLocations', label: 'Project Locations', href: '/admin/project-locations', icon: Images },
-  {key: 'homepage-carousel', label: 'Homepage Carousel', href: '/admin/homepage-carousel', icon: Images},
+  { key: 'homepage-carousel', label: 'Homepage Carousel', href: '/admin/homepage-carousel', icon: Images },
+  { key: 'projectBreakdown', label: 'Project Breakdown', href: '/admin/project-breakdown', icon: LayoutGrid },
   { key: 'media', label: 'Media', href: '/admin/media', icon: Images },
   { key: 'themes', label: 'Themes', href: '/admin/themes', icon: Palette },
   { key: 'analytics', label: 'Analytics', href: '/admin/analytics', icon: BarChart3 },
