@@ -126,9 +126,8 @@ export function ProjectDetails() {
                     {extraImages.slice(0, 5).map((_, idx) => (
                       <div
                         key={idx}
-                        className={`h-1.5 rounded-full transition-all duration-500 ${
-                          galleryIndex === idx ? 'w-5 sm:w-6 bg-brand-accent' : 'w-1.5 bg-black/20'
-                        }`}
+                        className={`h-1.5 rounded-full transition-all duration-500 ${galleryIndex === idx ? 'w-5 sm:w-6 bg-brand-accent' : 'w-1.5 bg-black/20'
+                          }`}
                       />
                     ))}
                   </div>
@@ -211,10 +210,10 @@ export function ProjectDetails() {
                 <p className="mt-2 sm:mt-3 text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold text-black">
                   {currentProject.createdAt
                     ? new Date(currentProject.createdAt).toLocaleDateString('en-GB', {
-                        day: '2-digit',
-                        month: 'short',
-                        year: 'numeric',
-                      })
+                      day: '2-digit',
+                      month: 'short',
+                      year: 'numeric',
+                    })
                     : 'N/A'}
                 </p>
               </div>
@@ -316,17 +315,26 @@ export function ProjectDetails() {
                       zIndex: position === 0 ? 50 : 10 - Math.abs(position),
                     }}
                     transition={{ duration: 0.5 }}
-                    onClick={() => navigate(`/projects/${project.slug}`)}
-                    className="absolute cursor-pointer"
+                    onClick={() => {
+                      if (isCenter) {
+                        navigate(`/projects/${project.slug}`);
+                      } else {
+                        setCurrentIndex(index);
+                      }
+                    }}
+                    className={`absolute ${isCenter ? 'cursor-pointer' : 'cursor-grab'}`}
                   >
                     <div className={`
-                      overflow-hidden bg-white rounded-[28px] lg:rounded-[32px]
+                      overflow-hidden bg-white rounded-[28px] lg:rounded-[18px]
                       shadow-[0_30px_80px_rgba(0,0,0,0.15)] border border-black/10
+
+                      ${isCenter ? 'ring-2 ring-orange-500' : ''}
+
                       ${isCenter
                         ? 'w-[280px] h-[400px] lg:w-[340px] lg:h-[460px] xl:w-[380px] xl:h-[520px]'
                         : 'w-[180px] h-[260px] lg:w-[220px] lg:h-[310px] xl:w-[260px] xl:h-[360px]'
                       }
-                    `}>
+`}>
                       <img
                         src={thumb}
                         alt={project.title}
@@ -421,9 +429,8 @@ export function ProjectDetails() {
               <button
                 key={i}
                 onClick={() => setCurrentIndex(i)}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  i === currentIndex ? 'w-6 bg-brand-accent' : 'w-2 bg-black/20'
-                }`}
+                className={`h-1.5 rounded-full transition-all duration-300 ${i === currentIndex ? 'w-6 bg-brand-accent' : 'w-2 bg-black/20'
+                  }`}
               />
             ))}
           </div>

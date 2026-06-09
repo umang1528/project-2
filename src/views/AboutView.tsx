@@ -57,7 +57,9 @@ interface AboutViewProps {
 }
 
 export function AboutView({ setCurrentView }: AboutViewProps) {
-  const [activeIndex, setActiveIndex] = useState(1);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
+  const itemsPerPage = 6;
   const [breakdownItems, setBreakdownItems] = useState<ProjectBreakdownItem[]>([]);
 
   useEffect(() => {
@@ -84,8 +86,12 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
     };
   }, []);
 
-  const displayBreakdownItems = breakdownItems.length > 0 ? breakdownItems : fallbackBreakdownItems;
-
+  const displayBreakdownItems = (breakdownItems.length > 0 ? breakdownItems : fallbackBreakdownItems
+  ).sort((a, b) => a.order - b.order);
+  const visibleBreakdownItems = displayBreakdownItems.slice(
+    currentPage * itemsPerPage,
+    (currentPage + 1) * itemsPerPage
+  );
   return (
     <section className="
       pt-24 sm:pt-32 md:pt-40 lg:pt-48
@@ -196,7 +202,7 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
             </span>
             <div className="overflow-hidden rounded-2xl sm:rounded-3xl md:rounded-[30px]">
               <img
-                src={Img4} 
+                src={Img4}
                 alt="Founder"
                 className="w-full object-cover
                   h-[260px] sm:h-[340px] md:h-[400px] lg:h-[420px]"
@@ -336,14 +342,16 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
           </motion.p>
 
           {/* Desktop accordion */}
-          <div className="mt-10 sm:mt-14 md:mt-16 hidden md:flex
-            h-[460px] lg:h-[560px] xl:h-[650px] gap-2 lg:gap-3"
+          <div
+            className="mt-10 sm:mt-14 md:mt-16 hidden md:flex
+  h-[460px] lg:h-[560px] xl:h-[650px] gap-2 lg:gap-3"
           >
-            {displayBreakdownItems.map((item, index) => {
+            {visibleBreakdownItems.map((item, index) => {
               const isActive = activeIndex === index;
+
               return (
                 <motion.div
-                  key={index}
+                  key={item._id || index}
                   onMouseEnter={() => setActiveIndex(index)}
                   animate={{ flex: isActive ? 5 : 1 }}
                   transition={{ duration: 0.8, ease: 'easeInOut' }}
@@ -354,6 +362,7 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
                     alt={item.title}
                     className="absolute inset-0 w-full h-full object-cover"
                   />
+
                   <div className="absolute inset-0 bg-black/40" />
 
                   {isActive && (
@@ -366,13 +375,22 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
                         <span className="text-brand-accent uppercase tracking-[0.4em] text-xs">
                           Project Breakdown
                         </span>
-                        <h3 className="mt-3 sm:mt-4 text-white font-display uppercase
-                          text-4xl lg:text-5xl xl:text-6xl">
-                          Project {index + 1}
+
+                        <h3
+                          className="
+                mt-3 sm:mt-4
+                text-white
+                font-display
+                uppercase
+                text-4xl lg:text-5xl xl:text-6xl
+              "
+                        >
+                          Project {item.title}
                         </h3>
                       </div>
+
                       <span className="text-white/20 font-display text-7xl lg:text-8xl">
-                        0{index + 1}
+                        {String(index + 1).padStart(2, '0')}
                       </span>
                     </motion.div>
                   )}
@@ -383,7 +401,7 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
 
           {/* Mobile stacked cards */}
           <div className="flex md:hidden flex-col gap-3 mt-8">
-            {displayBreakdownItems.map((item, index) => (
+            {visibleBreakdownItems.map((item, index) => (
               <div
                 key={item._id || index}
                 className="relative overflow-hidden rounded-2xl border border-white/10 h-[180px] sm:h-[220px]"
@@ -393,21 +411,78 @@ export function AboutView({ setCurrentView }: AboutViewProps) {
                   alt={item.title}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
+
                 <div className="absolute inset-0 bg-black/50" />
+
                 <div className="absolute inset-0 p-5 flex flex-col justify-between z-10">
                   <span className="text-brand-accent uppercase tracking-[0.4em] text-[10px]">
                     Project Breakdown
                   </span>
+
                   <div className="flex items-end justify-between">
                     <h3 className="text-white font-display uppercase text-2xl sm:text-3xl">
-                      Project {index + 1}
+                      Project {item.title}
                     </h3>
-                    <span className="text-white/20 font-display text-5xl">0{index + 1}</span>
+
+                    <span className="text-white/20 font-display text-5xl">
+                      {String(index + 1).padStart(2, '0')}
+                    </span>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+            {/* view more button */}
+          <div className="flex justify-center gap-4 mt-10 md:mt-14">
+
+            {currentPage > 0 && (
+              <button
+                onClick={() => setCurrentPage((prev) => prev - 1)}
+                className="
+        px-8 py-4
+        border border-white/20
+        text-white
+        uppercase
+        tracking-[0.35em]
+        text-xs
+        font-bold
+
+        hover:bg-white
+        hover:text-black
+
+        transition-all
+      "
+              >
+                Previous
+              </button>
+            )}
+
+            {(currentPage + 1) * itemsPerPage <
+              displayBreakdownItems.length && (
+                <button
+                  onClick={() => setCurrentPage((prev) => prev + 1)}
+                  className="
+        px-8 py-4
+        border border-white/20
+        text-white
+        uppercase
+        tracking-[0.35em]
+        text-xs
+        font-bold
+
+        hover:bg-white
+        hover:text-black
+
+        transition-all
+      "
+                >
+                  Next Projects
+                </button>
+              )}
+
+          </div>
+
 
         </div>
       </section>
