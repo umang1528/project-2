@@ -2,9 +2,10 @@ import { FormEvent, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { PageContainer } from '../../components/admin/PageContainer';
 import { useProjectStore } from '../../store/useProjectStore';
+import { PROJECT_CATEGORIES, PROJECT_STATUSES, } from '../../views/projectFormConstants.ts';
 
-const categories = ['Branding', 'UI/UX', 'Motion', 'Product', 'Portfolio'];
-const statuses = ['published', 'draft', 'archived'];
+// const categories = ['Branding', 'UI/UX', 'Motion', 'Product', 'Portfolio', 'mukesh'];
+// const statuses = ['published', 'draft', 'archived'];
 
 export function AddProject() {
   const navigate = useNavigate();
@@ -74,8 +75,10 @@ export function AddProject() {
               onChange={(event) => setCategory(event.target.value)}
               className="w-full rounded-3xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none transition"
             >
-              {categories.map((option) => (
-                <option key={option} value={option}>{option}</option>
+              {PROJECT_CATEGORIES.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
               ))}
             </select>
           </label>
@@ -134,8 +137,10 @@ export function AddProject() {
               onChange={(event) => setStatus(event.target.value)}
               className="w-full rounded-3xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none transition"
             >
-              {statuses.map((option) => (
-                <option key={option} value={option}>{option}</option>
+              {PROJECT_STATUSES.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
               ))}
             </select>
           </label>

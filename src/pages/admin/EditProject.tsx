@@ -10,20 +10,22 @@ import { PageContainer } from '../../components/admin/PageContainer';
 import { projectApi } from '../../api/project.api';
 
 import { useProjectStore } from '../../store/useProjectStore';
+import { PROJECT_CATEGORIES, PROJECT_STATUSES, } from '../../views/projectFormConstants.ts';
 
-const categories = [
-  'Branding',
-  'UI/UX',
-  'Motion',
-  'Product',
-  'Portfolio',
-];
+// const categories = [
+//   'Branding',
+//   'UI/UX',
+//   'Motion',
+//   'Product',
+//   'Portfolio',
+//   'mukesh'
+// ];
 
-const statuses = [
-  'published',
-  'draft',
-  'archived',
-];
+// const statuses = [
+//   'published',
+//   'draft',
+//   'archived',
+// ];
 
 export function EditProject() {
 
@@ -367,8 +369,7 @@ export function EditProject() {
               className="w-full rounded-3xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none"
             >
 
-              {categories.map(
-                (option) => (
+              {PROJECT_CATEGORIES.map((option) => (
                   <option
                     key={option}
                     value={option}
@@ -494,8 +495,7 @@ export function EditProject() {
               className="w-full rounded-3xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none"
             >
 
-              {statuses.map(
-                (option) => (
+              {PROJECT_STATUSES.map((option) => (
                   <option
                     key={option}
                     value={option}

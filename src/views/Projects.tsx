@@ -20,11 +20,14 @@ export function Projects() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const categoryOptions = useMemo(() => {
+    
     const categories = new Set<string>(['All']);
     projects.forEach((project) => {
       if (project.category) categories.add(project.category);
     });
-    return Array.from(categories).slice(0, 8);
+
+    console.log(categories)
+    return Array.from(categories).slice(0, 9);
   }, [projects]);
 
   useEffect(() => {
