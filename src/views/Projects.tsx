@@ -22,12 +22,51 @@ export function Projects() {
   // ── Track visible count per category (starts at 4) ──
   const [visibleCounts, setVisibleCounts] = useState<Record<string, number>>({});
 
+  // 🔥🔥🔥 ALL CATEGORIES - component mein hi manage karo (store nahi chahiye)
+  const [allCategories, setAllCategories] = useState<string[]>([]);
+
+  // 🔥 Ek baar fetch karo saari categories (bina filter ke)
+  useEffect(() => {
+    const fetchAllCategories = async () => {
+      try {
+        // API se saare projects lo bina filter ke (limit zyada rakho)
+        const res = await fetch('/api/projects?limit=1000&status=published');
+        const data = await res.json();
+        
+        if (data.status === 'success') {
+          const cats = new Set<string>();
+          data.data.projects.forEach((p: any) => {
+            if (p.category) cats.add(p.category);
+          });
+          // A-Z sort karo
+          setAllCategories(Array.from(cats).sort((a, b) => a.localeCompare(b)));
+        }
+      } catch (err) {
+        console.error('Failed to fetch categories:', err);
+      }
+    };
+
+    fetchAllCategories();
+  }, []); // Sirf ek baar mount pe
+
+  // 🔥🔥🔥 Category options: "All" pehle, baaki allCategories se
+  // Hamesha same rahenge chahe filter kuch bhi ho
   const categoryOptions = useMemo(() => {
-    const categories = new Set<string>(['All']);
-    projects.forEach((project) => {
-      if (project.category) categories.add(project.category);
+    return ['All', ...allCategories];
+  }, [allCategories]);
+
+  // 🔥🔥🔥 Jab bhi naya project add ho, categories update karo
+  useEffect(() => {
+    const cats = new Set<string>(allCategories);
+    projects.forEach((p) => {
+      if (p.category && !cats.has(p.category)) {
+        cats.add(p.category);
+      }
     });
-    return Array.from(categories).slice(0, 9);
+    const sorted = Array.from(cats).sort((a, b) => a.localeCompare(b));
+    if (JSON.stringify(sorted) !== JSON.stringify(allCategories)) {
+      setAllCategories(sorted);
+    }
   }, [projects]);
 
   useEffect(() => {
@@ -35,6 +74,7 @@ export function Projects() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters.category, filters.search, filters.sort]);
 
+  // 🔥 Sirf active category highlight kare, baaki bhi dikhein
   const handleCategory = (category: string) => {
     setFilters({ category: category === 'All' ? '' : category });
     fetchProjects(1, true);
@@ -58,16 +98,35 @@ export function Projects() {
     [loading, loadMoreProjects, pagination.currentPage, pagination.totalPages]
   );
 
-  // ── Group projects by category (UI only) ──
+  // ── Group projects by category ──
   const groupedProjects = useMemo(() => {
     const grouped: Record<string, typeof projects> = {};
+    
     projects.forEach((project) => {
       const cat = project.category || 'Other';
       if (!grouped[cat]) grouped[cat] = [];
       grouped[cat].push(project);
     });
-    return grouped;
-  }, [projects]);
+
+    // Agar filter active hai, toh sirf wahi category return karo
+    if (filters.category) {
+      const filtered: Record<string, typeof projects> = {};
+      if (grouped[filters.category]) {
+        filtered[filters.category] = grouped[filters.category];
+      }
+      return filtered;
+    }
+
+    // Nahi toh saari categories A-Z sort
+    const sortedGrouped: Record<string, typeof projects> = {};
+    Object.keys(grouped)
+      .sort((a, b) => a.localeCompare(b))
+      .forEach((key) => {
+        sortedGrouped[key] = grouped[key];
+      });
+
+    return sortedGrouped;
+  }, [projects, filters.category]);
 
   // ── Show 4 more projects for a category ──
   const showMore = (category: string) => {
@@ -149,20 +208,27 @@ export function Projects() {
             Filter by Category
           </span>
           <div className="flex flex-wrap gap-3 sm:gap-4">
-            {categoryOptions.map((category) => (
-              <button
-                key={category}
-                onClick={() => handleCategory(category)}
-                className={`text-[11px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
-                  filters.category === category ||
-                  (category === 'All' && !filters.category)
-                    ? 'text-orange-500'
-                    : 'text-black/40 hover:text-orange-500'
-                }`}
-              >
-                {category}
-              </button>
-            ))}
+            {categoryOptions.map((category) => {
+              // 🔥 Check active state
+              const isAll = category === 'All';
+              const isActive = isAll 
+                ? !filters.category 
+                : filters.category === category;
+              
+              return (
+                <button
+                  key={category}
+                  onClick={() => handleCategory(category)}
+                  className={`text-[11px] sm:text-xs font-bold uppercase tracking-widest transition-all duration-300 ${
+                    isActive
+                      ? 'text-orange-500'
+                      : 'text-black/40 hover:text-orange-500'
+                  }`}
+                >
+                  {category}
+                </button>
+              );
+            })}
           </div>
         </div>
 
@@ -469,4 +535,4 @@ export function Projects() {
 
     </section>
   );
-}
+}       

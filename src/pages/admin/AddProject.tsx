@@ -12,7 +12,7 @@ export function AddProject() {
   const createProject = useProjectStore((state) => state.createProject);
 
   const [title, setTitle] = useState('');
-  const [category, setCategory] = useState('Branding');
+  const [category, setCategory] = useState('');
   const [shortDescription, setShortDescription] = useState('');
   const [fullDescription, setFullDescription] = useState('');
   const [caseStudy, setCaseStudy] = useState('');
@@ -44,6 +44,7 @@ export function AddProject() {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    console.log("Selected Category:", category);
     setSubmitting(true);
     const formData = buildFormData();
     const project = await createProject(formData);
@@ -70,11 +71,17 @@ export function AddProject() {
           </label>
           <label className="space-y-2 text-sm text-white/80">
             <span>Category</span>
+
             <select
               value={category}
               onChange={(event) => setCategory(event.target.value)}
               className="w-full rounded-3xl border border-white/10 bg-white/5 px-5 py-4 text-white outline-none transition"
+              required
             >
+              <option value="" disabled>
+                Select your category
+              </option>
+
               {PROJECT_CATEGORIES.map((option) => (
                 <option key={option} value={option}>
                   {option}
